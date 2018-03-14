@@ -3,15 +3,13 @@
     
 <html>
 <head>
-<link rel="stylesheet" type="text/css" 
-        		href="${pageContext.request.contextPath}/css/home.css">
     <title>JPlan 홈</title>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
-    <link rel="stylesheet" type="text/css" href="css/swiper.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/swiper.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-    <style>
+<style>
         /* swiper-container의 크기를 조절하여 위치 설정 */
         .swiper-container{
             width: 100%;
@@ -46,20 +44,37 @@
             });
             
         });
+         
+        //Top 리모컨 함수 
+        $(document).scroll(function(){
+
+	       var con = $(".remote");
+           var position = $(window).scrollTop();
+
+	       if(position > 250){ con.fadeIn(500); }
+           else if(position < 250){ con.fadeOut(500); }
+
+        });
+
+//        $(".remote").click(function(){
+//            $("html, body").animate({scrollTop: 0}, 1000);
+//
+//        });
+
     </script>
 <body>
     <!-- 상단(메뉴) 영역 -->
-    <nav class="menu">
+    <header class="menu">
         <input type="checkbox" id="hamberg">
         <label for="hamberg">&equiv;</label>
         <i class="fa fa-twitter fa-3x left"></i>
-        <a href="#" class="left">일정만들기</a>
-        <a href="#" class="left">커뮤니티</a>
-        <a href="#" class="left">이용방법</a>
-        <a href="#" class="left">여행지</a>
-        <a href="#" class="right">로그인</a>
-        <a href="#" class="rright">회원가입</a>
-    </nav>
+        <button class="left">일정만들기</button>
+        <button class="left">커뮤니티</button>
+        <button class="left">이용방법</button>
+        <button class="left">여행지</button>
+        <button class="right">로그인</button>
+        <button class="rright">회원가입</button>
+    </header>
 <div class="row out-align-center">
    <div class="swiper-container">
         
@@ -104,7 +119,14 @@
     <div class="container-100 out-align-center">
         <div class="row in-align-center font-big">이용방법</div>
         <!-- 방법 내용 적을곳 -->
-        <div class="row"></div>
+        <div class="row">이용하기</div>
+        <div class="row">이용하기</div>
+        <div class="row">이용하기</div>
+        <div class="row">이용하기</div>
+        <div class="row">이용하기</div>
+    </div>
+    <div class="remote">
+        <a href="#">Top</a>
     </div>
         
         
