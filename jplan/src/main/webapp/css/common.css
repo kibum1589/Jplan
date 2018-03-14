@@ -1,4 +1,5 @@
-@charset UTF-8;
+@charset "UTF-8";
+
 /* 링크 스타일 */
 a{
     text-decoration: none;
@@ -6,6 +7,10 @@ a{
 }
 a:hover{
     color: blue;
+}
+.remote ~ a{
+    text-decoration: none;
+    color: black;
 }
 
 /*==================================== 테이블 스타일 ======================================*/
@@ -57,6 +62,10 @@ a:hover{
 .form-btn{
     background-color: lightyellow;
 }
+button{
+    background-color: white;
+    border: none;
+}
 
 /* 글 작성 공간 리사이징 금지 */
 textarea{
@@ -65,7 +74,7 @@ textarea{
 
 /*======================================= 영역 스타일 ===========================================*/
 div, nav, header, footer, aside, article, section, main{
-     /*테스트용 테두리 추가*/ 
+     /*테스트용 테두리 추가 */
     border: 1px dotted black;
 }
 
@@ -93,14 +102,23 @@ div, nav, header, footer, aside, article, section, main{
 
 /* 공백 줄(empty-row)과 내용 줄(row) */
 .empty-row{  height: 50px;  }
-.row{   margin: 10px;   }
+.row{   
+    margin: 10px;
+    padding: 20px;
+    font-size: 25px;
+}
 
-/* 아이콘 스타일 */
-.fa-custom{
-/*            지정된 크기로 스타일 부여*/
-/*            font-size: 100px;*/
-/*            비율로 크기 스타일 부여(기본글꼴의 n배)*/
-            font-size: 3.5em;
+/* 리모컨 */
+.remote{
+            display: none;
+            background-color: lightgray;
+            color: black;
+            position: fixed;
+            padding: 10px;
+            width: 50px;
+            height: 50px;
+            right: 30px;
+            bottom: 30px;
         }
 
 /*=================================== font 관련 스타일 ==================================*/
@@ -191,22 +209,24 @@ div, nav, header, footer, aside, article, section, main{
             display:none;
             color:black;
         }
-        
-        @media screen and (max-width:570px){
+        @media screen and (max-width:700px){
             .menu{
                 flex-direction: column;
             }
 /*            .menu > a{*/
-           .menu #hamberg ~ a{
+           .menu #hamberg ~ button{
                 display: none;
                 margin:10px 0px;
             }
             
-           .menu #hamberg:checked ~ a{
+           .menu #hamberg:checked ~ button{
                 display:block;
             }
            .menu #hamberg + label{
                 display:block;   
+            }
+            .menu #hamberg ~ i{
+                display: none;
             }
         }
 
@@ -301,3 +321,22 @@ footer{
 
 
 /*======================= 각종 이미지가 첨부된 입력창들(좌측 이미지) ========================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
