@@ -3,7 +3,7 @@
     
 <html>
     <head>
-        <title>이미지 게시판</title>
+        <title>Jplan</title>
         <link rel="stylesheet" type="text/css" 
         		href="${pageContext.request.contextPath}/css/home.css">
     </head>
