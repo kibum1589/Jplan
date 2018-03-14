@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jp.bean.Member;
 import jp.model.MemberDao;
 
-@Controller
+//@Controller
 public class MemberController {
 	
 	@Autowired
