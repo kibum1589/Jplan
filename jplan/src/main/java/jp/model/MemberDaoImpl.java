@@ -24,9 +24,10 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public void sign(Member member) {
-		
+		String sql = "insert into member values(member_seq.nextval,?,?,?,'m',sysdate)";
+		Object[] args = new Object[]{
+				member.getEmail(), member.getPw(),member.getName()
+			};
+			jdbcTemplate.update(sql, args);
 	}
-	
-	
-	
 }

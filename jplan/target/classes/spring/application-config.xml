@@ -5,8 +5,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <!-- Uncomment and add your base-package here:
-         <context:component-scan
-            base-package="org.springframework.samples.service"/>  -->
+    <!-- 설정값을 저장한 파일들을 모두 불러오도록 설정(경로 설정) -->
+	<context:property-placeholder location="/WEB-INF/properties/*.properties"/>
 
+	<!-- DB 연결 설정 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${database.driver}"/>
+		<property name="url" value="${database.url}"/>
+		<property name="username" value="${database.username}"/>
+		<property name="password" value="${database.password}"/> 
+		
+		<!-- 관리 규칙 -->
+		<property name="maxTotal" value="${database.maxAction}"/>
+		<property name="maxIdle" value="${database.maxIdle}"/>
+		<property name="maxWaitMillis" value="${database.maxWait}"/>
+	</bean>
+	
+	
+	<!-- jdbcTemplate : 연결정보를 이용해 명령을 보낼 수 있는 객체 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<context:component-scan base-package="jp.bean.**"></context:component-scan>
+	<context:component-scan base-package="jp.model.**"></context:component-scan>
 </beans>
