@@ -54,4 +54,3 @@
         <button class="right">로그인</button>
         <button class="rright">회원가입</button>
     </header>
-<section>
