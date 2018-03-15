@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="${pageContext.request.contextPath}/res/js/swiper.js"></script>
 <script src="${pageContext.request.contextPath}/res/js/home/home.js"></script>
     
