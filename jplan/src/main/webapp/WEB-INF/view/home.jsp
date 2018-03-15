@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<script src="${pageContext.request.contextPath}/res/js/swiper.js"></script>
+<script src="${pageContext.request.contextPath}/res/js/home/home.js"></script>
     
 <jsp:include page="../header.jsp"></jsp:include>
   
@@ -12,19 +15,19 @@
         
             <!-- 1장의 이미지 영역 : slide -->
             <div class="swiper-slide">
-                <img src="photo/1.jpg" width="100%" height="100%">
+                <img src="${pageContext.request.contextPath}/res/photo/1.jpg" width="100%" height="100%">
             </div>
             <div class="swiper-slide">
-                <img src="photo/2.jpg" width="100%" height="100%">
+                <img src="${pageContext.request.contextPath}/res/photo/2.jpg" width="100%" height="100%">
             </div>
             <div class="swiper-slide">
-                <img src="photo/3.jpg" width="100%" height="100%">
+                <img src="${pageContext.request.contextPath}/res/photo/3.jpg" width="100%" height="100%">
             </div>
             <div class="swiper-slide">
-                <img src="photo/4.jpg" width="100%" height="100%">
+                <img src="${pageContext.request.contextPath}/res/photo/4.jpg" width="100%" height="100%">
             </div>
             <div class="swiper-slide">
-                <img src="photo/5.jpg" width="100%" height="100%">
+                <img src="${pageContext.request.contextPath}/res/photo/5.jpg" width="100%" height="100%">
             </div>
             
         </div>
@@ -36,12 +39,12 @@
     
     <!-- 갤러리 영역 -->
     <div class="gallary">
-        <div class="image"><img src="img/1.jpg"></div>
-        <div class="image"><img src="img/2.jpg"></div>
-        <div class="image"><img src="img/3.jpg"></div>
-        <div class="image"><img src="img/4.jpg"></div>
-        <div class="image"><img src="img/5.jpg"></div>
-        <div class="image"><img src="img/6.jpg"></div>
+        <div class="image"><img src="${pageContext.request.contextPath}/res/img/1.jpg"></div>
+        <div class="image"><img src="${pageContext.request.contextPath}/res/img/2.jpg"></div>
+        <div class="image"><img src="${pageContext.request.contextPath}/res/img/3.jpg"></div>
+        <div class="image"><img src="${pageContext.request.contextPath}/res/img/4.jpg"></div>
+        <div class="image"><img src="${pageContext.request.contextPath}/res/img/5.jpg"></div>
+        <div class="image"><img src="${pageContext.request.contextPath}/res/img/6.jpg"></div>
     </div> 
     
     <!-- 이용방법 영역 -->
