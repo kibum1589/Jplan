@@ -66,11 +66,12 @@
     <header class="menu">
         <input type="checkbox" id="hamberg">
         <label for="hamberg">&equiv;</label>
-        <i class="fa fa-twitter fa-3x left"></i>
+        <i class="fa fa-twitter fa-3x left" onclick="location.href='home'"></i>
         <button class="left">일정만들기</button>
         <button class="left">커뮤니티</button>
         <button class="left">이용방법</button>
-        <a href="${pageContext.request.contextPath}/place" class="left">여행지</a>
+        <button class="left" onclick="location.href='place'">여행지</button>
+        
         <button class="right">로그인</button>
         <button class="rright">회원가입</button>
     </header>
