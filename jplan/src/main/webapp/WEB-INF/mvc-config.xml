@@ -15,7 +15,7 @@
             base-package="org.springframework.samples.web"/>  -->
 
 	<!-- 컨트롤러 스캔 -->
-	<context:component-scan base-package="jp.controller.**"></context:component-scan>
+	<context:component-scan base-package="jp.controller.**"/>
 	
     <mvc:annotation-driven />
     <!-- css적용 하기 -->

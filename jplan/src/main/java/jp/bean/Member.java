@@ -1,6 +1,6 @@
 package jp.bean;
 
-import org.springframework.stereotype.Component;
+import java.sql.ResultSet;
 
 public class Member {
 	private int no;
@@ -9,6 +9,15 @@ public class Member {
 	private String name;
 	private String power;
 	private String reg;
+	
+	public Member(ResultSet rs)throws Exception{
+		this.setNo(rs.getInt("no"));
+		this.setEmail(rs.getString("email"));
+		this.setPw(rs.getString("pw"));
+		this.setName(rs.getString("name"));
+		this.setPower(rs.getString("power"));
+		this.setReg(rs.getString("reg"));
+	}
 	
 	public int getNo() {
 		return no;
@@ -46,6 +55,16 @@ public class Member {
 	public void setReg(String reg) {
 		this.reg = reg;
 	}
-	
+
+	public Member(int no, String email, String pw, String name, String power, String reg) {
+		super();
+		this.no = no;
+		this.email = email;
+		this.pw = pw;
+		this.name = name;
+		this.power = power;
+		this.reg = reg;
+	}
+	public Member() {super();}
 	
 }
