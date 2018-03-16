@@ -23,4 +23,5 @@ public class SignController {
 		memberDao.sign(member);
 		return "redirect:/";
 	}
+	
 }

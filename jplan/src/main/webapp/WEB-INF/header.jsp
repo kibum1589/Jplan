@@ -51,6 +51,7 @@
         <button class="left">이용방법</button>
         <button class="left" onclick="location.href='place'">여행지</button>
         
-        <button class="right">로그인</button>
+        <button class="right" onclick="location.href='login'">로그인</button>
         <button class="rright" onclick="location.href='sign'">회원가입</button>
+
     </header>

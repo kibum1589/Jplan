@@ -40,4 +40,5 @@ public class MemberDaoImpl implements MemberDao{
 			};
 			jdbcTemplate.update(sql, args);
 	}
+	
 }
