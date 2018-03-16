@@ -1,5 +1,8 @@
 package jp.bean;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Plan {
 	private int no;
 	private int mno;
@@ -9,6 +12,21 @@ public class Plan {
 	private int look;
 	private int love;
 	private String reg;
+	
+	public Plan() {
+		super();
+	}
+	
+	public Plan(ResultSet rs) throws SQLException {
+		this.setNo(rs.getInt("no"));
+		this.setMno(rs.getInt("mno"));
+		this.setTitle(rs.getString("title"));
+		this.setDur(rs.getInt("dur"));
+		this.setSday(rs.getString("sday"));
+		this.setLook(rs.getInt("look"));
+		this.setLove(rs.getInt("love"));
+		this.setReg(rs.getString("reg"));
+	}
 
 	public int getNo() {
 		return no;

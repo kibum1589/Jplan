@@ -1,11 +1,26 @@
 package jp.bean;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Plandetail {
 	private int no;
 	private int pno;
 	private String id;
 	private int turn;
 	private int day;
+	
+	public Plandetail() {
+		super();
+	}
+	
+	public Plandetail(ResultSet rs) throws SQLException {
+		this.setNo(rs.getInt("no"));
+		this.setPno(rs.getInt("pno"));
+		this.setId(rs.getString("id"));
+		this.setTurn(rs.getInt("turn"));
+		this.setDay(rs.getInt("day"));
+	}
 	
 	public int getNo() {
 		return no;
