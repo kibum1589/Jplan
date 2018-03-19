@@ -63,7 +63,14 @@
         <button class="left" onclick="location.href='place'">여행지</button>
         <button class="left" onclick="location.href='admin/memberinfo'">회원정보</button>
         
-        <button class="right" >로그인</button>
+        <c:choose>
+    		<c:when test="${sessionScope.email == null}">
+        		<button class="right" onclick="location.href='login'">로그인</button>
+    		</c:when>
+    		<c:otherwise>
+        		<button class="right" onclick="location.href='logout'">${sessionScope.name}님이 로그인중니다. 로그아웃</button>
+    		</c:otherwise>
+		</c:choose>
         <button class="rright" onclick="sign_div_open();">회원가입</button>
     </header>
     

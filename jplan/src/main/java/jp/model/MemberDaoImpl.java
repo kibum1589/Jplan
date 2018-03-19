@@ -45,11 +45,20 @@ public class MemberDaoImpl implements MemberDao{
 	
 
 	@Override
-	public boolean login(Member member) {
+	public boolean loginDAO(Member member) {
+		log.debug(member.getEmail());
+		log.debug(member.getPw());
 		String sql = "select * from member where email =? and pw=?";
 		return jdbcTemplate.update(sql, member.getEmail(), member.getPw())>0;
 	}
 
+	@Override
+	public Member infom(Member member) {
+		log.debug(member.getEmail());
+		String sql="select*from member where email=?";
+		return jdbcTemplate.query(sql, extractor, member.getEmail());
+	}
+	
 	@Override
 	public boolean sign(Member member) {
 		log.debug(member.getName());
