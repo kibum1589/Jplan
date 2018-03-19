@@ -22,7 +22,7 @@
                 <div style="display: flex">
                     
                     <div style="flex-grow: 10" class="font-medium">
-                        ${plan.title}
+                        ${plan.no} ${plan.mno} ${plan.title}
                     </div>
                     <div style="flex-grow: 1">
                         <img src='view.png'>
@@ -34,7 +34,7 @@
             
             <div style="min-height: 100">
                 <div style="height: 20"></div>
-                <div>상세일정1</div>
+                <div>${plandetail.id}</div>
                 <hr>
                 <div>상세일정2</div>
                 <div style="height: 20"></div> 

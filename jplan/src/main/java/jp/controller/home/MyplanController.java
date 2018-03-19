@@ -1,7 +1,7 @@
 package jp.controller.home;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jp.bean.Plan;
+import jp.bean.Plandetail;
 import jp.model.PlanDao;
 import jp.model.PlandetailDao;
 
@@ -31,12 +32,21 @@ public class MyplanController {
 	}
 
 	@RequestMapping(value = "plan", method = RequestMethod.GET)
-	public String myplan(@RequestParam("no") int no, Model model){
+	public void plan(@RequestParam int no, Model model){
 		
 		model.addAttribute("plan", planDao.select(no));
-		return "myplan?no="+no;
 	}
-
-	
-	
+		
+	@RequestMapping(value = "plandetail", method = RequestMethod.GET)
+	public void plandetail(@RequestParam int pno, Model model) {
+		
+		model.addAttribute("plandetail", plandetailDao.select(pno));
+	}
 }
+
+
+
+
+
+
+
