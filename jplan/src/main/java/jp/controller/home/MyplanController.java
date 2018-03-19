@@ -18,7 +18,6 @@ import jp.model.PlandetailDao;
 
 @Controller
 public class MyplanController {
-	private Logger log = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
 	private PlanDao planDao;
@@ -26,12 +25,12 @@ public class MyplanController {
 	@Autowired
 	private PlandetailDao plandetailDao;
 	
-//	@RequestMapping("/myplan")
-//	public String myplan() {
-//		return "myplan";
-//	}
+	@RequestMapping("/myplan")
+	public String myplan() {
+		return "myplan";
+	}
 
-	@RequestMapping(value = "/myplan", method = RequestMethod.GET)
+	@RequestMapping(value = "plan", method = RequestMethod.GET)
 	public String myplan(@RequestParam("no") int no, Model model){
 		
 		model.addAttribute("plan", planDao.select(no));
