@@ -11,7 +11,8 @@ public interface MemberDao {
 	 * @param member
 	 * @return 성공 :true 실패: false
 	 */
-	boolean login(Member member);
-	void sign(Member member);
+	boolean login(Member member)throws Exception;
+	boolean sign(Member member)throws Exception;
+	boolean check(String email)throws Exception;
 	
 }

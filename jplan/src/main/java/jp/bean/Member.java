@@ -65,6 +65,9 @@ public class Member {
 		this.power = power;
 		this.reg = reg;
 	}
-	public Member() {super();}
+	
+	public Member() {
+		super();
+		}
 	
 }
