@@ -1,6 +1,9 @@
 package jp.bean;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class Member {
 	private int no;
@@ -10,13 +13,21 @@ public class Member {
 	private String power;
 	private String reg;
 	
-	public Member(ResultSet rs)throws Exception{
+	public Member(ResultSet rs)throws SQLException{
 		this.setNo(rs.getInt("no"));
 		this.setEmail(rs.getString("email"));
 		this.setPw(rs.getString("pw"));
 		this.setName(rs.getString("name"));
 		this.setPower(rs.getString("power"));
 		this.setReg(rs.getString("reg"));
+	}
+	
+	public Member(HttpServletRequest request) {
+		setEmail(request.getParameter("email"));
+		setPw(request.getParameter("pw"));
+		setName(request.getParameter("name"));
+		setPower(request.getParameter("power"));
+		setReg(request.getParameter("reg"));
 	}
 	
 	public int getNo() {
