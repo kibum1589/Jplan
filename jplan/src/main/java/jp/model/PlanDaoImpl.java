@@ -40,8 +40,8 @@ public class PlanDaoImpl implements PlanDao {
 		int no = jdbcTemplate.queryForObject(sql, Integer.class);
 
 		// 위의 번호로 insert 처리
-		sql = "insert into board values(?,?,?,?,?,sysdate,0,0,0,?,?,?,?,?,?,?,?)";
-		Object[] args = { no, plan.getMno(), plan.getTitle(), plan.getDur(), plan.getSday(), plan.getLook(),
+		sql = "insert into plan values(?, ?, ?, ?, ?, ?, ?, sysdate)";
+		Object[] args = { plan.getNo(), plan.getMno(), plan.getTitle(), plan.getDur(), plan.getSday(), plan.getLook(),
 				plan.getLove(), plan.getReg() };
 		jdbcTemplate.update(sql, args);
 		return no;
