@@ -31,6 +31,18 @@ public class MemberDaoImpl implements MemberDao{
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
+	
+	private ResultSetExtractor<Member> extractor = (rs)->{
+		if(rs.next())
+			try {
+				return new Member(rs);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		else return null;
+		return null;
+	};
+	
 
 	@Override
 	public boolean login(Member member) {
@@ -66,6 +78,12 @@ public class MemberDaoImpl implements MemberDao{
 			};
 			int count = jdbcTemplate.query("select count(email) from member where email=?", extractor, email);
 			return count>0;
+		}
+
+		@Override
+		public Member info(String email) throws Exception {
+			String sql = "select * from member where email=?";
+			return jdbcTemplate.query(sql, extractor, email);
 		}
 
 	}

@@ -14,5 +14,6 @@ public interface MemberDao {
 	boolean login(Member member)throws Exception;
 	boolean sign(Member member)throws Exception;
 	boolean check(String email)throws Exception;
+	Member info(String email)throws Exception;;
 	
 }
