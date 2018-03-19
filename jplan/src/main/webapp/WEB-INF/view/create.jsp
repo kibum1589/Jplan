@@ -57,7 +57,7 @@
     
     
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2uVnp7FCJksy8sVtci5WG9C9ajlMkO7I&libraries=places&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXyMFNPLugzjEZsYzoFUpid7Rs6Qa3M4A&libraries=places&callback=initMap" async defer></script>
   	
   	<!-- 리스트 관련 스크립트 -->
   	<script>
