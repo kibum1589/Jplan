@@ -57,7 +57,8 @@
         <label for="hamberg">&equiv;</label>
         <i class="fa fa-twitter fa-3x left" onclick="location.href='home'"></i>
         <button class="left" onclick="location.href='create'">일정만들기</button>
-        <button class="left">커뮤니티</button>
+        <button class="left" onclick="location.href='myplan'">내일정보기</button>
+        <button class="left" onclick="location.href='myplan'">커뮤니티</button>
         <button class="left">이용방법</button>
         <button class="left" onclick="location.href='place'">여행지</button>
         

@@ -17,6 +17,18 @@ public class Plan {
 		super();
 	}
 	
+	public Plan(int no, int mno, String title, int dur, String sday, int look, int love, String reg) {
+		super();
+		this.no = no;
+		this.mno = mno;
+		this.title = title;
+		this.dur = dur;
+		this.sday = sday;
+		this.look = look;
+		this.love = love;
+		this.reg = reg;
+	}
+
 	public Plan(ResultSet rs) throws SQLException {
 		this.setNo(rs.getInt("no"));
 		this.setMno(rs.getInt("mno"));

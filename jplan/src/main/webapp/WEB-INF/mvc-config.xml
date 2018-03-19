@@ -18,8 +18,8 @@
 	<context:component-scan base-package="jp.controller.**"/>
 	
     <mvc:annotation-driven />
-    <!-- css적용 하기 -->
     
+    <!-- css, js적용 하기 -->
     <mvc:resources location="/WEB-INF/res/" mapping="/res/**"/>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

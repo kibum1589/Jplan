@@ -13,76 +13,59 @@ import jp.bean.Plan;
 
 @Controller
 @Repository("PlanDao")
-public class PlanDaoImpl implements PlanDao{
-	
+public class PlanDaoImpl implements PlanDao {
+
 	private Logger log = LoggerFactory.getLogger(getClass());
-	
+
 	private JdbcTemplate jdbcTemplate;
-	
+
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	Plan plan = new Plan();
-	
-	//RowMapper와 ResultSetExtractor
-		private RowMapper<Plan> mapper = (rs, index)->{
+	// RowMapper와 ResultSetExtractor
+	private RowMapper<Plan> mapper = (rs, index) -> {
+		return new Plan(rs);
+	};
+	private ResultSetExtractor<Plan> extractor = (rs) -> {
+		if (rs.next())
 			return new Plan(rs);
-		};
-		private ResultSetExtractor<Plan> extractor = (rs)->{
-			if(rs.next())
-				return new Plan(rs);
-			else
-				return null;
-		};
-	
+		else
+			return null;
+	};
+
 	@Override
 	public int write(Plan plan) {
-		return 0;
+		String sql = "select plan_seq.nextval from dual";
+		int no = jdbcTemplate.queryForObject(sql, Integer.class);
+
+		// 위의 번호로 insert 처리
+		sql = "insert into board values(?,?,?,?,?,sysdate,0,0,0,?,?,?,?,?,?,?,?)";
+		Object[] args = { no, plan.getMno(), plan.getTitle(), plan.getDur(), plan.getSday(), plan.getLook(),
+				plan.getLove(), plan.getReg() };
+		jdbcTemplate.update(sql, args);
+		return no;
 	}
 
-	//일정 조회 메소드
+	// 일정 조회 메소드
 	@Override
-	public Plan select(int no, int mno) {
-		log.debug(plan.getTitle());
-		log.debug(plan.getSday());
-		log.debug(plan.getReg());
-		
-		String sql = "select * from plan where no=? and mno=?";
-		return jdbcTemplate.query(sql, extractor, no, mno);
+	public Plan select(int no) {
+		String sql = "select * from plan where no=?";
+		return jdbcTemplate.query(sql, extractor, no);
 	}
 
-	//조회수 1 증가 메소드
+	// 조회수 1 증가 메소드
 	@Override
 	public void lookPlus(int no, String email) {
 		String sql = "update plan set look=look+1 where no=? and mno != ?";
 		jdbcTemplate.update(sql, no, email);
 	}
 
-	//좋아요 1 증가 메소드
+	// 좋아요 1 증가 메소드
 	@Override
 	public void lovePlus(int no, String email) {
 		String sql = "update plan set love=love+1 where no=? and mno != ?";
 		jdbcTemplate.update(sql, no, email);
 	}
-	
-	
-	
-	
-	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

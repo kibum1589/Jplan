@@ -14,6 +14,15 @@ public class Plandetail {
 		super();
 	}
 	
+	public Plandetail(int no, int pno, String id, int turn, int day) {
+		super();
+		this.no = no;
+		this.pno = pno;
+		this.id = id;
+		this.turn = turn;
+		this.day = day;
+	}
+
 	public Plandetail(ResultSet rs) throws SQLException {
 		this.setNo(rs.getInt("no"));
 		this.setPno(rs.getInt("pno"));
