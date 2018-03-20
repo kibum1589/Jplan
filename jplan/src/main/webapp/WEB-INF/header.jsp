@@ -63,8 +63,12 @@
         <button class="left" onclick="location.href='planlist'">커뮤니티</button>
         <button class="left">이용방법</button>
         <button class="left" onclick="location.href='place'">여행지</button>
+        <c:if test="${email != null}">
        	<button class="left" onclick="location.href='admin/memberinfo'">나의정보보기</button>
+       	</c:if>
+       	<c:if test="${email != null}">
         <button class="left" onclick="location.href='admin/memberlist'">회원목록보기</button>
+        </c:if>
         
         <c:choose>
     		<c:when test="${sessionScope.email == null}">
