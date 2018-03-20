@@ -5,8 +5,8 @@
 <jsp:include page="../header.jsp"></jsp:include>
   
 	<html>
-    <head>
-    </head>
+    	<head>
+    	</head>
     <body>
         
         <!--일정 목록 한단위 시작-->
@@ -22,7 +22,7 @@
                 <div style="display: flex">
                     
                     <div style="flex-grow: 10" class="font-medium">
-                        ${plan.no} ${plan.mno} ${plan.title}
+                        ${plan.no}${plan.title}
                     </div>
                     <div style="flex-grow: 1">
                         <img src='view.png'>
@@ -34,7 +34,7 @@
             
             <div style="min-height: 100">
                 <div style="height: 20"></div>
-                <div>${plandetail.id}</div>
+                <div>상세일정1</div>
                 <hr>
                 <div>상세일정2</div>
                 <div style="height: 20"></div> 
@@ -48,13 +48,10 @@
                     <a>수정</a> <a>삭제</a>
                 </div>
             </div>
-            
-        </div>
+         </div>
         <!--일정 목록 한단위 끝-->
         
-        
-        
-    </body>
+  	</body>
 </html>
 
  <jsp:include page="../footer.jsp"></jsp:include>

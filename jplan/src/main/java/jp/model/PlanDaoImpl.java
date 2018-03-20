@@ -1,5 +1,7 @@
 package jp.model;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,7 +37,7 @@ public class PlanDaoImpl implements PlanDao {
 	};
 
 	@Override
-	public int write(Plan plan) {
+	public int write(Plan plan) throws Exception{
 		String sql = "select plan_seq.nextval from dual";
 		int no = jdbcTemplate.queryForObject(sql, Integer.class);
 
@@ -49,23 +51,31 @@ public class PlanDaoImpl implements PlanDao {
 
 	// 일정 조회 메소드
 	@Override
-	public Plan select(int no) {
+	public Plan select(int no) throws Exception{
 		String sql = "select * from plan where no=?";
 		return jdbcTemplate.query(sql, extractor, no);
 	}
 
+	//일정 리스트 메소드
+	@Override
+	public List<Plan> list() throws Exception{
+		String sql = "select no, title, dur, look, reg from plan order by no asc";
+		return jdbcTemplate.query(sql, mapper);
+	}
+	
 	// 조회수 1 증가 메소드
 	@Override
-	public void lookPlus(int no, String email) {
+	public void lookPlus(int no, String email) throws Exception{
 		String sql = "update plan set look=look+1 where no=? and mno != ?";
 		jdbcTemplate.update(sql, no, email);
 	}
 
 	// 좋아요 1 증가 메소드
 	@Override
-	public void lovePlus(int no, String email) {
+	public void lovePlus(int no, String email) throws Exception{
 		String sql = "update plan set love=love+1 where no=? and mno != ?";
 		jdbcTemplate.update(sql, no, email);
 	}
+
 
 }
