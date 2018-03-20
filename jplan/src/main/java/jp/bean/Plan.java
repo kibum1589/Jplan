@@ -2,6 +2,7 @@ package jp.bean;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 public class Plan {
 	private int no;
@@ -11,13 +12,13 @@ public class Plan {
 	private String sday;
 	private int look;
 	private int love;
-	private String reg;
-	
+	private Date reg;
+
 	public Plan() {
 		super();
 	}
-	
-	public Plan(int no, int mno, String title, int dur, String sday, int look, int love, String reg) {
+
+	public Plan(int no, int mno, String title, int dur, String sday, int look, int love, Date reg) {
 		super();
 		this.no = no;
 		this.mno = mno;
@@ -37,7 +38,7 @@ public class Plan {
 		this.setSday(rs.getString("sday"));
 		this.setLook(rs.getInt("look"));
 		this.setLove(rs.getInt("love"));
-		this.setReg(rs.getString("reg"));
+		this.setReg(rs.getDate("reg"));
 	}
 
 	public int getNo() {
@@ -95,12 +96,12 @@ public class Plan {
 	public void setLove(int love) {
 		this.love = love;
 	}
-
-	public String getReg() {
+	
+	public Date getReg() {
 		return reg;
 	}
 
-	public void setReg(String reg) {
+	public void setReg(Date reg) {
 		this.reg = reg;
 	}
 

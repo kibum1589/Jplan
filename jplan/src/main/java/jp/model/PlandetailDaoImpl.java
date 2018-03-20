@@ -43,24 +43,9 @@ public class PlandetailDaoImpl implements PlandetailDao {
 
 	//세부일정 조회 메소드
 	@Override
-	public List<Plandetail> select(int pno) {
+	public List<Plandetail> pdlist(int pno) {
 		String sql = "select * from plandetail where pno=? order by no asc ";
 		return jdbcTemplate.query(sql, mapper, pno);
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

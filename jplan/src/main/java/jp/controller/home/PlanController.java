@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,9 +26,6 @@ public class PlanController {
 	@Autowired
 	private PlanDao planDao;
 	
-//	@Autowired
-//	private PlandetailDao plandetailDao;
-	
 	@RequestMapping("/myplan")
 	public String myplan() {
 		return "myplan";
@@ -38,9 +36,9 @@ public class PlanController {
 		return "planlist";
 	}
 
-	// 내 일정 상세보기, 일정 조회수 증가 처리
-    @RequestMapping(value="select", method=RequestMethod.GET)
-    public ModelAndView select(@RequestParam int no, String email) throws Exception{
+	// 내 일정 조회하기, 일정 조회수 증가 처리
+    @RequestMapping(value="myplan", method=RequestMethod.GET)
+    public ModelAndView myplan(int no, String email) throws Exception{
         // 조회수 증가 처리
         planDao.lookPlus(no, email);
         // 모델(데이터)+뷰(화면)를 함께 전달하는 객체
@@ -51,6 +49,18 @@ public class PlanController {
         mv.addObject("plan", planDao.select(no));
         return mv;
     }
+    
+    // 내 일정 상세보기
+//    @RequestMapping(value="pdlist", method=RequestMethod.GET)
+//    public ModelAndView pdlist(int pno, String email) throws Exception{
+//        // 모델(데이터)+뷰(화면)를 함께 전달하는 객체
+//        ModelAndView mv = new ModelAndView();
+//        // 뷰를 myplan.jsp로 설정
+//        mv.setViewName("myplan");
+//        // 뷰에 전달할 데이터
+//        mv.addObject("plandetail", plandetailDao.pdlist(pno));
+//        return mv;
+//    }
     
     // 일정 리스트 보기
     @RequestMapping("list")
@@ -65,11 +75,5 @@ public class PlanController {
         // planlist.jsp로 List가 전달된다.
         return mv; 
     }
+   
 }
-
-
-
-
-
-
-

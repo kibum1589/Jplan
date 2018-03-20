@@ -2,8 +2,11 @@ package jp.model;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,6 +22,7 @@ public class PlanDaoImpl implements PlanDao {
 
 	private Logger log = LoggerFactory.getLogger(getClass());
 
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -36,18 +40,18 @@ public class PlanDaoImpl implements PlanDao {
 			return null;
 	};
 
-	@Override
-	public int write(Plan plan) throws Exception{
-		String sql = "select plan_seq.nextval from dual";
-		int no = jdbcTemplate.queryForObject(sql, Integer.class);
-
-		// 위의 번호로 insert 처리
-		sql = "insert into plan values(?, ?, ?, ?, ?, ?, ?, sysdate)";
-		Object[] args = { plan.getNo(), plan.getMno(), plan.getTitle(), plan.getDur(), plan.getSday(), plan.getLook(),
-				plan.getLove(), plan.getReg() };
-		jdbcTemplate.update(sql, args);
-		return no;
-	}
+//	@Override
+//	public int create(Plan plan) throws Exception{
+//		String sql = "select plan_seq.nextval from dual";
+//		int no = jdbcTemplate.queryForObject(sql, Integer.class);
+//
+//		// 위의 번호로 insert 처리
+//		sql = "insert into plan values(?, ?, ?, ?, ?, ?, ?, sysdate)";
+//		Object[] args = { plan.getNo(), plan.getMno(), plan.getTitle(), plan.getDur(), plan.getSday(), plan.getLook(),
+//				plan.getLove(), plan.getReg() };
+//		jdbcTemplate.update(sql, args);
+//		return no;
+//	}
 
 	// 일정 조회 메소드
 	@Override
@@ -77,5 +81,5 @@ public class PlanDaoImpl implements PlanDao {
 		jdbcTemplate.update(sql, no, email);
 	}
 
-
+	
 }
