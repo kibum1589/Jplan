@@ -1,12 +1,7 @@
 package jp.model;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 
@@ -33,10 +27,6 @@ public class MemberDaoImpl implements MemberDao{
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-	
-	private RowMapper<Member> mapper = (rs, index)->{
-		return new Member(rs);
-	};
 	
 	private ResultSetExtractor<Member> extractor = (rs)->{
 		if(rs.next()) return new Member(rs);
@@ -88,27 +78,6 @@ public class MemberDaoImpl implements MemberDao{
 			int count = jdbcTemplate.query("select count(email) from member where email=?", extractor, email);
 			return count>0;
 		}
-
-		//자신의 회원정보
-		@Override
-		public Member info(String email) throws Exception {
-			String sql = "select * from member where email=?";
-			return jdbcTemplate.query(sql, extractor, email);
-		}
-
-		@Override
-		//전체회원 목록
-		public List<Member> list() throws Exception {
-
-			String sql = "select * from member where power != 'a' order by email";
-			return jdbcTemplate.query(sql, mapper);
-		}
-
-/*		@Override
-		public List<Member> list() throws Exception {
-			// TODO Auto-generated method stub
-			return null;
-		}*/
 
 	}
 
