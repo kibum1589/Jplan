@@ -52,7 +52,9 @@
     <div class="container-100 out-align-center">
         <div class="row in-align-center font-big">이용방법</div>
         <!-- 방법 내용 적을곳 -->
-        <div class="row">이용하기</div>
+        <div class="row">
+        이용하기
+        </div>
         <div class="row">이용하기</div>
         <div class="row">이용하기</div>
         <div class="row">이용하기</div>

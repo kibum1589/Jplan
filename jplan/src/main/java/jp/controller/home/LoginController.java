@@ -32,7 +32,6 @@ public class LoginController {
 			boolean result = memberDao.loginDAO(member);
 			
 			if(result){
-				
 				Member member_info = memberDao.infom(member);
 				
 				//세션에 로그인 성공
@@ -40,7 +39,7 @@ public class LoginController {
 				session.setAttribute("name", member_info.getName());
 				
 				ModelAndView mv = new ModelAndView();
-				mv.setViewName("home");
+				mv.setViewName("login");
 				mv.addObject("msg", "success");
 				return mv;
 			}
@@ -50,9 +49,9 @@ public class LoginController {
         		mv.addObject("msg", "failure");
 				return mv;
 			}
+			
     }  
     
-		
 
 	
     @RequestMapping("/logout")

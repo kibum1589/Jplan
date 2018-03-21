@@ -66,7 +66,7 @@
         <c:if test="${email != null}">
        	<button class="left" onclick="location.href='admin/memberinfo'">나의정보보기</button>
        	</c:if>
-       	<c:if test="${power == a}">
+       	<c:if test="${email != null && name == 'admin'}">
         <button class="left" onclick="location.href='admin/memberlist'">회원목록보기</button>
         </c:if>
         

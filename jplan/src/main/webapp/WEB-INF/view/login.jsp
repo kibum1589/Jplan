@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <jsp:include page="../header.jsp"></jsp:include>
   
 <html>
@@ -34,11 +33,18 @@
             border-radius: 25px;
         }
         
+        #ss{
+        	font-size: 10px;
+        	color: black;
+        }
+        
     </style>
-    
-    
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="sha256.js"></script>
     <script>
     $(document).ready(function(){
+    	
+    	
         $("#btnLogin").click(function(){
             // 태크.val() : 태그에 입력된 값
             // 태크.val("값") : 태그의 값을 변경 
@@ -60,35 +66,46 @@
             document.form1.action="logincheck"
             // 제출
             document.form1.submit();
+            
+            event.preventDefault();
+            
+            //비밀번호를 암호화된 값으로 변경처리
+            var pwField = $("input[type=password]");
+            pwField.val(SHA256(pwField.val()));
+            
+            var s = $(this).serialize();
         });
+       
     });
+        
+        
     </script>
     <body>
     <form name="form1" method="post">
-    <div class="container">
-    <div class="row font-big in-align-center">
-        로그인
-    </div>
-    <div class="row">
-            <input class="form-input" type="email" name="email" placeholder="아이디" id="email" required>
-        </div>
-        <div class="row">
-            <input class="form-input" type="text" name="pw" placeholder="비밀번호" id="pw" required>
-        </div>
-        <div class="row">
-            <button class="form-btn" type="button" id="btnLogin">로그인</button>
+    	<div class="container">
+    		<div class="row font-big in-align-center">
+        		로그인
+    		</div>
+    		<div class="row">
+            	<input class="form-input" type="email" name="email" placeholder="아이디" id="email" required>
+        	</div>
+        	<div class="row">
+            	<input class="form-input" type="password" name="pw" placeholder="비밀번호" id="pw" required>
+        	</div>
+        	<div class="row">
+            	<button class="form-btn" type="submit" id="btnLogin">로그인</button>
             
-                <c:if test="${msg == 'failure'}">
-                    <div style="color: red">
+                	<c:if test="${msg == 'failure'}">
+                    	<div style="color: red">
                         	아이디 또는 비밀번호가 일치하지 않습니다.
-                    </div>
-                </c:if>
+                    	</div>
+                	</c:if>
                 <%-- <c:if test="${msg == 'logout'}">
                     <div style="color: red">
                         	로그아웃되었습니다.
                     </div>
                 </c:if> --%>
+        	</div>
         </div>
-        </div>
-        </form>
+	</form>
 	</body>
