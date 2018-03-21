@@ -55,27 +55,27 @@
     <header class="menu">
         <input type="checkbox" id="hamberg">
         <label for="hamberg">&equiv;</label>
-        <i class="fa fa-twitter fa-3x left" onclick="location.href='home'"></i>
-        <button class="left" onclick="location.href='create'">일정만들기</button>
+        <i class="fa fa-twitter fa-3x left" onclick="location.href='${pageContext.request.contextPath}/home'"></i>
+        <button class="left" onclick="location.href='${pageContext.request.contextPath}/create'">일정만들기</button>
         <c:if test="${email != null}">
-        <button class="left" onclick="location.href='myplan?no=1'">내일정보기</button>
+        <button class="left" onclick="location.href='${pageContext.request.contextPath}/myplan?no=1'">내일정보기</button>
         </c:if>
-        <button class="left" onclick="location.href='planlist'">커뮤니티</button>
+        <button class="left" onclick="location.href='${pageContext.request.contextPath}/planlist'">커뮤니티</button>
         <button class="left">이용방법</button>
-        <button class="left" onclick="location.href='place'">여행지</button>
+        <button class="left" onclick="location.href='${pageContext.request.contextPath}/place'">여행지</button>
         <c:if test="${email != null}">
-       	<button class="left" onclick="location.href='admin/memberinfo'">나의정보보기</button>
+       	<button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/memberinfo'">나의정보보기</button>
        	</c:if>
        	<c:if test="${email != null && name == 'admin'}">
-        <button class="left" onclick="location.href='admin/memberlist'">회원목록보기</button>
+        <button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/memberlist'">회원목록보기</button>
         </c:if>
         
         <c:choose>
     		<c:when test="${sessionScope.email == null}">
-        		<button class="right" onclick="location.href='login'">로그인</button>
+        		<button class="right" onclick="location.href='${pageContext.request.contextPath}/login'">로그인</button>
     		</c:when>
     		<c:otherwise>
-        		<button class="right" onclick="location.href='logout'">${sessionScope.name}님이 로그인중니다. 로그아웃</button>
+        		<button class="right" onclick="location.href='${pageContext.request.contextPath}/logout'">${sessionScope.name}님이 로그인중니다. 로그아웃</button>
     		</c:otherwise>
 		</c:choose>
         <button class="rright" onclick="sign_div_open();">회원가입</button>
