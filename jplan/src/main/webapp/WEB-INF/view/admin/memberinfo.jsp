@@ -3,15 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/common.css">
-<%-- <jsp:include page="${pageContext.request.contextPath}/header.jsp"></jsp:include>
- --%>
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+
 
 <div class="empty-row"></div>
             
 <div class="container-70 out-align-center">
     <div class="row font-big in-align-center">
-        회원 정보 보기
+        나의 정보 보기
     </div>
     <div class="row">
            <table class="table">
@@ -35,17 +34,14 @@
 			</tbody>
 		</table>
     </div>
-<%--     <div class="row font-big in-align-center">
-    	<a href="${pageContext.request.contextPath}/admin/memberedit?email=${member.email}">정보수정</a>
-    </div>
+   <div class="row font-big in-align-center">
+<button class="left" onclick="location.href='admin/memberedit'">정보수정</button>
+	</div>
     <div class="row font-big in-align-center">
-    	<a href="${pageContext.request.contextPath}/admin/memberdelete?email=${member.email}">회원탈퇴</a>
-    </div> --%>
-</div>
+<button class="left" onclick="location.href='admin/memberdelete'">회원탈퇴</button>    
+	</div>
 
 <div class="empty-row"></div>
 <div class="empty-row"></div>
 
-<%-- <jsp:include page="${pageContext.request.contextPath}/footer.jsp"></jsp:include>
- --%>
-
+<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>

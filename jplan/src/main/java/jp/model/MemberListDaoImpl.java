@@ -1,29 +1,34 @@
 package jp.model;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Controller;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import jp.bean.Member;
+
 @Repository("MemberListDao")
-public class MemberListDaoImpl {
+public class MemberListDaoImpl implements MemberListDao{
 	
-	private Logger log = LoggerFactory.getLogger(getClass());
-	
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String email = request.getParameter("email");
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/admin/memberlist");
-		mv.addObject("member");
-		return mv;
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	private RowMapper<Member> mapper = (rs, idx)->{
+		return new Member(rs);
+	};
+	
+	@Override
+	public List<Member> memberList() {
+		String sql ="select * from member where power != 'a' order by email";
+		return jdbcTemplate.query(sql, mapper);
 	}
 }

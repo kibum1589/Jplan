@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/common.css">
-<%-- <jsp:include page="${pageContext.request.contextPath}/header.jsp"></jsp:include>
- --%>
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
  
+<html>
 <div align="center">
 <table class="table table-responsive">
 	<thead>
@@ -22,7 +21,7 @@
 	</thead> 
 	<tbody>
 		<!-- 실제 정보 출력 -->
-		<c:forEach var="member" items="${list}">
+		<c:forEach items="${memberlist}" var="member">
 		<tr>
 			<th>${member.email}</th>
 			<th>${member.name}</th>
@@ -33,6 +32,6 @@
 	</tbody>
 </table>
 </div>
+</html>
 
-<%-- <jsp:include page="${pageContext.request.contextPath}/footer.jsp"></jsp:include>
- --%>
+<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>

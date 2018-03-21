@@ -1,6 +1,12 @@
 package jp.model;
 
-public interface MemberListDao {
+import java.util.List;
 
-	void MemberDaoList(MemberDao memberDao);
+import org.springframework.stereotype.Repository;
+
+import jp.bean.Member;
+
+@Repository
+public interface MemberListDao {
+	public List<Member> memberList() throws Exception;
 }
