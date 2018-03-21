@@ -31,18 +31,18 @@ public class PlanController {
 //		return "myplan";
 //	}
 
-	// 내 일정 조회하기, 일정 조회수 증가 처리
-    @RequestMapping(value="/myplan", method=RequestMethod.GET)
-    public String myplan(int no, Model model) throws Exception{
-    	model.addAttribute("plan", planDao.select(no));
-        return "myplan";
-    }
-    
-    
-//    @RequestMapping(value="/plan", method=RequestMethod.GET)
-//    public String plan(int no, Model model) throws Exception{
+//	내 일정 조회하기, 일정 조회수 증가 처리
+//    @RequestMapping(value="/myplan", method=RequestMethod.GET)
+//    public String myplan(int no, Model model) throws Exception{
 //    	model.addAttribute("plan", planDao.select(no));
-//        return "";
+//        return "myplan";
 //    }
+    
+    
+    @RequestMapping(value="/plan", method=RequestMethod.GET)
+    public String plan(int no, Model model) throws Exception{
+    	model.addAttribute("plan", planDao.select(no));
+        return "plan";
+    }
    
 }

@@ -16,7 +16,7 @@
     <c:forEach var="plan" items="${planlist}">
     <tr>
         <td>${plan.no}</td>
-        <td><a href="${pageContext.request.contextPath}/myplan?no=${plan.no}">${plan.title}</a></td>
+        <td><a href="${pageContext.request.contextPath}/plan?no=${plan.no}">${plan.title}</a></td>
         <td>${plan.dur}</td>
         <td>
             <!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
