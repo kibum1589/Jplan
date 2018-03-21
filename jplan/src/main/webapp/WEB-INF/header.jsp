@@ -58,7 +58,7 @@
         <i class="fa fa-twitter fa-3x left" onclick="location.href='${pageContext.request.contextPath}/home'"></i>
         <button class="left" onclick="location.href='${pageContext.request.contextPath}/create'">일정만들기</button>
         <c:if test="${email != null}">
-        <button class="left" onclick="location.href='${pageContext.request.contextPath}/myplan?no=1'">내일정보기</button>
+        <button class="left" onclick="location.href='${pageContext.request.contextPath}/myplan'">내일정보기</button>
         </c:if>
         <button class="left" onclick="location.href='${pageContext.request.contextPath}/planlist'">커뮤니티</button>
         <button class="left">이용방법</button>

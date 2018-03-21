@@ -26,54 +26,23 @@ public class PlanController {
 	@Autowired
 	private PlanDao planDao;
 	
-	@RequestMapping("/myplan")
-	public String myplan() {
-		return "myplan";
-	}
-	
-	@RequestMapping("/planlist")
-	public String planlist() {
-		return "planlist";
-	}
+//	@RequestMapping("/myplan")
+//	public String myplan() {
+//		return "myplan";
+//	}
 
 	// 내 일정 조회하기, 일정 조회수 증가 처리
-    @RequestMapping(value="myplan", method=RequestMethod.GET)
-    public ModelAndView myplan(int no, String email) throws Exception{
-        // 조회수 증가 처리
-        planDao.lookPlus(no, email);
-        // 모델(데이터)+뷰(화면)를 함께 전달하는 객체
-        ModelAndView mv = new ModelAndView();
-        // 뷰를 myplan.jsp로 설정
-        mv.setViewName("myplan");
-        // 뷰에 전달할 데이터
-        mv.addObject("plan", planDao.select(no));
-        return mv;
+    @RequestMapping(value="/myplan", method=RequestMethod.GET)
+    public String myplan(int no, Model model) throws Exception{
+    	model.addAttribute("plan", planDao.select(no));
+        return "myplan";
     }
     
-    // 내 일정 상세보기
-//    @RequestMapping(value="pdlist", method=RequestMethod.GET)
-//    public ModelAndView pdlist(int pno, String email) throws Exception{
-//        // 모델(데이터)+뷰(화면)를 함께 전달하는 객체
-//        ModelAndView mv = new ModelAndView();
-//        // 뷰를 myplan.jsp로 설정
-//        mv.setViewName("myplan");
-//        // 뷰에 전달할 데이터
-//        mv.addObject("plandetail", plandetailDao.pdlist(pno));
-//        return mv;
+    
+//    @RequestMapping(value="/plan", method=RequestMethod.GET)
+//    public String plan(int no, Model model) throws Exception{
+//    	model.addAttribute("plan", planDao.select(no));
+//        return "";
 //    }
-    
-    // 일정 리스트 보기
-    @RequestMapping("list")
-    public ModelAndView list() throws Exception{
-        List<Plan> list = planDao.list();
-        // ModelAndView - 모델과 뷰
-        ModelAndView mv = new ModelAndView();
-        // 뷰를 planlist.jsp로 설정
-        mv.setViewName("planlist"); 
-        // 데이터를 저장
-        mv.addObject("list", list);
-        // planlist.jsp로 List가 전달된다.
-        return mv; 
-    }
    
 }

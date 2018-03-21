@@ -40,19 +40,6 @@ public class PlanDaoImpl implements PlanDao {
 			return null;
 	};
 
-//	@Override
-//	public int create(Plan plan) throws Exception{
-//		String sql = "select plan_seq.nextval from dual";
-//		int no = jdbcTemplate.queryForObject(sql, Integer.class);
-//
-//		// 위의 번호로 insert 처리
-//		sql = "insert into plan values(?, ?, ?, ?, ?, ?, ?, sysdate)";
-//		Object[] args = { plan.getNo(), plan.getMno(), plan.getTitle(), plan.getDur(), plan.getSday(), plan.getLook(),
-//				plan.getLove(), plan.getReg() };
-//		jdbcTemplate.update(sql, args);
-//		return no;
-//	}
-
 	// 일정 조회 메소드
 	@Override
 	public Plan select(int no) throws Exception{
@@ -63,7 +50,7 @@ public class PlanDaoImpl implements PlanDao {
 	//일정 리스트 메소드
 	@Override
 	public List<Plan> list() throws Exception{
-		String sql = "select no, title, dur, look, reg from plan order by no asc";
+		String sql = "select * from plan order by no asc";
 		return jdbcTemplate.query(sql, mapper);
 	}
 	
