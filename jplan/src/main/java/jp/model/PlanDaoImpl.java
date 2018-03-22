@@ -17,7 +17,7 @@ import jp.bean.Place;
 import jp.bean.Plan;
 
 @Controller
-@Repository("PlanDao")
+@Repository("planDao")
 public class PlanDaoImpl implements PlanDao {
 
 	private Logger log = LoggerFactory.getLogger(getClass());
@@ -66,6 +66,20 @@ public class PlanDaoImpl implements PlanDao {
 	public void lovePlus(int no, String email) throws Exception{
 		String sql = "update plan set love=love+1 where no=? and mno != ?";
 		jdbcTemplate.update(sql, no, email);
+	}
+
+	// 일정 작성 메소드
+	@Override
+	public int create(Plan plan) throws Exception {
+		String sql = "select plan_seq.nextval from dual";
+		int no = jdbcTemplate.queryForObject(sql, Integer.class);
+		
+		// 위의 번호로 insert 처리
+		sql = "insert into plan values(?, ?, ?, ?, ?, ?, ?, sysdate)";
+		Object[] args = 
+			{ no, plan.getMno(), plan.getTitle(), plan.getDur(), plan.getSday(), 0,0};
+		jdbcTemplate.update(sql, args);
+		return no;
 	}
 
 	

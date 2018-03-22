@@ -26,7 +26,8 @@
 	  $( function() {
 	    $( "#sortable1, #sortable2" ).sortable({
 	      connectWith: ".connectedSortable",
-	      items: "a:not(.day-list)"
+	      items: "a:not(.day-default)",
+	      cancel: ".day-list"
 	    });
 	    $("#sortable1 a, #sortable2 a").disableSelection();
 	  } );
@@ -108,7 +109,7 @@
             // place 목록에 html형식으로 장소이름 찍어주기
           placesList.innerHTML += 
         	  
-        	  '<a href="#" class="list-group-item" >'+
+        	  '<a class="list-group-item" data-place='+place.place_id+'>'+
         	  '<h4 class="list-group-item-heading">'+place.name+'</h4>'+
         	  '<p class="list-group-item-text">'+place.formatted_address+'</p></a>';
               
@@ -131,32 +132,164 @@
     			initMap($("#google-search").val())
     		})
     		
-    		// 추가버튼
     		
-    		
+    		// day 추가버튼
+    		var dayCount = 1;
+    		$("#day-add-btn").click(function () {
+    			dayCount++;
+				$("#sortable1").append(
+				'<h4 class="list-group-item-heading">'+
+			       '<a href="#" class="list-group-item active day-list">' +
+						    'Day 0'+dayCount+
+	  					'</a></h4>'		
+				)
+			})
+			
+			// 나만보기 버튼
+			$('#my-plan-btn').click(function () {
+				var planData={
+							title: $("#title-input").val(),
+							dur: $("#dur-input").val(),
+							sday : $("#sday-input").val()
+				}
+				
+				var planNo;
+				
+				// 플랜 만들기 promise
+				var planCreate = $.ajax({
+			        url: "createPlan",
+			        type:'GET',
+			        data: planData,
+			        dataType:"text",
+			        
+			        error:function(err){
+			            alert("에러 발생 \n"+err);
+			        }
+			    });
+				
+				// 상세일정 관련 데이터
+				var planDetailArr=new Array();
+				var planDetailObj=new Object();
+				
+				// 상세일정 만들기 promise
+				var detailArrCreate = function (pno) {
+					var dayNum = 0;
+					var detailTurn = 0;
+					$("#sortable1 > h4").each(function(){
+						if(!$(this).hasClass("day-list")){
+							planDetailObj.pno=pno;
+							planDetailObj.id=$(this).data("place");
+							planDetailObj.turn=detailTurn;
+							planDetailObj.day=dayNum;
+							
+							planDetailArr.push(planDetailObj);
+							
+							detailTurn++;
+						}
+						else {
+							dayNum++;
+						}
+					})
+				}
+				
+				
+				
+				var planDetailCreate = $.ajax({
+			        url: "createPlanDetail",
+			        type:'GET',
+			        data: JSON.stringify(planDetailArr),
+			        dataType:"text",
+			        
+			        error:function(err){
+			            alert("에러 발생 \n"+err);
+			        }
+			    });
+				
+				// promise 진행
+				planCreate
+				.done(function(data){
+					console.log(data);
+		            planNo=data;
+		            detailArrCreate(planNo);
+		            console.log(planDetailArr);
+		        })
+		        .done(planDetailCreate());
+				
+			})
+			
+			// 테스트용
+			$('#share-plan-btn').click(function () {
+				// 상세일정 관련 데이터
+				var planDetailArr=new Array();
+				var planDetailObj=new Object();
+				
+				// 상세일정 만들기 promise
+				var detailArrCreate = function (pno) {
+					var dayNum = 0;
+					var detailTurn = 0;
+					$("#sortable1 > h4").each(function(){
+						if(!$(this).hasClass("day-list")){
+							planDetailObj.pno=pno;
+							planDetailObj.id=$(this).data("place");
+							planDetailObj.turn=detailTurn;
+							planDetailObj.day=dayNum;
+							
+							planDetailArr.push(planDetailObj);
+							
+							detailTurn++;
+						}
+						else {
+							dayNum++;
+						}
+					})
+				}
+				
+				var planDetailCreate = $.ajax({
+			        url: "createPlanDetail",
+			        type:'GET',
+			        data: JSON.stringify(planDetailArr),
+			        dataType:"text",
+			        
+			        error:function(err){
+			            alert("에러 발생 \n"+err);
+			        }
+			    });
+				
+				detailArrCreate(1).done(planDetailCreate());
+			})
+			
+			// 테스트용 (데이터 가져오기 확인)
+			$(document).on("click",".list-group-item",function(){
+				console.log("장소 id: "+$(this).data("place") + " 인덱스: "+$(this).index())
+			})
+			
     	})
     </script>
 	
-
+<!-- 상단 Bar -->
     <div class="container-fluid">
-        <div class="row form-inline">
-            <div class="col-md-12 form-group">
-                <input class="col-md-3 form-control" type="text" name="where" placeholder="어디" required>
-                <input class="col-md-3 form-control" type="text" name="title" placeholder="제목" required>
-                <input class="col-md-3 form-control" type="date" name="date" required>
-                <a href="#" class="col-md-offset-1 col-md-1">나만보기</a>
-                <a href="#" class="col-md-1">공유하기</a>
-            </div>
+        <div class="form-inline">
+            <div class="form-group">
+                <input class=" form-control col-md-3" id="title-input" type="text"  placeholder="일정 제목" required>
+                <input class=" form-control col-md-3" id="dur-input" type="number"  placeholder="몇일동안" required>
+                <input class=" form-control col-md-3" id="sday-input" type="date"  required>
+        	</div>
+        	<div class="form-group col-md-offset-4">
+        		<a class="btn btn-primary btn-lg  form-control col-md-2" role="button" id="my-plan-btn">나만보기</a>
+                <a class="btn btn-primary btn-lg  form-control col-md-2" role="button" id="share-plan-btn">공유하기</a>
+        	</div>
         </div>
-        <!-- 추가한 일정 리스트 -->
         
+        <!-- 추가한 일정 리스트 -->
         <div class="row">
         	<div class = "col-md-3 ">
-        		<p><a class="btn btn-primary btn-lg day-add-button" role="button">Day 추가</a></p>
+        		<p><a class="btn btn-primary btn-lg" role="button" id="day-add-btn">Day 추가</a></p>
 		        <div id="sortable1" class="connectedSortable list-group create-main">
-		        	<a href="#" class="list-group-item active day-list">
-					    <h4 class="list-group-item-heading">Day 01</h4>
-  					</a>
+		        	<h4 class="list-group-item-heading">
+			        	<a href="#" class="list-group-item active day-list day-default">
+						    Day 01
+	  					</a>
+  					</h4>
 				</div>
 			</div>
         

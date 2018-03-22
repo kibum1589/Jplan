@@ -11,7 +11,7 @@ import jp.bean.Plan;
 @Repository
 public interface PlanDao {
 	 // 01. 일정 작성
-//    public void create(Plan plan) throws Exception;
+    public int create(Plan plan) throws Exception;
     // 02. 일정 상세보기
     public Plan select(int no) throws Exception;
     // 03. 일정 수정

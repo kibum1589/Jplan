@@ -4,6 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Plan {
 	private int no;
 	private int mno;

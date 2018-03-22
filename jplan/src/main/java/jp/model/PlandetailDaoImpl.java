@@ -16,7 +16,7 @@ import jp.bean.Plan;
 import jp.bean.Plandetail;
 
 @Controller
-@Repository("PlandetailDao")
+@Repository("plandetailDao")
 public class PlandetailDaoImpl implements PlandetailDao {
 
 	private Logger log = LoggerFactory.getLogger(getClass());
@@ -46,6 +46,15 @@ public class PlandetailDaoImpl implements PlandetailDao {
 	public List<Plandetail> pdlist(int pno) {
 		String sql = "select * from plandetail where pno=? order by no asc ";
 		return jdbcTemplate.query(sql, mapper, pno);
+	}
+
+	@Override
+	public void create(Plandetail plandetail) {
+		String sql = "insert into plandetail values(plandetail_seq.nextval,?,?,?,?)";
+		Object[] args = 
+			{plandetail.getPno(),plandetail.getId(),plandetail.getTurn(),plandetail.getDay()};
+		jdbcTemplate.update(sql,args);
+		
 	}
 
 }

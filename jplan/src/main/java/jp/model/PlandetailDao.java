@@ -12,4 +12,7 @@ public interface PlandetailDao {
 
 	//하나의 일정에 대한 세부일정의 목록을 구하는 메소드
 	List<Plandetail> pdlist(int pno) throws Exception;
+	
+	//상세일정 만드는 메소드
+	void create(Plandetail plandetail);
 }
