@@ -28,5 +28,43 @@
     </c:forEach>
 </table>
 </div>
+
+<div class="row in-align-right">
+        <c:if test="${pc.isPrev()}">
+			<a href="planlist?${pc.getQueryString(PageCalculator.PREV)}">[이전]</a>
+		</c:if>
+		
+		<c:forEach var="n" begin="${pc.sb}" end="${pc.eb}">
+		<c:choose>
+			<c:when test="${pc.pno == n}">
+				<font size="4" color="red">${n}</font>
+			</c:when>
+			<c:otherwise>
+				<a href="planlist?${pc.getQueryString(n)}">${n}</a>
+			</c:otherwise>
+		</c:choose>
+		</c:forEach>
+		
+		<c:if test="${pc.isNext()}">
+			<a href="planlist?${pc.getQueryString(PageCalculator.NEXT)}">[다음]</a>
+		</c:if>
+    </div>
+    <div class="row in-align-center">
+        <form action="" method="get">
+            <!-- 선택창 -->
+   <select name="sort" class="form-input-small">
+       <option value="title+dur">제목+기간</option>
+       <option value="title" <c:if test="${pc.sort == 'title'}">selected</c:if>>제목</option>
+   </select>
+
+   <!-- 입력창 -->
+   <input class="form-input-small" name="keyword" type="search" placeholder="검색어" 
+       required value="${pc.keyword}">
+
+   <!-- 전송버튼 -->
+            <input class="form-btn-small" type="submit" value="검색">
+        </form>
+    </div>
+</div>
  
  <jsp:include page="../footer.jsp"></jsp:include>
