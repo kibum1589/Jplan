@@ -19,8 +19,9 @@ import jp.bean.Plandetail;
 @Repository("plandetailDao")
 public class PlandetailDaoImpl implements PlandetailDao {
 
-	private Logger log = LoggerFactory.getLogger(getClass());
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -48,11 +49,15 @@ public class PlandetailDaoImpl implements PlandetailDao {
 		return jdbcTemplate.query(sql, mapper, pno);
 	}
 
+	// 상세일정 등록 메소드
 	@Override
 	public void create(Plandetail plandetail) {
-		String sql = "insert into plandetail values(plandetail_seq.nextval,?,?,?,?)";
+		String sql = "select plandetail_seq.nextval from dual";
+		int no = jdbcTemplate.queryForObject(sql, Integer.class);
+		logger.debug("뽑아온 번호 {}", no);
+		sql = "insert into plandetail values(?,?,?,?,?)";
 		Object[] args = 
-			{plandetail.getPno(),plandetail.getId(),plandetail.getTurn(),plandetail.getDay()};
+			{no, plandetail.getPno(), plandetail.getId(), plandetail.getTurn(), plandetail.getDay()};
 		jdbcTemplate.update(sql,args);
 		
 	}
