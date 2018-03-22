@@ -138,10 +138,10 @@
     		$("#day-add-btn").click(function () {
     			dayCount++;
 				$("#sortable1").append(
-				'<h4 class="list-group-item-heading">'+
-			       '<a href="#" class="list-group-item active day-list">' +
+					'<a href="#" class="list-group-item active day-list">' +	
+					'<h4 class="list-group-item-heading">'+
 						    'Day 0'+dayCount+
-	  					'</a></h4>'		
+	  				'</h4></a>'		
 				)
 			})
 			
@@ -155,28 +155,32 @@
 				
 				var planNo;
 				
-				// 플랜 만들기 promise
-				var planCreate = $.ajax({
+				// 플랜 만들기 함수
+				var planCreate = function(){
+					$.ajax({
 			        url: "createPlan",
 			        type:'GET',
 			        data: planData,
 			        dataType:"text",
 			        
 			        error:function(err){
-			            alert("에러 발생 \n"+err);
+			            alert("일정등록 실패 \n"+err);
 			        }
-			    });
+			    	});
+				}	
 				
 				// 상세일정 관련 데이터
 				var planDetailArr=new Array();
 				var planDetailObj=new Object();
 				
-				// 상세일정 만들기 promise
+				// 상세일정 만들기 함수
 				var detailArrCreate = function (pno) {
 					var dayNum = 0;
 					var detailTurn = 0;
-					$("#sortable1 > h4").each(function(){
+					$("#sortable1 > a").each(function(){
 						if(!$(this).hasClass("day-list")){
+							
+							planDetailObj=new Object();
 							planDetailObj.pno=pno;
 							planDetailObj.id=$(this).data("place");
 							planDetailObj.turn=detailTurn;
@@ -190,73 +194,47 @@
 							dayNum++;
 						}
 					})
+					
+					console.log(planDetailArr);
+					
 				}
 				
 				
 				
-				var planDetailCreate = $.ajax({
-			        url: "createPlanDetail",
-			        type:'GET',
-			        data: JSON.stringify(planDetailArr),
-			        dataType:"text",
-			        
-			        error:function(err){
-			            alert("에러 발생 \n"+err);
-			        }
-			    });
+				var planDetailCreate = function(arr){
+						$.ajax({
+					        url: "createDetail",
+					        type:'GET',
+					        data: arr,
+					        dataType:"text",
+					        success:function(err){
+					            console.log("상세일정 등록 성공 \n"+err);
+					        },
+					        error:function(err){
+					            console.log("상세일정 등록 실패 \n"+err);
+					        }
+					   	});
+					
+				}
 				
-				// promise 진행
-				planCreate
-				.done(function(data){
-					console.log(data);
-		            planNo=data;
-		            detailArrCreate(planNo);
-		            console.log(planDetailArr);
-		        })
-		        .done(planDetailCreate());
+				
+				// 테스트
+				detailArrCreate(9);
+				planDetailCreate(planDetailArr);
+				
+// 				진행
+// 				planCreate
+// 				.then(function(data){
+// 		            planNo=data;
+// 					console.log("생성된 plan 번호 : " +planNo);
+// 		            detailArrCreate(planNo);
+// 		            console.log(planDetailArr);
+// 		        })
+// 		        .done(planDetailCreate());
 				
 			})
 			
-			// 테스트용
-			$('#share-plan-btn').click(function () {
-				// 상세일정 관련 데이터
-				var planDetailArr=new Array();
-				var planDetailObj=new Object();
-				
-				// 상세일정 만들기 promise
-				var detailArrCreate = function (pno) {
-					var dayNum = 0;
-					var detailTurn = 0;
-					$("#sortable1 > h4").each(function(){
-						if(!$(this).hasClass("day-list")){
-							planDetailObj.pno=pno;
-							planDetailObj.id=$(this).data("place");
-							planDetailObj.turn=detailTurn;
-							planDetailObj.day=dayNum;
-							
-							planDetailArr.push(planDetailObj);
-							
-							detailTurn++;
-						}
-						else {
-							dayNum++;
-						}
-					})
-				}
-				
-				var planDetailCreate = $.ajax({
-			        url: "createPlanDetail",
-			        type:'GET',
-			        data: JSON.stringify(planDetailArr),
-			        dataType:"text",
-			        
-			        error:function(err){
-			            alert("에러 발생 \n"+err);
-			        }
-			    });
-				
-				detailArrCreate(1).done(planDetailCreate());
-			})
+			
 			
 			// 테스트용 (데이터 가져오기 확인)
 			$(document).on("click",".list-group-item",function(){
@@ -285,11 +263,11 @@
         	<div class = "col-md-3 ">
         		<p><a class="btn btn-primary btn-lg" role="button" id="day-add-btn">Day 추가</a></p>
 		        <div id="sortable1" class="connectedSortable list-group create-main">
-		        	<h4 class="list-group-item-heading">
-			        	<a href="#" class="list-group-item active day-list day-default">
-						    Day 01
-	  					</a>
-  					</h4>
+			        <a href="#" class="list-group-item active day-list day-default">
+			        	<h4 class="list-group-item-heading">
+						  Day 01
+						 </h4>
+	  				</a>
 				</div>
 			</div>
         

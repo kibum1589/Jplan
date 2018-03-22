@@ -1,6 +1,9 @@
 package jp.bean;
 
-	public class Block {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Block {
 		private int no;
 		private int mno;
 		private int ano;
@@ -8,6 +11,18 @@ package jp.bean;
 		private String reason;
 		private int dur;
 		private String reg;
+		
+		public Block() {};
+		
+		public Block(ResultSet rs) throws SQLException {
+			setNo( rs.getInt("no"));
+			setMno( rs.getInt("mno"));
+			setAno( rs.getInt("ano"));
+			setType( rs.getString("type"));
+			setReason( rs.getString("reason"));
+			setDur( rs.getInt("dur"));
+			setReg( rs.getString("reg"));
+		};
 		
 		public int getNo() {
 			return no;

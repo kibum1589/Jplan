@@ -100,6 +100,12 @@
                         	아이디 또는 비밀번호가 일치하지 않습니다.
                     	</div>
                 	</c:if>
+                	
+                	<c:if test="${blockmsg ne null}">
+                    	<div style="color: red">
+                        	${blockmsg}
+                    	</div>
+                	</c:if>
                 <%-- <c:if test="${msg == 'logout'}">
                     <div style="color: red">
                         	로그아웃되었습니다.

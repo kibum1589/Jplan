@@ -1,8 +1,5 @@
 package jp.controller.home;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,18 +7,22 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.bean.Member;
+import jp.model.BlockDao;
 import jp.model.MemberDao;
 
 @Controller
 public class LoginController {
 	
 	private Logger log = LoggerFactory.getLogger(LoginController.class);
+	
 	@Autowired
 	private MemberDao memberDao;
+	
+	@Autowired
+	private BlockDao blockDao;
 	
 	@RequestMapping("/login")
 	public String login() {
@@ -35,15 +36,28 @@ public class LoginController {
 			
 			if(result){
 				Member member_info = memberDao.infom(member);
+				String blockmsg = blockDao.check(member_info.getNo());
 				
 				//세션에 로그인 성공
-				session.setAttribute("email", member_info.getEmail());
-				session.setAttribute("name", member_info.getName());
+				if(blockmsg==null) {
+					session.setAttribute("email", member_info.getEmail());
+					session.setAttribute("name", member_info.getName());
+					session.setAttribute("no", member_info.getNo());
+					
+					ModelAndView mv = new ModelAndView();
+					mv.setViewName("login");
+					mv.addObject("msg", "success");
+					return mv;
+				}
 				
-				ModelAndView mv = new ModelAndView();
-				mv.setViewName("login");
-				mv.addObject("msg", "success");
-				return mv;
+				// 제제당함
+				else {
+					ModelAndView mv = new ModelAndView();
+					mv.setViewName("login");
+	        		mv.addObject("blockmsg", blockmsg);
+					return mv;
+				}
+				
 			}
 			else{
 				ModelAndView mv = new ModelAndView();

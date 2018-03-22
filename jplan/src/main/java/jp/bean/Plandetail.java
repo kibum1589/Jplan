@@ -13,6 +13,8 @@ public class Plandetail {
 	private int turn;
 	private int day;
 	
+	
+
 	public Plandetail() {
 		super();
 	}
@@ -64,5 +66,4 @@ public class Plandetail {
 	public void setDay(int day) {
 		this.day = day;
 	}
-	
 }
