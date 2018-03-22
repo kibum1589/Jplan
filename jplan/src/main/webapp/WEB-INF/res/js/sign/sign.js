@@ -1,3 +1,8 @@
+    //회원가입 div 보이고 끄기 
+    function sign_div_open(){
+    	 document.getElementById('sign_div').style.display = "inline";
+    };
+    
     //스페이스 방지 
 	function space_x() {
 		document.querySelector(".row");
@@ -104,7 +109,7 @@
 					pw_secret.val(SHA256(pw_secret.val()));
 					
 							});
-			     		});
+			     		});*/
 			
 			if(!this.value || !pw_regex.test(pw)){
             	console.log('불가능');
@@ -113,7 +118,7 @@
             else{
             	console.log('가능');
 				nck = 0;
-            }*/
+            }
         });
 
         //비밀번호 확인 입력창에 이벤트 설정

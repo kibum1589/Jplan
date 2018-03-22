@@ -70,10 +70,10 @@
             event.preventDefault();
             
             //비밀번호를 암호화된 값으로 변경처리
-            var pwField = $("input[type=password]");
+          /*   var pwField = $("input[type=password]");
             pwField.val(SHA256(pwField.val()));
             
-            var s = $(this).serialize();
+            var s = $(this).serialize(); */
         });
        
     });

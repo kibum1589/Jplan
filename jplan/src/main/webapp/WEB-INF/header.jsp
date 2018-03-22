@@ -23,17 +23,12 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <!-- 회원가입 관련 -->
     <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <script src="${pageContext.request.contextPath}/res/js/sign/sign.js"></script>
-    <script src="${pageContext.request.contextPath}/res/js/sign/sha256.js"></script>
+ 	<script src="${pageContext.request.contextPath}/res/js/sign/sign.js"></script>
+    <%-- <script src="${pageContext.request.contextPath}/res/js/sign/sha256.js"></script> --%>
    
     
     <script>
-    //회원가입 div 보이고 끄기 
-    function sign_div_open(){
-    	 document.getElementById('sign_div').style.display = "inline";
-    };
-    
-    
+  
     //Top 리모컨 함수 
     $(document).scroll(function(){
 
@@ -49,6 +44,8 @@
 //        $("html, body").animate({scrollTop: 0}, 1000);
 //
 //    });
+
+   
     </script>
 
     <!-- 상단(메뉴) 영역 -->
