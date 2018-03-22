@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 
-import jp.bean.Place;
 import jp.bean.Plan;
 
 @Controller
@@ -48,10 +47,15 @@ public class PlanDaoImpl implements PlanDao {
 	}
 
 	//일정 리스트 메소드
-	@Override
-	public List<Plan> list() throws Exception{
-		String sql = "select * from plan order by no asc";
-		return jdbcTemplate.query(sql, mapper);
+	public List<Plan> list(int sno, int eno) throws Exception{
+		String sql = "select * from ("
+				+ "select rownum rn, A.* from ("
+				+ "select * from plan "
+				+ "order by no asc"
+			+ ")A"
+		+ ") "
+		+ "where rn between ? and ?";
+		return jdbcTemplate.query(sql, mapper, sno, eno);
 	}
 	
 	// 조회수 1 증가 메소드
@@ -81,6 +85,39 @@ public class PlanDaoImpl implements PlanDao {
 		jdbcTemplate.update(sql, args);
 		return no;
 	}
+	
+	//일정 검색 메소드
+	@Override
+	public List<Plan> find(String sort, String keyword, int sno, int eno) {
+		if(sort.equals("title dur")) sort = "title||dur";
+		if(sort.equals("title+dur")) sort = "title||dur";
+		
+		String sql = "select * from ("
+				+ "select rownum rn, A.* from ("
+				+ "select * from plan where "+sort+" like '%'||?||'%' order by no desc"
+				+ ")A"
+				+ ") "
+				+ "where rn between ? and ?";
+		return jdbcTemplate.query(sql, mapper, keyword, sno, eno);
+	}
+	
+	//일정 개수 구하는 메소드
+	@Override
+	public int getCount() {
+		String sql = "select count(*) from plan";
+		return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
+	@Override
+	public int getCount(String sort, String keyword) {
+		if(sort.equals("title dur")) sort = "title||dur";
+		if(sort.equals("title+dur")) sort = "title||dur";
+		
+		String sql = "select count(*) from plan "
+								+ "where "+sort+" like '%'||?||'%' "
+								+ "order by no desc";
+		return jdbcTemplate.queryForObject(sql, Integer.class, keyword);
+	}
+
 
 	
 }
