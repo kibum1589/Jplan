@@ -1,6 +1,12 @@
 package jp.model;
 
+import org.springframework.stereotype.Repository;
+
+import jp.bean.Member;
+
+@Repository
 public interface MemberInfoDao {
 	
-	void MemberDaoInfo(MemberDao memberDao);
+	public Member memberinfo(String email);
+
 }

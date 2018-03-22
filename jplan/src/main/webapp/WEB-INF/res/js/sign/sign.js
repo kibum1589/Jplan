@@ -96,7 +96,7 @@
           //비밀번호확인 콘솔
             var pw = $("#pw").val();
 			console.log(pw);
-			
+	/*		
 		//비밀번호 암호화	
 			$(document).ready(function(){
 					$("form").on("submit", function(){
@@ -113,7 +113,7 @@
             else{
             	console.log('가능');
 				nck = 0;
-            }
+            }*/
         });
 
         //비밀번호 확인 입력창에 이벤트 설정

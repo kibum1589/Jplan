@@ -28,7 +28,7 @@ public class MemberListDaoImpl implements MemberListDao{
 	
 	@Override
 	public List<Member> memberList() {
-		String sql ="select * from member where power != 'a' order by email";
+		String sql ="select * from member where power != 'a' order by reg desc";
 		return jdbcTemplate.query(sql, mapper);
 	}
 }

@@ -17,19 +17,19 @@
                <tbody>
 				<tr>
 					<th width="25%">이메일</th>
-					<td class="left">${member.email}</td>
+					<td class="left">${memberInfoDao.email}</td>
 				</tr>
 				<tr>
 					<th>이름</th>
-					<td class="left">${member.name}</td>
+					<td class="left">${memberInfoDao.name}</td>
 				</tr>
 				<tr>
 					<th>권한</th>
-					<td class="left">${member.power}</td>
+					<td class="left">${memberInfoDao.power}</td>
 				</tr>
 				<tr>
 					<th>가입일</th>
-					<td class="left">${member.reg}</td>
+					<td class="left">${memberInfoDao.reg}</td>
 				</tr>
 			</tbody>
 		</table>

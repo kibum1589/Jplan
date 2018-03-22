@@ -17,11 +17,6 @@ public class MemberListController {
 	@Autowired
 	private MemberListDao memberListDao;
 	
-//	@RequestMapping("/admin/memberlist")
-//	public String memberlist() {
-//		return "admin/memberlist";
-//	}
-	
 	@RequestMapping("/admin/memberlist")
 	public String memberlist(Model model) throws Exception {
 		model.addAttribute("memberlist", memberListDao.memberList());

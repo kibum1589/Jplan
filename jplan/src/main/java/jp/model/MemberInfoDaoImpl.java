@@ -1,31 +1,34 @@
 package jp.model;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Controller;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.servlet.ModelAndView;
 
 import jp.bean.Member;
 
-@Controller
 @Repository("MemberInfoDao")
-public class MemberInfoDaoImpl {
-		
-		private Logger log = LoggerFactory.getLogger(getClass());
-		
-		private JdbcTemplate jdbcTemplate;
+public class MemberInfoDaoImpl implements MemberInfoDao{
 	
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String email = request.getParameter("email");
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/admin/memberinfo");
-		mv.addObject("member");
-		return mv;
+	private Logger log=LoggerFactory.getLogger(getClass());
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+	
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	private ResultSetExtractor<Member> extractor = (rs)->{
+		if(rs.next()) return new Member(rs);
+		else return null;
+	};
+	
+	public Member memberinfo(String email){
+		log.debug(("{}"),email);
+		String sql = "select * from member where email=?";
+		return jdbcTemplate.query(sql, extractor, email);
 	}
 }
