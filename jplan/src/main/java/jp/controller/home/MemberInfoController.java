@@ -1,7 +1,5 @@
 package jp.controller.home;
 
-
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import jp.bean.Member;
 import jp.model.MemberInfoDao;
 
 @Controller
