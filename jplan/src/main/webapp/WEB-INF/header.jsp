@@ -63,7 +63,7 @@
         <c:if test="${email != null}">
        	<button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/memberinfo'">나의정보보기</button>
        	</c:if>
-       	<c:if test="${email != null && name == 'admin'}">
+       	<c:if test="${sessionScope.no == 1}">
         <button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/memberlist'">회원목록보기</button>
         </c:if>
         

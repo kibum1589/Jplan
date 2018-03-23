@@ -18,16 +18,23 @@
 											<!--/** - 하위 전체  -->
 		<mvc:interceptor>
 		<!-- 컨트롤러 추가를 위한 설정 -->
+			<!-- 로그인을 해야만 들어갈수 있는 뷰 페이지들 -->
+			<mvc:mapping path="/create"/>
 			<mvc:mapping path="/myplan"/>
-			<mvc:mapping path="admin/memberinfo"/>	
-			<mvc:mapping path="admin/memberlist"/>	
-		<!--로그인 체크 인터셉터 클래스  -->
+			<mvc:mapping path="/admin/memberinfo"/>	
+			<mvc:mapping path="/admin/member_delete"/>
 			<bean class="jp.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
+			
+		<!--로그인 체크 인터셉터 클래스  -->
 		
-<!-- 추가러 여러개의 인터셉터 설정  -->
-
-		
+<!-- 추가로 여러개의 인터셉터 설정  -->
+				<!-- 관리자만 들어가야 하는 뷰 페이지   -->	
+			<mvc:interceptor>
+				<mvc:mapping path="/admin/memberlist"/>	
+				<bean class="jp.interceptor.AdminInterceptor"></bean>
+			</mvc:interceptor>
+			
 	</mvc:interceptors>
 	
 	<!-- 컨트롤러 스캔 -->

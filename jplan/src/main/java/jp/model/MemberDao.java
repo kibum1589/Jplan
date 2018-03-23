@@ -14,6 +14,8 @@ public interface MemberDao {
 	
 	//회원 로그인 체크
 	public boolean loginDAO(Member member);
+	public boolean loginDAO(String email, String pw);
+	
 	//회원 정보보기
 	public Member infom(Member member);
 	

@@ -43,7 +43,9 @@ public class LoginController {
 					session.setAttribute("email", member_info.getEmail());
 					session.setAttribute("name", member_info.getName());
 					session.setAttribute("no", member_info.getNo());
-					
+					session.setAttribute("power", member_info.getPower());
+					log.debug("login했을떄 no = {}",member_info.getNo());
+					log.debug("login했을떄 power = {}",member_info.getPower());
 					ModelAndView mv = new ModelAndView();
 					mv.setViewName("login");
 					mv.addObject("msg", "success");

@@ -16,12 +16,12 @@
 	<div class="row font-small in-align-center">
 		탈퇴를 진행하기 위하여 비밀번호를 입력해주세요
 	</div>
-	<form action="memberdelete" method="post">
+	<form action="member_delete" method="post">
 	<div class="row">
 		<input class="form-input form-input-full" type="password" name="pw" required placeholder="비밀번호">
 	</div>	
 	<div class="row">
-		<input class="form-btn form-btn-full" type="submit" value="입력">
+		<input class="" type="submit" value="입력">
 	</div>
 	</form>
 </div>

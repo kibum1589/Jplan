@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
 import jp.bean.Block;
-import jp.bean.Plandetail;
 
 @Repository("blockDao")
 public class BlockDaoImpl implements BlockDao{
