@@ -1,12 +1,16 @@
 package jp.model;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import jp.bean.Block;
+import jp.bean.Member;
 
 @Repository("blockDao")
 public class BlockDaoImpl implements BlockDao{
@@ -20,6 +24,14 @@ public class BlockDaoImpl implements BlockDao{
 			return new Block(rs);
 		else
 			return null;
+	};
+	
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	private RowMapper<Block> mapper = (rs, idx)->{
+		return new Block(rs);
 	};
 	
 	
@@ -39,6 +51,13 @@ public class BlockDaoImpl implements BlockDao{
 			return null ;
 		}
 		
+	}
+
+
+	@Override
+	public List<Block> memberBlockList() throws Exception {
+		String sql ="select * from block order by reg desc";
+		return jdbcTemplate.query(sql, mapper);
 	}
 
 }

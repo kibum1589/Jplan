@@ -13,19 +13,25 @@
 			<th colspan="7">제제 한당 회원은 총 ${list.size()}명 입니다.</th>
 		</tr>
 		<tr>
-			<th>이메일</th>
-			<th>이름</th>
-			<th>등급</th>
-			<th>가입일</th>
+			<th>회원번호</th>
+			<th>제제 당한</th>
+			<th>제제 가한</th>
+			<th>제제종류</th>
+			<th>원인</th>
+			<th>기간</th>
+			<th>가한날짜</th>
 		</tr>
 	</thead> 
 	<tbody>
 		<!-- 실제 정보 출력 -->
-		<c:forEach items="${memberlist}" var="member">
+		<c:forEach items="${memberblocklist}" var="member">
 		<tr>
-			<th>${member.email}</th>
-			<th>${member.name}</th>
-			<th>${member.power}</th>
+			<th>${member.no}</th>
+			<th>${member.mno}</th>
+			<th>${member.ano}</th>
+			<th>${member.type}</th>
+			<th>${member.reason}</th>
+			<th>${member.dur}</th>
 			<th>${member.reg}</th>
 		</tr>
 		</c:forEach>
