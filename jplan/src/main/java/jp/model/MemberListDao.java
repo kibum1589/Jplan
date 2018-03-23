@@ -8,5 +8,6 @@ import jp.bean.Member;
 
 @Repository
 public interface MemberListDao {
-	public List<Member> memberList() throws Exception;
+	public List<Member> memberList(int sno, int eno) throws Exception;
+	int getCount();
 }

@@ -3,10 +3,7 @@ package jp.bean;
 import javax.servlet.http.HttpServletRequest;
 
 public class PageCalculator {
-		
-//		@Autowired
-//		private PlanDao planDao;
-	
+			
 		//검색어 관련 변수
 		private String sort, keyword;
 		private boolean searchMode;
@@ -18,7 +15,7 @@ public class PageCalculator {
 		}
 		
 		//페이징 관련 변수
-		private int pgno, count, sno, eno, psize = 10;
+		private int pgno, count, sno, eno, psize = 5;
 		public void setPsize(int psize) {
 			this.psize = psize;
 		}

@@ -27,8 +27,24 @@ public class MemberListDaoImpl implements MemberListDao{
 	};
 	
 	@Override
-	public List<Member> memberList() {
-		String sql ="select * from member where power != 'a' order by reg desc";
-		return jdbcTemplate.query(sql, mapper);
+	public List<Member> memberList(int sno, int eno) throws Exception{
+		String sql ="select * from ("
+				+ "select rownum rn, A.* from ("
+				+ "select * from member "
+				+ "where power != 'a' "
+				+ "order by no desc"
+			+ ")A"
+		+ ") "
+		+ "where rn between ? and ?";
+		return jdbcTemplate.query(sql, mapper, sno, eno);
 	}
+
+	@Override
+	public int getCount() {
+		//회원 총 인원수 구하는 메소드
+		String sql = "select count(*) from member";
+		return jdbcTemplate.queryForObject(sql, Integer.class);
+		
+	}
+	
 }
