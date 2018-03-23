@@ -11,23 +11,14 @@
 		정보 수정
 	</div>
 	<hr>
-	<form action="edit" method="post">
+	<form action="member_edit" method="post">
 	<div class="row">
 		<table class="table">
-			<tbody>
-				<tr>
-					<th width="20%">이메일</th>
-					<td>
-						<input type="text" name="email" required readonly 
-								value="${mdto.email}" class="form-input form-input-full">
-					</td>
-				</tr>
-
 				<tr>
 					<th>이름</th>
 					<td>
-						<input type="text" name="name" required readonly
-							value="${mdto.name}" class="form-input form-input-full">
+						<input type="text" name="name" required
+							value="${memberEditDao.name}" class="form-input form-input-full">
 					</td>
 				</tr>
 				
@@ -36,15 +27,11 @@
 					<td><input type="password" name="pw" required
 								class="form-input form-input-full"></td>
 				</tr>
-			
-			</tbody>
-			<tfoot>
 				<tr>
 					<th colspan="2">
-						<input class="form-btn form-btn-full" type="submit" value="수정하기">	
+						<input type="submit" value="수정하기">	
 					</th>
 				</tr>
-			</tfoot>
 		</table>
 	</div>
 	</form>

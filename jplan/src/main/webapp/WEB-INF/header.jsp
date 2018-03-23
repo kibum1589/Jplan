@@ -66,6 +66,9 @@
        	<c:if test="${sessionScope.no == 1}">
         <button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/memberlist'">회원목록보기</button>
         </c:if>
+        <c:if test="${sessionScope.no == 1}">
+        <button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/member_block_list'">제제목록보기</button>
+        </c:if>
         
         <c:choose>
     		<c:when test="${sessionScope.email == null}">

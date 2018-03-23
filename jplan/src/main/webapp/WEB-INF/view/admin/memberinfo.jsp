@@ -35,7 +35,7 @@
 		</table>
     </div>
    <div class="row font-big in-align-center">
-<button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/member_edit'">비밀번호수정</button>
+<button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/member_edit'">정보수정</button>
 	</div>
     <div class="row font-big in-align-center">
 <button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/member_delete'">회원탈퇴</button>    

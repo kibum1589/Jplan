@@ -17,8 +17,6 @@ import jp.model.MemberDeleteDao;
 @Controller
 public class MemberdeleteController{
 	
-	
-	
 	private Logger log = LoggerFactory.getLogger(MemberdeleteController.class);
 
 	@Autowired
