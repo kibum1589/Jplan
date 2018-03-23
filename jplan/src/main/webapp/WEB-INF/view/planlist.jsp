@@ -29,14 +29,14 @@
 </table>
 </div>
 
-<div class="row in-align-right">
+<div class="row in-align-center">
         <c:if test="${pc.isPrev()}">
-			<a href="planlist?${pc.getQueryString(PageCalculator.PREV)}">[이전]</a>
+			<a href="planlist?${pc.getQueryString(PageCalculator.PREV-1)}">[이전]</a>
 		</c:if>
 		
 		<c:forEach var="n" begin="${pc.sb}" end="${pc.eb}">
 		<c:choose>
-			<c:when test="${pc.pno == n}">
+			<c:when test="${pc.pgno == n}">
 				<font size="4" color="red">${n}</font>
 			</c:when>
 			<c:otherwise>
@@ -46,7 +46,7 @@
 		</c:forEach>
 		
 		<c:if test="${pc.isNext()}">
-			<a href="planlist?${pc.getQueryString(PageCalculator.NEXT)}">[다음]</a>
+			<a href="planlist?${pc.getQueryString(PageCalculator.NEXT-2)}">[다음]</a>
 		</c:if>
     </div>
     <div class="row in-align-center">

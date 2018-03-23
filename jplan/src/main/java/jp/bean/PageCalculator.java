@@ -24,7 +24,7 @@ public class PageCalculator {
 		}
 		
 		//네비게이션 관련 변수
-		private int sb, eb, bcount, bsize = 10;
+		private int sb, eb, bcount, bsize = 5;
 		private boolean prev, next;
 		public void setBsize(int bsize) {
 			this.bsize = bsize;
@@ -146,6 +146,7 @@ public class PageCalculator {
 		//확인 및 전송 등에 필요한 문자열 반환 메소드
 		public static final int PREV = -1;
 		public static final int NEXT = -2;
+
 		public String getQueryString(int n) {
 			StringBuffer buffer = new StringBuffer();
 			buffer.append("page=");
@@ -162,17 +163,17 @@ public class PageCalculator {
 		}
 		
 		//학습을 위한 확인용 메소드(없어도 됨)
-//		public String getSearchString() {
-//			return "[sort="+sort+", keyword="+keyword+"]";
-//		}
-//		
-//		public String getPagingString() {
-//			return "[pgno="+pgno+", sno="+sno+", eno="+eno+", count="+count+"]";
-//		}
-//		
-//		public String getNavigationString() {
-//			return "[bcount="+bcount+", sb="+sb+", eb="+eb+", prev="+prev+", next="+next+"]";
-//		}
+		public String getSearchString() {
+			return "[sort="+sort+", keyword="+keyword+"]";
+		}
+		
+		public String getPagingString() {
+			return "[pgno="+pgno+", sno="+sno+", eno="+eno+", count="+count+"]";
+		}
+		
+		public String getNavigationString() {
+			return "[bcount="+bcount+", sb="+sb+", eb="+eb+", prev="+prev+", next="+next+"]";
+		}
 		
 	}
 

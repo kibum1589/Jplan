@@ -89,6 +89,8 @@ public class PlanDaoImpl implements PlanDao {
 	//일정 검색 메소드
 	@Override
 	public List<Plan> find(String sort, String keyword, int sno, int eno) {
+//		if(sort.equals("title dur")) sort = "title||dur";
+//		if(sort.equals("title+dur")) sort = "title||dur";
 		if(sort.equals("title dur")) sort = "title||dur";
 		if(sort.equals("title+dur")) sort = "title||dur";
 		

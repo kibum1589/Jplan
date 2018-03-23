@@ -42,7 +42,7 @@ public class PlanListController {
 			list = planDao.list(pc.getSno(), pc.getEno()); 
 		}
     	
-		model.addAttribute(pc);
+		model.addAttribute("pc", pc);
     	model.addAttribute("planlist", list);
         return "planlist";
     }
