@@ -8,7 +8,8 @@ function initMap(inputText) {
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: korea,
-    zoom: 7
+    zoom: 7,
+    mapTypeId: 'roadmap'
   });
     
   if(inputText){
@@ -51,10 +52,16 @@ function createMarkers(places) {
 
     // place 목록 붙이기
   for (var i = 0, place; place = places[i]; i++) {
-      
+	 
+	  if (!place.geometry) {
+	        console.log("Returned place contains no geometry");
+	        return;
+	      }
       
     // 마커의 종합적인 설정
     var photos = place.photos;
+    
+      
     var marker = new google.maps.Marker({
         // 표시할 맵
       map: map,
@@ -67,6 +74,7 @@ function createMarkers(places) {
         // 애니메이션
       animation: google.maps.Animation.DROP
     });
+    
     console.log(place.formatted_address)
       // place 목록에 html형식으로 장소이름 찍어주기
     placesList.innerHTML += 
@@ -77,9 +85,13 @@ function createMarkers(places) {
         
       
       // 지도 표시 범위
-    bounds.extend(place.geometry.location);
+    	if (place.geometry.viewport) {
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
     
   }
     // 정한 범위를 지도 범위에 전달
-  map.panToBounds(bounds);
+  map.fitBounds(bounds);
 }
