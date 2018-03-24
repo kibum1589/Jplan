@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.bean.Member;
 import jp.bean.PageCalculator;
+import jp.bean.Plan;
 import jp.model.MemberDao;
 import jp.model.MemberListDao;
 
@@ -30,14 +31,22 @@ public class MemberListController {
 		//PageCalculator를 이용하여 페이징 계산을 간편하게 처리
     	PageCalculator pc = new PageCalculator(request);
     	
-   	 	int count;
-   	 	count = memberListDao.getCount();
-   	 	
-   	 	pc.setCount(count);
+    	int count;
+		if(pc.isSearchMode())
+			count = memberListDao.getCount(pc.getSort(), pc.getKeyword());
+		else
+			count = memberListDao.getCount();
+		
+		pc.setCount(count);
 		pc.calculate();
 	 	
 		List<Member> list;
-		list = memberListDao.memberList(pc.getSno(), pc.getEno());
+		if(pc.isSearchMode()){
+			list = memberListDao.find(pc.getSort(), pc.getKeyword(), pc.getSno(), pc.getEno()); 
+		}
+		else{
+			list = memberListDao.memberList(pc.getSno(), pc.getEno()); 
+		}
 		 
    		model.addAttribute("pc", pc);
    		model.addAttribute("member", count);

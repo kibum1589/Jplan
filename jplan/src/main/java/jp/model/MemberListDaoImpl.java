@@ -26,6 +26,7 @@ public class MemberListDaoImpl implements MemberListDao{
 		return new Member(rs);
 	};
 	
+	//회원 리스트 메소드
 	@Override
 	public List<Member> memberList(int sno, int eno) throws Exception{
 		String sql ="select * from ("
@@ -38,13 +39,34 @@ public class MemberListDaoImpl implements MemberListDao{
 		+ "where rn between ? and ?";
 		return jdbcTemplate.query(sql, mapper, sno, eno);
 	}
-
+	
+	//회원 검색 메소드
+	@Override
+	public List<Member> find(String sort, String keyword, int sno, int eno) {
+		String sql = "select * from ("
+				+ "select rownum rn, A.* from ("
+				+ "select * from member where "+sort+" like '%'||?||'%' order by no desc"
+				+ ")A"
+				+ ") "
+				+ "where rn between ? and ?";
+		return jdbcTemplate.query(sql, mapper, keyword, sno, eno);
+	}
+	
+	//회원 총 인원수 구하는 메소드
 	@Override
 	public int getCount() {
-		//회원 총 인원수 구하는 메소드
 		String sql = "select count(*) from member";
 		return jdbcTemplate.queryForObject(sql, Integer.class);
-		
 	}
+
+	@Override
+	public int getCount(String sort, String keyword) {
+		String sql = "select count(*) from member "
+				+ "where "+sort+" like '%'||?||'%' "
+				+ "order by no desc";
+		return jdbcTemplate.queryForObject(sql, Integer.class, keyword);
+	}
+
+	
 	
 }

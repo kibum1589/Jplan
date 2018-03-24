@@ -54,7 +54,6 @@ public class CreateController {
 			
 			plandetailDao.create(plandetail);
 			logger.debug("등록완료! plandetail : {}", plandetail.getId());
-			
 			PrintWriter writer = res.getWriter();
 			writer.print("상세일정 등록 완료");
 			writer.close();
