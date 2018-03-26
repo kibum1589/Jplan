@@ -5,6 +5,8 @@ public class Review {
 	private String pid;
 	private String content;
 	private String reg;
+	private int mno;
+	
 	public int getNo() {
 		return no;
 	}
@@ -29,5 +31,12 @@ public class Review {
 	public void setReg(String reg) {
 		this.reg = reg;
 	}
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
+	
 	
 }

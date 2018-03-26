@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 
-import jp.bean.Place;
 import jp.bean.Plan;
 import jp.bean.Plandetail;
 

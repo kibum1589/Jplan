@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import jp.bean.Place;
 import jp.bean.Plandetail;
 
 @Repository
