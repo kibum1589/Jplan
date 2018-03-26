@@ -15,11 +15,13 @@ public class MemberEditDaoImpl implements MemberEditDao{
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	
 	public boolean memberedit(Member member) {
 		String sql = "update member set name=?, pw=? where email=?";
 		Object[] args = new Object[] {
 				 member.getName(), member.getPw(), member.getEmail()
 		};
+		System.out.println("멤버에딧"+member.getName());
 		return jdbcTemplate.update(sql, args) > 0;
 	}
 }

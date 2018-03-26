@@ -11,7 +11,24 @@ public class Block {
 		private String reason;
 		private int dur;
 		private String reg;
+		//제제 목록에 이메일을 표시 하기 위해 추가
+		private String email;
 		
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		
+		//memberlist_block에서 넘어온 파라미터를 한번에 넘기기 위한 생성자
+		public Block(String type,String reason,int dur) {
+			this.type=type;
+			this.reason=reason;
+			this.dur=dur;
+		}
+
 		public Block() {};
 		
 		public Block(ResultSet rs) throws SQLException {
@@ -22,6 +39,7 @@ public class Block {
 			setReason( rs.getString("reason"));
 			setDur( rs.getInt("dur"));
 			setReg( rs.getString("reg"));
+			setEmail(rs.getString("email"));
 		};
 		
 		public int getNo() {

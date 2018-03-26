@@ -27,12 +27,13 @@ public class MemberDeleteDaoImpl implements MemberDeleteDao{
 	//탈퇴
 	//no만 가지고 block 으로 데이터를 옮기며 제제 처리 
 	@Override
-	public boolean MemberDelete(int no) {
+	public boolean MemberDelete(int no, String email) {
 		log.debug(("{}"),no);
 		int result = -1;
-		String sql = "insert into block values(block_seq.nextval,?,?,?,?,?,sysdate)";
+		String sql = "insert into block values(block_seq.nextval,?,?,?,?,?,sysdate,?)";
 		Object[] args= new Object[]{
-				no,no,"회원탈퇴","사용자에의한",""
+				no,no,"회원탈퇴","사용자에의한","",email
+				//dur 기한 을 일단 no 로 저장!!
 			};
 			result = jdbcTemplate.update(sql, args);
 			

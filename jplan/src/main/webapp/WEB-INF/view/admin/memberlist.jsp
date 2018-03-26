@@ -4,7 +4,9 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/common.css">
 <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
- 
+<script>
+	
+</script>
 <html>
 <div align="center">
 <table class="table table-responsive">
@@ -27,7 +29,14 @@
 			<th>${member.name}</th>
 			<th>${member.power}</th>
 			<th>${member.reg}</th>
+			<th><button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/memberlist_block'">회원제제</button></th>
+			<%-- onclick="location.href='${pageContext.request.contextPath}/admin/memberlist_block'" --%>
 		</tr>
+<%-- 		<form action="memberlist_block" method="post">
+			<tr>
+				<th><input type="hidden" name="mno" value="${member.no}"></th>
+			</tr>
+		</form> --%>
 		</c:forEach>
 	</tbody>
 </table>

@@ -23,7 +23,7 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <!-- 회원가입 관련 -->
     <script src="https://code.jquery.com/jquery-latest.js"></script>
- 	<script src="${pageContext.request.contextPath}/res/js/sign/sign.js"></script>
+ 	<%-- <script src="${pageContext.request.contextPath}/res/js/sign/sign.js"></script> --%>
     <%-- <script src="${pageContext.request.contextPath}/res/js/sign/sha256.js"></script> --%>
    
     
@@ -78,52 +78,8 @@
         		<button class="right" onclick="location.href='${pageContext.request.contextPath}/logout'">${sessionScope.name}님이 로그인중니다. 로그아웃</button>
     		</c:otherwise>
 		</c:choose>
-        <button class="rright" onclick="sign_div_open();">회원가입</button>
+        <!-- <button class="rright" onclick="sign_div_open();">회원가입</button> -->
+        <button class="rright" onclick="location.href='${pageContext.request.contextPath}/sign'">회원가입</button>
     </header>
-    
-<!-- 회원가입 div -->
-<!-- <div class="et_modal_layer"> -->
-    <form id="sign-form"action="sign" method="post">
 
-	<div id="sign_div" class="et_modal_bg" style="display:none">
-		<div class="sing_container">
-			<!-- <div class="et_modal_window"> -->
-	
-        <div class="row font-big in-align-center">
-        	회원가입
-        </div>
-        <div class="row">
-       		 이메일
-            <input class="form-input email_reg" type="text" name="email" placeholder="ex)OOO@OOO.OOO" 
-            required id="check" onkeypress="space_x();">     
-             <span id="email_check"></span>
-        </div>
-        
-<!--         <div>
-        <span></span>
-        </div> -->
-        
-        <div class="row">
-        	이름
-            <input class="form-input" type="text" name="name" placeholder="2글자 에서 8글자 까지" required id="name" onkeypress="space_x();">
-        </div>
-        <div class="row">
-        	비밀번호
-            <input class="form-input" type="password" name="pw" placeholder="6자 에서 15자까지" required id="pw" onkeypress="space_x();">
-        </div>
-        <div class="row">
-        	비밀번호 확인
-            <input class="form-input" type="password" name="pw_check" placeholder="6자 에서 15자까지" required id="pw_check" onkeypress="space_x();">
-            <span id="pwc"></span>
-        </div>
-        <div class="row">
-            <input class="form-btn" type="submit" value="회원가입">
-        </div>
-       
-    		<!-- </div>  -->
-    	</div>
-	</div>
-	
-    </form>
-<!-- </div> -->
     

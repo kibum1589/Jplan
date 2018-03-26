@@ -1,7 +1,7 @@
-    //회원가입 div 보이고 끄기 
+/*    //회원가입 div 보이고 끄기 
     function sign_div_open(){
     	 document.getElementById('sign_div').style.display = "inline";
-    };
+    };*/
     
     //스페이스 방지 
 	function space_x() {

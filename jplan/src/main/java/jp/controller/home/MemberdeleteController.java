@@ -43,7 +43,7 @@ public class MemberdeleteController{
 		
 		if(memberDao.loginDAO(email, pw)) {
 			log.debug("탈퇴성공");
-			boolean result = memberDeleteDao.MemberDelete(no);
+			boolean result = memberDeleteDao.MemberDelete(no, email);
 			log.debug("block = {}",result);
 			session.invalidate();
 			//session.removeAttribute("no");

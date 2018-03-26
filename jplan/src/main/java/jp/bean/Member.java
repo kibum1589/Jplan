@@ -66,7 +66,10 @@ public class Member {
 	public void setReg(String reg) {
 		this.reg = reg;
 	}
-
+	//디비에 이메일을 등록하기 위한 생성자
+	public Member(String email) {
+		this.email=email;
+	}
 	public Member(int no, String email, String pw, String name, String power, String reg) {
 		super();
 		this.no = no;

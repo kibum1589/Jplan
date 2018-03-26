@@ -47,7 +47,7 @@ public class LoginController {
 					log.debug("login했을떄 no = {}",member_info.getNo());
 					log.debug("login했을떄 power = {}",member_info.getPower());
 					ModelAndView mv = new ModelAndView();
-					mv.setViewName("login");
+					mv.setViewName("home");
 					mv.addObject("msg", "success");
 					return mv;
 				}
