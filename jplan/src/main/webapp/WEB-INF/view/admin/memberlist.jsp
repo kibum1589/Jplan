@@ -62,6 +62,23 @@
 			<a href="memberlist?${pc.getQueryString(PageCalculator.NEXT-2)}">[다음]</a>
 		</c:if>
     </div>
+    
+     <div class="row in-align-center">
+        <form action="" method="get">
+            <!-- 선택창 -->
+   <select name="sort" class="form-input-small">
+       <option value="email">아이디</option>
+       <option value="reg" <c:if test="${pc.sort == 'reg'}">selected</c:if>>가입일</option>
+   </select>
+
+   <!-- 입력창 -->
+   <input class="form-input-small" name="keyword" type="search" placeholder="검색어" 
+       required value="${pc.keyword}">
+
+   <!-- 전송버튼 -->
+            <input class="form-btn-small" type="submit" value="검색">
+        </form>
+    </div>
 </html>
 
 <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>

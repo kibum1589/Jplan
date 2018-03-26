@@ -24,7 +24,7 @@ public interface PlanDao {
     List<Plan> find(String sort, String keyword, int sno, int eno);
     // 일정 조회 증가
     void lookPlus(int no, String email) throws Exception;
-    // 07. 일정 좋아요 증가
+    // 일정 좋아요 증가
     void lovePlus(int no, String email) throws Exception;
     //게시글 개수 구하는 메소드
   	int getCount();

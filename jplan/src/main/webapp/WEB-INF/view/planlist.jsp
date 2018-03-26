@@ -7,11 +7,11 @@
 <div class="container-80 out-align-center in-align-center">
 	<table class="table">
     <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>기간</th>
-        <th>작성일</th>
-        <th>조회수</th>
+        <td>번호</td>
+        <td>제목</td>
+        <td>기간</td>
+        <td>작성일</td>
+        <td>조회수</td>
     </tr>
     <c:forEach var="plan" items="${planlist}">
     <tr>
@@ -53,8 +53,9 @@
         <form action="" method="get">
             <!-- 선택창 -->
    <select name="sort" class="form-input-small">
-       <option value="title+dur">제목+기간</option>
-       <option value="title" <c:if test="${pc.sort == 'title'}">selected</c:if>>제목</option>
+       <option value="title">제목</option>
+       <option value="love">좋아요수</option>
+       <option value="dur" <c:if test="${pc.sort == 'dur'}">selected</c:if>>기간</option>
    </select>
 
    <!-- 입력창 -->
@@ -65,6 +66,6 @@
             <input class="form-btn-small" type="submit" value="검색">
         </form>
     </div>
-</div>
+
  
  <jsp:include page="../footer.jsp"></jsp:include>
