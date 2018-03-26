@@ -49,7 +49,7 @@
     </script>
 
     <!-- 상단(메뉴) 영역 -->
-    <header class="menu">
+    <%-- <header class="menu">
         <input type="checkbox" id="hamberg">
         <label for="hamberg">&equiv;</label>
         <i class="fa fa-twitter fa-3x left" onclick="location.href='${pageContext.request.contextPath}/home'"></i>
@@ -80,6 +80,43 @@
 		</c:choose>
         <!-- <button class="rright" onclick="sign_div_open();">회원가입</button> -->
         <button class="rright" onclick="location.href='${pageContext.request.contextPath}/sign'">회원가입</button>
-    </header>
+    </header> --%>
 
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="fa fa-twitter fa-3x left" href="${pageContext.request.contextPath}/home"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="${pageContext.request.contextPath}/home"></a></li>
+      <li><a href="${pageContext.request.contextPath}/create">일정만들기</a></li>
+      <c:if test="${email != null}">
+      <li><a href="${pageContext.request.contextPath}/myplan">내일정보기</a></li>
+      </c:if>
+      <li><a href="${pageContext.request.contextPath}/planlist">커뮤니티</a></li>
+      <li><a href="${pageContext.request.contextPath}/place">여행지</a></li>
+      <c:if test="${email != null}">
+      <li><a href="${pageContext.request.contextPath}/admin/memberinfo">나의정보보기</a></li>
+      </c:if>
+      <c:if test="${sessionScope.no == 1}">
+      <li><a href="${pageContext.request.contextPath}/admin/memberlist">회원목록보기</a></li>
+      </c:if>
+        <c:if test="${sessionScope.no == 1}">
+      <li><a href="${pageContext.request.contextPath}/admin/member_block_list">제제목록보기</a></li>
+      </c:if>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
     
+      <li><a href="${pageContext.request.contextPath}/sign"><span class="glyphicon glyphicon-user"></span>회원가입</a></li>
+      <c:choose>
+    		<c:when test="${sessionScope.email == null}">
+      <li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+      </c:when>
+    		<c:otherwise>
+            <li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-in"></span>${sessionScope.name}님이 로그인중니다. 로그아웃</a></li>
+            </c:otherwise>
+		</c:choose>
+    </ul>
+  </div>
+</nav>
