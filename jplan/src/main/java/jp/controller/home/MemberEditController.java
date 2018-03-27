@@ -17,6 +17,7 @@ import jp.bean.Member;
 import jp.model.MemberDao;
 import jp.model.MemberEditDao;
 import jp.model.MemberInfoDao;
+import jp.security.Sha256;
 
 @Controller
 public class MemberEditController {
@@ -57,6 +58,8 @@ public class MemberEditController {
 		member.setEmail(email);
 		member.setName(name);
 		member.setPw(pw);
+		//수정할 비번을 암호화 처리
+		member.setPw(new Sha256().securi(member.getPw()));
 		
 		log.debug("이름={}",name);
 		log.debug("수정 하려는 이름{}",name);
