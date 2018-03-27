@@ -55,17 +55,25 @@ public class PlaceController {
 			}
 			
 			JSONArray jsonArr = new JSONArray();
-			JSONObject jsonObj = new JSONObject();
 			
-			jsonObj.put("list_review", list_review);
+			JSONObject json = new JSONObject();
 			
-			jsonObj.put("love_count", list_love.size());
+			for(Review r : list_review) {
+				JSONObject jsonObj = new JSONObject();
+				jsonObj.put("content", r.getContent());
+				jsonObj.put("reg", r.getReg());
+				jsonObj.put("mno", r.getMno());
+				jsonArr.add(jsonObj);
+			}
 			
-			jsonObj.put("loveFlag", loveFlag);
-			jsonArr.add(jsonObj);
+			
+			json.put("love_count", list_love.size());
+			json.put("loveFlag", loveFlag);
+			json.put("review_list", jsonArr);
+			
 			
 			PrintWriter writer =  response.getWriter();
-			writer.print(jsonObj);
+			writer.print(json);
 			writer.close();
 			
 		}
@@ -80,14 +88,31 @@ public class PlaceController {
 			
 			reviewDao.write(review);
 			
-			PrintWriter writer = response.getWriter();
-			writer.print(true);
+			List<Review> list_review =  reviewDao.read(review.getPid());
+			
+			JSONArray jsonArr = new JSONArray();
+			JSONObject json = new JSONObject();
+			
+			for(Review r : list_review) {
+				JSONObject jsonObj = new JSONObject();
+				jsonObj.put("content", r.getContent());
+				jsonObj.put("reg", r.getReg());
+				jsonObj.put("mno", r.getMno());
+				jsonArr.add(jsonObj);
+			}
+			
+			json.put("review_list", jsonArr);
+			
+			
+			PrintWriter writer =  response.getWriter();
+			writer.print(json);
 			writer.close();
+			
 		}
 		
 		// 좋아요 토글
 		@RequestMapping("place/loveAction")
-		public void loveAction(Love love , boolean loveFlag, HttpSession session) {
+		public void loveAction(Love love , boolean loveFlag, HttpSession session, HttpServletResponse response) throws IOException {
 			logger.debug("좋아요 전환 상태:  {}", loveFlag);
 			logger.debug("들어온 love 장소:  {}",love.getPid());
 			
@@ -100,6 +125,14 @@ public class PlaceController {
 				loveDao.decrease(love);
 			}
 			
+			int loveNum = loveDao.getLove(love.getPid()).size();
+			
+			PrintWriter writer =  response.getWriter();
+			writer.print(loveNum);
+			writer.close();
+		
 		}
+		
+		
 }
 

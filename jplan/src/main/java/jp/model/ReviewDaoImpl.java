@@ -22,7 +22,7 @@ public class ReviewDaoImpl implements ReviewDao{
 	// 해당 장소의 review 목록 가져오는 메소드
 	@Override
 	public List<Review> read(String pid) {
-		String sql = "select * from review where pid = ?";
+		String sql = "select * from review where pid = ? order by reg desc";
 		Object[] args = {pid};
 		List<Review> list =  jdbcTemplate.query(sql,args, mapper);
 		return list;

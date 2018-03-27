@@ -164,7 +164,7 @@
 							  	  '<img class="place-btn-src" src="'+replyimg+'">'+
 							  	  '<p class="reply-count">'+0+'</p>'+
 							  	  '<img class="place-btn-src love-img" src="'+loveonimg+'">'+
-							  	  '<p class="love-count">'+0+'</p>'+
+							  	  '<p class="love-count" data-place = "'+place.place_id+'">'+0+'</p>'+
 							  	  '</div>'+
 							  	  
 							  	  '<div class="place-reply">'+
@@ -206,7 +206,7 @@
 				// 리뷰 입력 ajax 통신
 				$(document).on('click','.place-reply-btn',function(){
 					
-					
+					var reviewList = $(this).parent().next('.place-reply-list')
 					var replyText = $(this).prev('input').val();
 					var placeId = $(this).prev('input').data("place");
 					
@@ -221,10 +221,15 @@
 					       type:'GET',
 					       data: reviewData,
 					       dataType:"json",
-					       success: function(data){
-					    		   console.log("리뷰등록 성공" + data)
-					       }
-					    });
+					    })
+					    .done(function(data){
+					    	reviewList.empty();
+					    	for(var i = 0; i < data.review_list.length; i++){
+					    		reviewList.append("<h4>"+data.review_list[i].content+
+					    									" / " +data.review_list[i].reg+
+					    									"</h4>");
+							};
+					    })
 					
 				});
 		
@@ -233,20 +238,21 @@
 				
 				
 				
-				// 클릭시 지도에 표시
+				// 장소 list 클릭시 이벤트
 				var markers = [];
 				$(document).on('click','.place-list',function(){
 					
 					var loveFlag;
 					
-					//love, count ajax 조회
+					//love, review ajax 조회
 					var placeId={
 							pid: $(this).data("place").place_id,
 					}
 					
 					var thisList = $(this);
 					var getLCData= function(data){
-						thisList.next(".place-datail").find(".reply-count").text(data.list_review.length);
+						
+						thisList.next(".place-datail").find(".reply-count").text(data.review_list.length);
 						thisList.next(".place-datail").find(".love-count").text(data.love_count);
 						thisList.next(".place-datail").slideToggle();
 						
@@ -258,6 +264,18 @@
 						else{
 							thisList.next(".place-datail").find(".love-img").attr("src",loveoffimg);
 						}
+						
+						thisList.next(".place-datail").find(".place-reply-list").empty();
+						
+						for(var i = 0; i < data.review_list.length; i++){
+							thisList.next(".place-datail").find(".place-reply-list")
+							 .append("<h4>"+data.review_list[i].content+
+ 										  	" / " +data.review_list[i].reg+
+											"</h4>");
+							
+						};
+						
+						
 							
 					};
 					
@@ -271,52 +289,17 @@
 				       success:function(data){
 				        getLCData(data);
 				       },
+				       
 				       error: function(err){
-				        console.log(err)}
+				        console.log(err)
+				       }
 				        	
 				    });
 					
-//	 				좋아요 토글 ajax
-					
-					thisList.next(".place-datail").find(".love-img").on('click',function(){
-						
-						var loveCount = thisList.next(".place-datail").find(".love-count");
-						
-						// 감소
-						if(loveFlag){ 	
-							$(this).attr("src",loveoffimg)
-							loveCount.text(Number(loveCount.text()-1));
-						}
-						// 증가
-						else{	 
-							$(this).attr("src",loveonimg)
-							loveCount.text(Number(loveCount.text()+1));
-						}
-						
-						loveFlag=!loveFlag
-						
-						var loveData = {
-								pid: thisList.data("place").place_id,
-								loveFlag: loveFlag
-						}
-						
-	 					$.ajax({
-	 					       url: "place/loveAction",
-	 					       type:'GET',
-	 					       data: loveData,
-	 					       dataType:"json",
-	 					       success: function(data){
-	 					    		   console.log("좋아요 action 처리 성공" + data)
-	 					       }
-	 					    });
-						
-						
-					});
 					
 					
 					
 					var place = $(this).data("place");
-					console.log(place.place_id);
 					
 					markers.forEach(function(marker) {
 			            marker.setMap(null);
@@ -341,6 +324,45 @@
 					map.fitBounds(bounds);
 			        
 				})
+				
+				
+// 				좋아요 토글 ajax
+				$(document).on('click',".love-img",function(){
+					
+					var loveCount = $(this).next(".love-count");
+					
+					var loveFlag;
+					
+					// 감소
+					if($(this).attr("src")==loveonimg){ 	
+						$(this).attr("src",loveoffimg);
+						loveFlag=false;
+					}
+					
+					// 증가
+					else{	 
+						$(this).attr("src",loveonimg);
+						loveFlag=true
+					}
+					
+					
+					var loveData = {
+							pid: loveCount.data("place"),
+							loveFlag: loveFlag
+					};
+					
+ 					$.ajax({
+ 					       url: "place/loveAction",
+ 					       type:'GET',
+ 					       data: loveData,
+ 					       dataType:"json",
+ 					       success: function(data){
+ 					    	   loveCount.text(data);
+ 					       }
+ 					    });
+					
+					
+				});
 				
 				
 			});
