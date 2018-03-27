@@ -11,7 +11,7 @@
 		회원 제제 
 	</div>
 	<hr>
-	<form action="admin_memberlist_block" method="post">
+	<form action="memberlist_block" method="post">
 	<div class="row">
 		<table class="table">
 				<tr>

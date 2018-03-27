@@ -24,10 +24,10 @@ public class AdminMemberListBlockDaoImpl implements AdminMemberListBlockDao{
 	};
 	
 	@Override
-	public boolean admin_memberlist_block(Block block,int no) {
+	public boolean admin_memberlist_block(Block block,int no, int getmno) {
 		int result = -1;
-		String sql = "insert into member values(block_seq.nextval,?,?,?,?,?,sysdate)";
-		Object[] args = new Object[] { "", no, block.getType(), block.getReason(), block.getDur() };
+		String sql = "insert into member values(block_seq.nextval,?,?,?,?,?,sysdate,?)";
+		Object[] args = new Object[] { getmno, no, block.getType(), block.getReason(), block.getDur(),"" };
 		result = jdbcTemplate.update(sql, args);
 
 		return result > 0;
@@ -41,7 +41,7 @@ public class AdminMemberListBlockDaoImpl implements AdminMemberListBlockDao{
 
 	@Override
 	public Member getmno(int no) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql="select no from member where no=?";
+		return jdbcTemplate.query(sql, extractor,no);
 	}
 }

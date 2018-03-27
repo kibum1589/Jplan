@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.bean.Member;
 import jp.model.MemberDao;
+import jp.security.Sha256;
 
 
 @Controller
@@ -26,6 +27,8 @@ public class SignController {
 	
 	@RequestMapping(value="sign",method=RequestMethod.POST)
 	public String register(Member member) throws Exception {
+		//회원가입시 암호화 로 변환 하여 디비 저장 처리 
+		member.setPw(new Sha256().securi(member.getPw()));
 		boolean result = memberDao.sign(member);
 		
 		if(result) return "home";  //가입 성공했을때

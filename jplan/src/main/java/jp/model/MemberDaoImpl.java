@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 
 import jp.bean.Member;
+import jp.security.Sha256;
 
 @Controller
 @Repository("memberDao")
@@ -63,10 +64,11 @@ public class MemberDaoImpl implements MemberDao {
 		log.debug(member.getName());
 		log.debug(member.getPw());
 		log.debug(member.getEmail());
-		// log.debug(member.getNo());
+		//log.debug(member.getNo());
 		int result = -1;
 		String sql = "insert into member values(member_seq.nextval,?,?,?,'m',sysdate)";
 		Object[] args = new Object[] { member.getEmail(), member.getPw(), member.getName() };
+		member.setPw(new Sha256().securi(member.getPw()));
 		result = jdbcTemplate.update(sql, args);
 
 		return result > 0;

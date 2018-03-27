@@ -21,7 +21,7 @@ import jp.model.AdminMemberListBlockDao;
 
 @Controller
 public class AdminMemberListBlockController {
-
+	
 		@Autowired
 		private AdminMemberListBlockDao adminMemberListBlockDao;
 		
@@ -38,8 +38,10 @@ public class AdminMemberListBlockController {
 
 		@RequestMapping(value="/admin/memberlist_block", method=RequestMethod.POST)
 		public String admin_memberlist_block(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session,
-				String power) throws Exception{
+				String power, int no) throws Exception{
+			System.out.println("멤버제제 리스트 들어옴");
 			Logger log = LoggerFactory.getLogger(this.getClass());
+			log.debug("타입 리퀘스트={}",request);
 			String type=request.getParameter("type");
 			String reason=request.getParameter("reason");
 			int dur=Integer.parseInt(request.getParameter("dur"));
@@ -48,12 +50,19 @@ public class AdminMemberListBlockController {
 			Block block=new Block(type, reason, dur);
 			power=(String)session.getAttribute("power");
 			Member member=adminMemberListBlockDao.powergetno(power);
-			int no=member.getNo();
+			int powerno=member.getNo();
 			
-			log.debug("제제를 가하는 넘버{}",member.getNo());
+			
+			int mno=member.getNo();
+			//member 에서 회원의 번호를 가지고 와서 등록 시키기 위해 
+			int getmno = (int)session.getAttribute("no");
+			System.out.println("getmno="+getmno);
+			Member member1=adminMemberListBlockDao.getmno(mno);
+			
+			log.debug("제제를 가하는 넘버{}",member1.getNo());
 			log.debug("제제성공");
 			//입력받은 정보를 디비에 넣어주기 위해서 
-			model.addAttribute("admin_memberlist_block", adminMemberListBlockDao.admin_memberlist_block(block,no));
+			model.addAttribute("admin_memberlist_block", adminMemberListBlockDao.admin_memberlist_block(block,powerno,mno));
 			//받아온 정보를 바로 띄워 주기 위해서 
 			return "admin/memberlist";
 

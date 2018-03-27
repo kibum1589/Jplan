@@ -51,7 +51,7 @@ public class MemberdeleteController{
 			return "home";
 		}else {
 			log.debug("탈퇴실패");
-			return "/";
+			return "admin/member_delete";
 		}
 		
 		

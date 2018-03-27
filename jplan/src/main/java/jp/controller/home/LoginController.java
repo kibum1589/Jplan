@@ -1,5 +1,6 @@
 package jp.controller.home;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import jp.bean.Member;
 import jp.model.BlockDao;
 import jp.model.MemberDao;
+import jp.security.Sha256;
 
 @Controller
 public class LoginController {
@@ -25,13 +27,15 @@ public class LoginController {
 	private BlockDao blockDao;
 	
 	@RequestMapping("/login")
-	public String login() {
+	public String login(HttpServletRequest res) {
 		return "login";
 	}
 	
 	@RequestMapping("/logincheck")
     public ModelAndView logincheck(Member member ,HttpSession session) throws Exception {
     		System.out.println("pw");
+    		//디비에 저장되어 있는 암호화 를 로그인시 비교하여 로그인 접속처리
+    		member.setPw(new Sha256().securi(member.getPw()));
 			boolean result = memberDao.loginDAO(member);
 			
 			if(result){

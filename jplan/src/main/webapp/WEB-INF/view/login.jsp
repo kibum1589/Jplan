@@ -40,7 +40,7 @@
         
     </style>
     <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <script src="sha256.js"></script>
+<!--     <script src="sha256.js"></script> -->
     <script>
     $(document).ready(function(){
     	
