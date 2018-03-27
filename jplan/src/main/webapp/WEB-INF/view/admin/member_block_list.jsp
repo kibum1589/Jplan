@@ -10,7 +10,7 @@
 <table class="table table-responsive">
 	<thead>
 		<tr>
-			<th colspan="7">제제 당한 회원은 총 ${memberblock}명 입니다.</th>
+			<th colspan="8">제제 당한 회원은 총 ${memberblock}명 입니다.</th>
 		</tr>
 		<tr>
 			<th>이메일</th>
@@ -65,8 +65,9 @@
         <form action="" method="get">
             <!-- 선택창 -->
    <select name="sort" class="form-input-small">
-       <option value="type">제제종류</option>
-       <option value="reason" <c:if test="${pc.sort == 'reason'}">selected</c:if>>제제이유</option>
+       <option value="email">이메일</option>
+       <option value="reason">제제이유</option>
+       <option value="type" <c:if test="${pc.sort == 'type'}">selected</c:if>>제제종류</option>
    </select>
 
    <!-- 입력창 -->

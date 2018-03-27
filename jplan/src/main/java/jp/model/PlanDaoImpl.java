@@ -81,7 +81,7 @@ public class PlanDaoImpl implements PlanDao {
 		// 위의 번호로 insert 처리
 		sql = "insert into plan values(?, ?, ?, ?, ?, ?, ?, sysdate)";
 		Object[] args = 
-			{ no, plan.getMno(), plan.getTitle(), plan.getDur(), plan.getSday(), 0,0};
+			{ no, plan.getMno(), plan.getTitle(), plan.getDur(), plan.getSday(), plan.getLook(), plan.getLove()};
 		jdbcTemplate.update(sql, args);
 		return no;
 	}
@@ -89,11 +89,6 @@ public class PlanDaoImpl implements PlanDao {
 	//일정 검색 메소드
 	@Override
 	public List<Plan> find(String sort, String keyword, int sno, int eno) {
-//		if(sort.equals("title dur")) sort = "title||dur";
-//		if(sort.equals("title+dur")) sort = "title||dur";
-		if(sort.equals("title dur")) sort = "title||dur";
-		if(sort.equals("title+dur")) sort = "title||dur";
-		
 		String sql = "select * from ("
 				+ "select rownum rn, A.* from ("
 				+ "select * from plan where "+sort+" like '%'||?||'%' order by no desc"
@@ -111,9 +106,6 @@ public class PlanDaoImpl implements PlanDao {
 	}
 	@Override
 	public int getCount(String sort, String keyword) {
-		if(sort.equals("title dur")) sort = "title||dur";
-		if(sort.equals("title+dur")) sort = "title||dur";
-		
 		String sql = "select count(*) from plan "
 								+ "where "+sort+" like '%'||?||'%' "
 								+ "order by no desc";
