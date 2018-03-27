@@ -46,7 +46,7 @@ public class AdminMemberListBlockController {
 			String reason=request.getParameter("reason");
 			int dur=Integer.parseInt(request.getParameter("dur"));
 			/*String mguest=*/
-			//재재 회원의 정보를 파라미터 로 받아오는 코드 밑에는 편하게 생성하기 위해서 한번에 처리한다.
+			//제제 회원의 정보를 파라미터 로 받아오는 코드 밑에는 편하게 생성하기 위해서 한번에 처리한다.
 			Block block=new Block(type, reason, dur);
 			power=(String)session.getAttribute("power");
 			Member member=adminMemberListBlockDao.powergetno(power);

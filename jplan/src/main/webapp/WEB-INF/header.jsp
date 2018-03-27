@@ -18,6 +18,11 @@
             height: 350px;
             margin: 10px auto;
         }
+        
+        .home_btn{
+        cursor:pointer;
+        }
+        
     </style>
  <!-- 자바 스크립트 작성 공간 -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -86,10 +91,9 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="fa fa-twitter fa-3x left" href="${pageContext.request.contextPath}/home"></a>
+     <img src="${pageContext.request.contextPath}/res/icon/jplanicon.png" alt="" class="home_btn" onclick="location.href='${pageContext.request.contextPath}/home'">
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="${pageContext.request.contextPath}/home"></a></li>
       <li><a href="${pageContext.request.contextPath}/create">일정만들기</a></li>
       <c:if test="${email != null}">
       <li><a href="${pageContext.request.contextPath}/myplan">내일정보기</a></li>
