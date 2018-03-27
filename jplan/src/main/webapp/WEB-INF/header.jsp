@@ -21,6 +21,8 @@
         
         .home_btn{
         cursor:pointer;
+        width:65px;
+        height:65px;
         }
         
     </style>
