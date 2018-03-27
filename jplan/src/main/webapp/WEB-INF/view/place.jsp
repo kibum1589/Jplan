@@ -163,7 +163,7 @@
 							  	  '<div class="place-btn">'+
 							  	  '<img class="place-btn-src" src="'+replyimg+'">'+
 							  	  '<p class="reply-count">'+0+'</p>'+
-							  	  '<img class="place-btn-src" src="'+loveonimg+'">'+
+							  	  '<img class="place-btn-src love-img" src="'+loveonimg+'">'+
 							  	  '<p class="love-count">'+0+'</p>'+
 							  	  '</div>'+
 							  	  
@@ -203,31 +203,117 @@
 						$("#search-area").slideUp();
 				})
 				
-				// 댓글 입력 ajax 통신
+				// 리뷰 입력 ajax 통신
 				$(document).on('click','.place-reply-btn',function(){
+					
+					
 					var replyText = $(this).prev('input').val();
 					var placeId = $(this).prev('input').data("place");
+					
+					var reviewData={
+							content : replyText,
+							pid : placeId
+					};
+					
+					// 리뷰 작성 ajax
+					$.ajax({
+					       url: "place/writeReview",
+					       type:'GET',
+					       data: reviewData,
+					       dataType:"json",
+					       success: function(data){
+					    		   console.log("리뷰등록 성공" + data)
+					       }
+					    });
+					
 				});
+		
 				
-				// DB에 해당장소 등록
-// 				var checkFunc = 
-// 					$.ajax({
-// 						url: 'createPlace',
-// 						type: 'GET',
-// 						data:
-// 					})
+
 				
-				
-				// DB에 해당 장소 리뷰 등록
-				
-				// DB에 해당 장소 좋아요수 증가
 				
 				
 				// 클릭시 지도에 표시
 				var markers = [];
 				$(document).on('click','.place-list',function(){
 					
-					$(this).next('.place-datail').slideToggle(); 
+					var loveFlag;
+					
+					//love, count ajax 조회
+					var placeId={
+							pid: $(this).data("place").place_id,
+					}
+					
+					var thisList = $(this);
+					var getLCData= function(data){
+						thisList.next(".place-datail").find(".reply-count").text(data.list_review.length);
+						thisList.next(".place-datail").find(".love-count").text(data.love_count);
+						thisList.next(".place-datail").slideToggle();
+						
+						loveFlag=data.loveFlag;
+						
+						if(loveFlag){
+							thisList.next(".place-datail").find(".love-img").attr("src",loveonimg);
+						}
+						else{
+							thisList.next(".place-datail").find(".love-img").attr("src",loveoffimg);
+						}
+							
+					};
+					
+					
+					$.ajax({
+				       url: "place/checkLC",
+				       type:'GET',
+				       data: placeId,
+				       dataType:"json",
+				       
+				       success:function(data){
+				        getLCData(data);
+				       },
+				       error: function(err){
+				        console.log(err)}
+				        	
+				    });
+					
+//	 				좋아요 토글 ajax
+					
+					thisList.next(".place-datail").find(".love-img").on('click',function(){
+						
+						var loveCount = thisList.next(".place-datail").find(".love-count");
+						
+						// 감소
+						if(loveFlag){ 	
+							$(this).attr("src",loveoffimg)
+							loveCount.text(Number(loveCount.text()-1));
+						}
+						// 증가
+						else{	 
+							$(this).attr("src",loveonimg)
+							loveCount.text(Number(loveCount.text()+1));
+						}
+						
+						loveFlag=!loveFlag
+						
+						var loveData = {
+								pid: thisList.data("place").place_id,
+								loveFlag: loveFlag
+						}
+						
+	 					$.ajax({
+	 					       url: "place/loveAction",
+	 					       type:'GET',
+	 					       data: loveData,
+	 					       dataType:"json",
+	 					       success: function(data){
+	 					    		   console.log("좋아요 action 처리 성공" + data)
+	 					       }
+	 					    });
+						
+						
+					});
+					
+					
 					
 					var place = $(this).data("place");
 					console.log(place.place_id);

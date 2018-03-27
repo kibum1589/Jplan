@@ -1,5 +1,11 @@
 package jp.bean;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class Review {
 	private int no;
 	private String pid;
@@ -7,6 +13,17 @@ public class Review {
 	private String reg;
 	private int mno;
 	
+	public Review(ResultSet rs) throws SQLException {
+		setNo(rs.getInt("no"));
+		setPid(rs.getString("pid"));
+		setContent(rs.getString("content"));
+		setReg(rs.getString("reg"));
+		setMno(rs.getInt("mno"));
+	}
+	
+	public Review() {
+		super();
+	}
 	public int getNo() {
 		return no;
 	}
