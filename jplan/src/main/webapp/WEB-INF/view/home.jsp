@@ -64,7 +64,7 @@
         <a href="#">Top</a>
     </div> --%>
  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     
   <!-- 이미지 영역 : wrapper -->   
   <div class="container">
@@ -103,10 +103,7 @@
   </div>
 </div>
 
-<div class="row in-align-center font-title">
-        인기 여행지 Top6
-    </div>
-    
+
     <!-- 갤러리 영역 -->
 
 <div class="container">
