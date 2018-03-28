@@ -36,7 +36,7 @@ public class PlanController {
     @RequestMapping(value="/plan", method=RequestMethod.GET)
     public String plan(int no, Model model) throws Exception{
     	model.addAttribute("plan", planDao.select(no));
-//    	model.addAttribute("pldt", plandetailDao.pdlist());
+//    	model.addAttribute("plandetail", plandetailDao.pdlist());
         return "plan";
     }
    
