@@ -3,11 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/common.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
  
 <html>
-<div align="center">
-<table class="table table-responsive">
+<div class="container" align="center">
+<table class="table table-striped table-condensed">
 	<thead>
 		<tr>
 			<th colspan="8">제제 당한 회원은 총 ${memberblock}명 입니다.</th>
@@ -41,9 +46,9 @@
 </table>
 </div>
 
-<div class="row in-align-center">
+<div class="row in-align-center w3-bar">
         <c:if test="${pc.isPrev()}">
-			<a href="member_block_list?${pc.getQueryString(PageCalculator.PREV-1)}">[이전]</a>
+			<a class="w3-button" href="member_block_list?${pc.getQueryString(PageCalculator.PREV-1)}">&laquo;</a>
 		</c:if>
 		
 		<c:forEach var="n" begin="${pc.sb}" end="${pc.eb}">
@@ -52,13 +57,13 @@
 				<font size="4" color="red">${n}</font>
 			</c:when>
 			<c:otherwise>
-				<a href="member_block_list?${pc.getQueryString(n)}">${n}</a>
+				<a class="w3-button" href="member_block_list?${pc.getQueryString(n)}">${n}</a>
 			</c:otherwise>
 		</c:choose>
 		</c:forEach>
 		
 		<c:if test="${pc.isNext()}">
-			<a href="member_block_list?${pc.getQueryString(PageCalculator.NEXT-2)}">[다음]</a>
+			<a class="w3-button" href="member_block_list?${pc.getQueryString(PageCalculator.NEXT-2)}">&raquo;</a>
 		</c:if>
     </div>
     <div class="row in-align-center">
