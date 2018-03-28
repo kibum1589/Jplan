@@ -59,7 +59,7 @@ public class BlockDaoImpl implements BlockDao{
 		String sql ="select * from ("
 				+ "select rownum rn, A.* from ("
 				+ "select * from block "
-				+ "order by no asc"
+				+ "order by no desc"
 			+ ")A"
 		+ ") "
 		+ "where rn between ? and ?";

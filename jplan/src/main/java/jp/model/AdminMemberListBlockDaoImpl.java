@@ -24,20 +24,22 @@ public class AdminMemberListBlockDaoImpl implements AdminMemberListBlockDao{
 	};
 	
 	@Override
-	public boolean admin_memberlist_block(Block block,int no, int getmno) {
+	public boolean admin_memberlist_block(Block block,int no,String email) {
+		System.out.println(email);
 		int result = -1;
-		String sql = "insert into member values(block_seq.nextval,?,?,?,?,?,sysdate,?)";
-		Object[] args = new Object[] { getmno, no, block.getType(), block.getReason(), block.getDur(),"" };
+		String sql = "insert into block values(block_seq.nextval,?,1,?,?,?,sysdate,?)";
+		Object[] args = new Object[] { no, block.getType(), block.getReason(), block.getDur(),email};
 		result = jdbcTemplate.update(sql, args);
 
 		return result > 0;
 	}
 
-	@Override
+	//관리자가 중복일 경우에는 power로 구분하기 어려워서 이 메서드를 주석 처리 하였다.
+	/*@Override
 	public Member powergetno(String power) {
 		String sql="select no from member where power=?";
 		return jdbcTemplate.query(sql, extractor,power);
-	}
+	}*/
 
 	@Override
 	public Member getmno(int no) {

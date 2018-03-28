@@ -28,9 +28,17 @@ public class Block {
 			this.reason=reason;
 			this.dur=dur;
 		}
-
 		public Block() {};
-		
+		public Block(int no, int mno, int ano, String type, String reason, int dur, String reg, String email) {
+			this.no = no;
+			this.mno = mno;
+			this.ano = ano;
+			this.type = type;
+			this.reason = reason;
+			this.dur = dur;
+			this.reg = reg;
+			this.email = email;
+		}
 		public Block(ResultSet rs) throws SQLException {
 			setNo( rs.getInt("no"));
 			setMno( rs.getInt("mno"));

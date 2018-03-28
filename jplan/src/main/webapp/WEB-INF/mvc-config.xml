@@ -13,7 +13,9 @@
     <!-- Uncomment and your base-package here:
          <context:component-scan
             base-package="org.springframework.samples.web"/>  -->
-<!-- 인터셉터 설정 -->
+
+<!--로그인 체크 인터셉터 클래스  -->
+	<!-- 인터셉터 설정 -->
 	<mvc:interceptors>
 											<!--/** - 하위 전체  -->
 		<mvc:interceptor>
@@ -24,16 +26,20 @@
 			<mvc:mapping path="/admin/memberinfo"/>	
 			<mvc:mapping path="/admin/member_delete"/>
 			<mvc:mapping path="/admin/member_edit"/>
+			<!--임시방편? admin 인터셉터 작동이 안되서 모든 페이지를 로그인으로 처리-->
+				<mvc:mapping path="/admin/memberlist"/>
+				<mvc:mapping path="/admin/member_block_list"/>
+				<mvc:mapping path="/admin/memberlist_block_list"/>
 			<bean class="jp.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 			
-		<!--로그인 체크 인터셉터 클래스  -->
 		
 <!-- 추가로 여러개의 인터셉터 설정  -->
 				<!-- 관리자만 들어가야 하는 뷰 페이지   -->	
 			<mvc:interceptor>
 				<mvc:mapping path="/admin/memberlist"/>
-				<mvc:mapping path="/admin/member_block_list"/>	
+				<mvc:mapping path="/admin/member_block_list"/>
+				<mvc:mapping path="/admin/memberlist_block_list"/>	
 				<bean class="jp.interceptor.AdminInterceptor"></bean>
 			</mvc:interceptor>
 			

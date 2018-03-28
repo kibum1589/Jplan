@@ -28,7 +28,8 @@ public class MemberDeleteDaoImpl implements MemberDeleteDao{
 	//no만 가지고 block 으로 데이터를 옮기며 제제 처리 
 	@Override
 	public boolean MemberDelete(int no, String email) {
-		log.debug(("{}"),no);
+		System.out.println("탈퇴임플 들어옴");
+		log.debug(("탈퇴DAO임플 넘버={}"),no);
 		int result = -1;
 		String sql = "insert into block values(block_seq.nextval,?,?,?,?,?,sysdate,?)";
 		Object[] args= new Object[]{

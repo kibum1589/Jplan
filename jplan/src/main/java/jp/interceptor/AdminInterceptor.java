@@ -15,22 +15,22 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
 	System.out.println("admin인터셉터 들어가기 전");
 		boolean adminFlag = false;
 		System.out.println("adminFlag"+ adminFlag);
-		log.debug("{}",adminFlag);
+		log.debug("admin인터셉터={}",adminFlag);
+		String admin_power = (String) request.getSession().getAttribute("power");
 		try {
 			System.out.println("if시작전");
 			//관리자 의 이름이 admin인 경우
-			String admin_power = (String) request.getSession().getAttribute("power");
 			System.out.println("권한"+admin_power);
 			//if(request.getSession().getAttribute("name").equals("admin")){
 			if(admin_power.equals("a")){
+				adminFlag = true;
 					System.out.println("admin인터셉터 들오옴");
 					//response.sendRedirect(request.getContextPath()+"/admin/memberlist");
-					adminFlag = true;
 			}else {
 					//로그인페이지로 redirect
+				adminFlag = false;
 				System.out.println("admin 미인증!");
 					response.sendRedirect(request.getContextPath()+"/login");	
-					adminFlag = false;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

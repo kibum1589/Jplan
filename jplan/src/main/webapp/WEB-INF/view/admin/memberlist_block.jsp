@@ -19,6 +19,7 @@
 					<td>
 						<input type="text" name="type" required
 							class="form-input form-input-full">
+							
 					</td>
 				</tr>
 				
@@ -31,7 +32,8 @@
 				<tr>
 					<th>기간</th>
 					<td><input type="text" name="dur" required
-								class="form-input form-input-full"></td>
+								class="form-input form-input-full"><input type="hidden" name="no" value="${param.no}"><input type="hidden" name=email value="${param.email}"></td>
+								
 				</tr>
 				<tr>
 					<th colspan="2">

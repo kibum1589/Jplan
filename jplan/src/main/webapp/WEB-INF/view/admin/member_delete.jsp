@@ -48,10 +48,10 @@ document.querySelector("input[name=pw]").addEventListener("input", function(){
 
 
   $('.delete').on('click',function(){
-	event.preventDefault();
-	if(nck==0 && pwk==0) $('.member_delete').submit();			
+	//event.preventDefault();
+	if(nck==0) $('.member_delete').submit();			
 		});
-	});
+//	});
 };
 </script>
 

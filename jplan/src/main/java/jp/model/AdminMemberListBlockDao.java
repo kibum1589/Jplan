@@ -9,9 +9,10 @@ import jp.bean.Member;
 @Repository
 public interface AdminMemberListBlockDao {
 		//회원제제
-		boolean admin_memberlist_block(Block block,int no, int getmno)throws Exception;
+		boolean admin_memberlist_block(Block block,int no,String email)throws Exception;
 		//관리자 권한으로 관리자 자신의 번호를 가져오는 메서드
-		Member powergetno(String power);
+		//Member powergetno(String power);
 		//재재하려는 회원의 번호를 가져오는 메서드
 		Member getmno(int no);
 }
+	

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.bean.Member;
 import jp.model.MemberDao;
 import jp.model.MemberDeleteDao;
+import jp.security.Sha256;
 
 @Controller
 public class MemberdeleteController{
@@ -25,6 +26,7 @@ public class MemberdeleteController{
 	@Autowired
 	private MemberDao memberDao;
 	
+	@Autowired
 	//@RequestMapping(value="/admin/member_delete",method=RequestMethod.GET)
 	@RequestMapping("/admin/member_delete")
 
@@ -35,16 +37,24 @@ public class MemberdeleteController{
 		return "admin/member_delete";
 	}
 	@RequestMapping(value="/admin/member_delete",method=RequestMethod.POST)
-	public String MemberDelete(Model model, HttpSession session,String pw) {
+	public String MemberDelete(Model model, HttpSession session, Member member) {
 		int no = (Integer)session.getAttribute("no");
 		String email = (String) session.getAttribute("email");
 		
+		//회원탈퇴 를 위한 암호화
+		member.setPw(new Sha256().securi(member.getPw()));
+		//loginDAO 를 member 로 바꾸었기 때문에 세션의 이메일을 받기위해 set을 사용!
+		member.setEmail(email);
+		log.debug("회원탈퇴 넘버 = {}",no);
+		log.debug("회원탈퇴 이메일 = {}",email);
 		
-		
-		if(memberDao.loginDAO(email, pw)) {
+		if(memberDao.loginDAO(member)) {
+			log.debug("회원탈퇴 멤버 = {}",member);
+			log.debug("회원탈퇴 Dao = {}",memberDao);
 			log.debug("탈퇴성공");
 			boolean result = memberDeleteDao.MemberDelete(no, email);
-			log.debug("block = {}",result);
+			//result = memberDao.loginDAO(member);
+			log.debug("회원탈퇴 result = {}",result);
 			session.invalidate();
 			//session.removeAttribute("no");
 			
