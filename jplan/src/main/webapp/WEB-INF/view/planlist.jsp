@@ -11,7 +11,25 @@
     
 <jsp:include page="../header.jsp"></jsp:include>
 <style>
-	
+	#input-search{
+		display: inline-block;
+		width: 30%;
+	}
+	#select-search{
+		display: inline-block;
+		width: 10%;
+	}
+	/* 링크 스타일 */
+	a{
+    	text-decoration: none;
+    	color: black;
+	}
+	a:hover{  	
+    	color: lightgray;
+	}
+	#body{
+		background-color: lightgray;
+	}
 </style>
 <div class="container out-align-center">
 	
@@ -21,8 +39,8 @@
     <div class="media-left">
       <img src="http://placehold.it/100x100" class="media-object" style="width:120px">
     </div>
-    <div class="media-body">
-      <h2 class="media-heading">${plan.title}</h2>
+    <div class="media-body" id="body">
+      <h3 class="media-heading"><a href="${pageContext.request.contextPath}/plan?no=${plan.no}">${plan.title}</a></h3>
       <br>
       <h4>조회수 ${plan.look}</h4> 
       <h4>좋아요 ${plan.love}</h4> 
@@ -52,10 +70,10 @@
 			<a class="w3-button" href="planlist?${pc.getQueryString(PageCalculator.NEXT-2)}">&raquo;</a>
 		</c:if>
     </div>
-    <div class="row in-align-center dropdown">
-        <form action="" method="get">
+    <div class="row in-align-center form-group">
+        <form class="form-search" action="" method="get">
             <!-- 선택창 -->
-   <select name="sort" class="form-input-small">
+   <select name="sort" class="form-control" id="select-search">
        <option value="title">제목</option>
        <option value="love">좋아요수</option>
        <option value="dur" <c:if test="${pc.sort == 'dur'}">selected</c:if>>기간</option>
@@ -63,7 +81,7 @@
    
   
    <!-- 입력창 -->
-   <input class="form-control-small" name="keyword" type="search" placeholder="검색어" 
+   <input class="form-control" id="input-search" name="keyword" type="search" placeholder="검색어" 
        required value="${pc.keyword}">
 
    <!-- 전송버튼 -->
