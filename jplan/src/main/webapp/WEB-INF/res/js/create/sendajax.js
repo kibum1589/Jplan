@@ -6,6 +6,10 @@ $(document).ready(function(){
     			initMap($("#google-search").val())
     		})
     		
+    		$('#love-place').click(function(){
+				console.log("클릭!")
+			})
+    		
     		
     		// day 추가버튼
     		var dayCount = 1;
@@ -102,5 +106,7 @@ $(document).ready(function(){
 			$(document).on("click",".list-group-item",function(){
 				console.log("장소 id: "+$(this).data("place") + " 인덱스: "+$(this).index())
 			})
+			
+			
 			
     	})

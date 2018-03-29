@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jp.bean.Love;
 import jp.bean.Review;
 import jp.model.LoveDao;
+import jp.model.MemberDao;
 import jp.model.ReviewDao;
 
 @Controller
@@ -32,9 +33,41 @@ public class PlaceController {
 		
 		@Autowired
 		LoveDao loveDao;
+		
+		@Autowired
+		MemberDao memberDao;
 
 		@RequestMapping("place")
-		public String place() {
+		public String place(Model model) {
+			// 최근 리뷰리스트 반환
+			List<Review> reviewList =  reviewDao.getLatest();
+			
+			JSONArray jsonArr = new JSONArray();
+			for(Review r: reviewList) {
+				JSONObject jsonObj = new JSONObject();
+				jsonObj.put("pid", r.getPid());
+				jsonObj.put("content", r.getContent());
+				jsonObj.put("reg", r.getReg());
+				
+				String name = memberDao.getName(r.getMno());
+				jsonObj.put("name", name);
+				jsonArr.add(jsonObj);
+			}
+			
+			JSONObject jsonObj1 = new JSONObject();
+			jsonObj1.put("list", jsonArr);
+			model.addAttribute("reviewList",jsonObj1);
+			
+			// 인기장소 반환
+			List<String> hotPlaces =  loveDao.getHotPlace();
+			
+			JSONObject jsonObj2 = new JSONObject();
+			jsonObj2.put("list", hotPlaces);
+			
+			model.addAttribute("hotPlaces",jsonObj2 );
+			
+			
+			
 			return "place";
 		}
 		

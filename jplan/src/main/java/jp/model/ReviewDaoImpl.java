@@ -2,6 +2,7 @@ package jp.model;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -35,6 +36,18 @@ public class ReviewDaoImpl implements ReviewDao{
 		Object[] args = {review.getPid(), review.getContent(),review.getMno()};
 		jdbcTemplate.update(sql, args);
 	}
+
+	// 최근 리뷰 목록 가져오는 메소드 (최신 4개)
+	@Override
+	public List<Review> getLatest() {
+		String sql= "select * from (select * from review order by reg desc) where rownum <= 4";
+		List<Review> list = jdbcTemplate.query(sql, mapper);
+		
+		return list;
+	}
+	
+	
+	
 
 	
 }

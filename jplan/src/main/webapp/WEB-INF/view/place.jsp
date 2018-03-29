@@ -5,12 +5,12 @@
 <jsp:include page="../header.jsp"></jsp:include>
 
 <style>
-  		.reivew{
+  		.review{
             display: flex;
             flex-wrap: wrap;
         }
     
-    	.reivew > .impo{
+    	.review > .impo{
             flex-grow:1;
 /*            width:33.3333%;*/
             width:20%;
@@ -126,7 +126,66 @@
 		          		zoom: 7,
 		          		mapTypeId: 'roadmap'
 		        	});
+					
+					// 컨트롤러에서 보낸 인기장소 id 이용하여 정보 얻어오기
+					service = new google.maps.places.PlacesService(map);
+					var hotPlaces = JSON.parse('${hotPlaces}').list;
+					
+					hotPlaces.forEach(function(pid){
+						var request = {
+								placeId: pid
+						};
+						
+						service.getDetails(request, getDetailCallback);
+						
+						function getDetailCallback(place, status){
+							if (status == google.maps.places.PlacesServiceStatus.OK) {
+							    $('#hotPlaceArea').append(
+							    		'<div class="col-md-4">'+
+									      '<div class="thumbnail">'+
+									        '<a href="'+place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500})+'" target="_blank">'+
+									          '<img src="'+place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500})+'" class="img-thumbnail" alt="Lights" style="height:200">'+
+									          '<div class="caption">'+
+									            '<h4>'+place.name+'</h4>'+
+									          '</div>'+
+									        '</a>'+
+									      '</div>'+
+									    '</div>'
+							    	)
+							  };
+						};
+						
+					});
+					
+					// 최근 리뷰 정보 가져오기
+					var reviewList = JSON.parse('${reviewList}').list;
+					
+					reviewList.forEach(function(review){
+						var request = {
+								placeId: review.pid
+						};
+						
+						service.getDetails(request, getDetailCallback);
+						
+						function getDetailCallback(place, status){
+							if (status == google.maps.places.PlacesServiceStatus.OK) {
+							    $('.review').append(
+							    		'<div class="impo">'+
+							    		'<h2>'+place.name+'</h2>'+
+							    		'<h3>'+review.name+'</h3>'+
+							    		'<h4>'+review.content+'</h4>'+
+							    		'<br><br>'+
+							    		'<h5>'+review.reg+'</h5>'+
+									    '</div>'
+							    	)
+							  };
+						};
+						
+					});
+					
+					
 				
+					// 검색 창 연결
 					var input = document.getElementById('google-search');
 			        var searchBox = new google.maps.places.SearchBox(input);
 			        
@@ -364,11 +423,11 @@
 					
 				});
 				
-				
 			});
 			
-			
 </script> 
+
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf7PTKOt9r_f0tPtAWICf4xjvB0_qtw4E&libraries=places&callback=initAutocomplete&region=kr"async defer></script> 
 
 
@@ -396,67 +455,8 @@
     
     <div class="container-80 out-align-center">
   <h2>Best 6</h2>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
-          <div class="caption">
-            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" alt="Nature" style="width:100%">
-          <div class="caption">
-            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
-          <div class="caption">
-            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
-          <div class="caption">
-            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
-          <div class="caption">
-            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" alt="Lights" style="width:100%">
-          <div class="caption">
-            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-          </div>
-        </a>
-      </div>
-    </div>
+  <div class="row" id="hotPlaceArea">
+    
   </div>
 </div> 
     
@@ -465,11 +465,8 @@
         <div class="row in-align-center font-big">최근리뷰</div>
     </div>
     
-    <div class="reivew">
-        <div class="impo">리뷰정보</div>
-        <div class="impo">리뷰정보</div>
-        <div class="impo">리뷰정보</div>
-        <div class="impo">리뷰정보</div>
+    <div class="review">
+        
     </div>
     
     <div class="remote">

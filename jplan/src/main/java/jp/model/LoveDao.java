@@ -14,4 +14,8 @@ public interface LoveDao {
 	void decrease(Love love);
 	
 	List<Love> getLove(String pid);
+
+	List<String> getLovePlace(String mno);
+	
+	List<String> getHotPlace();
 }

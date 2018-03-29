@@ -14,4 +14,6 @@ public interface ReviewDao {
 	
 	// 리뷰 작성하기
 	void write(Review review);
+	
+	List<Review> getLatest();
 }

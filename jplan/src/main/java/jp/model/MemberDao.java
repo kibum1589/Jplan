@@ -24,4 +24,6 @@ public interface MemberDao {
 	//이메일 중복확인
 	boolean check(String email)throws Exception;
 	
+	String getName(int mno);
+	
 }

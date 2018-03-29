@@ -45,7 +45,53 @@
   	<!-- 맵관련 스크립트 -->
   	<script src="${pageContext.request.contextPath}/res/js/create/googlemap.js"></script>
     
+    <!-- ajax 관련 스크립트 -->
     <script src="${pageContext.request.contextPath}/res/js/create/sendajax.js"></script>
+    
+    <script>
+    
+    	var lovePlaceList;
+    	$(document).ready(function(){
+    		
+    		
+    		$('#love-place').click(function(){
+    			lovePlaceList = new Array();
+      		
+    			$.ajax({
+			        url: "create/lovePlace",
+			        type:'GET',
+			        dataType:"json",
+			   	})
+			   	.done( function(data){
+			   		
+			   		
+			   		service = new google.maps.places.PlacesService(map);
+			   		for(var i = 0; i< data.lovePlaces.length; i++){
+			   			
+			   			var request = {
+			        			  placeId: data.lovePlaces[i]
+			        	};
+			   			
+			        	
+			        	service.getDetails(request, function(place, status){
+			        		if (status == google.maps.places.PlacesServiceStatus.OK) {
+			        			lovePlaceList.push( $.extend(true,{}, place) );
+			        		 }
+			        	});
+
+			        	
+			   		}
+		        	
+		        });
+    			
+    			console.log(lovePlaceList);
+		   		createMarkers(lovePlaceList);
+    			
+    		})
+    		
+    	})
+	    
+    </script>
 	
 <!-- 상단 Bar -->
     <div class="container-fluid">
@@ -82,6 +128,7 @@
 			      <input type="text" class="form-control" id="google-search" placeholder="찾으려는 장소 입력">
 			      <span class="input-group-btn">
 			        <button class="btn btn-default" id="google-search-button" type="button">Search</button>
+			        <button class="btn btn-default" id="love-place"  type="button">좋아요한 장소목록</button>
 			      </span>
 			    </div><!-- /input-group -->
 			

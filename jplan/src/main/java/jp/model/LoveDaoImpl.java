@@ -18,6 +18,10 @@ public class LoveDaoImpl implements LoveDao{
 	RowMapper<Love> mapper = (rs,index)->{
 		return new Love(rs);
 	};
+	
+	RowMapper<String> stringMapper = (rs, index)->{
+		return new String(rs.getString("pid"));
+	};
 
 	// 좋아요 증가
 	@Override
@@ -35,7 +39,7 @@ public class LoveDaoImpl implements LoveDao{
 		jdbcTemplate.update(sql,args);
 	}
 
-	// 좋아요 목록 반환
+	// 해당 장소 좋아요 목록 반환
 	@Override
 	public List<Love> getLove(String pid) {
 		String sql = "select * from love where pid=? ";
@@ -44,7 +48,24 @@ public class LoveDaoImpl implements LoveDao{
 		List<Love> list = jdbcTemplate.query(sql, args ,mapper);
 		return list;
 	}
-
 	
+	// 좋아요누른 장소 id 목록 반환
+		@Override
+		public List<String> getLovePlace(String mno) {
+			String sql = "select pid from love where mno=? ";
+			Object[] args =  {mno};
+			
+			List<String> list = jdbcTemplate.query(sql, args ,stringMapper);
+			return list;
+		}
+
+	// 인기있는 상위 6개 장소 id 목록 반환
+	@Override
+	public List<String> getHotPlace() {
+		String sql = "select pid from (select pid from love group by pid order by count(*) asc) where rownum <=6";
+		List<String> list = jdbcTemplate.query(sql, stringMapper);
+		return list;
+	}
+
 
 }

@@ -18,7 +18,7 @@ import jp.security.Sha256;
 @Controller
 @Repository("memberDao")
 public class MemberDaoImpl implements MemberDao {
-	// @Autowired
+	
 	private Logger log = LoggerFactory.getLogger(getClass());
 
 	@Autowired
@@ -87,6 +87,14 @@ public class MemberDaoImpl implements MemberDao {
 		};
 		int count = jdbcTemplate.query("select count(email) from member where email=?", extractor, email);
 		return count > 0;
+	}
+
+	@Override
+	public String getName(int mno) {
+		String sql = "select name from member where no = ?";
+		Object[] args = {mno};
+		String name = jdbcTemplate.queryForObject(sql, args, String.class);
+		return name;
 	}
 
 }
