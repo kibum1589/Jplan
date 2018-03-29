@@ -16,26 +16,23 @@
 <div class="container" align="center">
 <table class="table table-striped table-condensed">
 	<thead>
+	
 		<tr>
-			<th colspan="7">총 ${member}명의 회원이 있습니다.</th>
+			<th>번호</th>
+			<th>주제</th>
+			<th>작성자</th>
+			<th>작성일</th>
 		</tr>
-		<tr>
-			<th>이메일</th>
-			<th>이름</th>
-			<th>등급</th>
-			<th>가입일</th>
-			<th>제제종류</th>
-		</tr>
+	
 	</thead> 
 	<tbody>
 		<!-- 실제 정보 출력 -->
-		<c:forEach items="${memberlist}" var="member">
+		<c:forEach items="${questionlist}" var="question">
 		<tr>
-			<th>${member.email}</th>
-			<th>${member.name}</th>
-			<th>${member.power}</th>
-			<th>${member.reg}</th>
-			<th><button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/memberlist_block?no=${member.no}&email=${member.email}'">회원제제</button></th>
+			<th>${question.no}</th>
+			<th>${question.title}</th>
+			<th></th>
+			<th>${question.reg}</th>
 		</tr>
 		</c:forEach>
 	</tbody>
@@ -63,22 +60,6 @@
 		</c:if>
     </div>
     
-     <div class="row in-align-center">
-        <form action="" method="get">
-            <!-- 선택창 -->
-   <select name="sort" class="form-input-small">
-       <option value="email">아이디</option>
-       <option value="power" <c:if test="${pc.sort == 'power'}">selected</c:if>>권한</option>
-   </select>
-
-   <!-- 입력창 -->
-   <input class="form-input-small" name="keyword" type="search" placeholder="검색어" 
-       required value="${pc.keyword}">
-
-   <!-- 전송버튼 -->
-            <input class="form-btn-small" type="submit" value="검색">
-        </form>
-    </div>
 </html>
 
 <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>

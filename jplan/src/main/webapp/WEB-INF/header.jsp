@@ -90,7 +90,7 @@
     </header> --%>
 
 
-<nav class="navbar-default">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
      <img src="${pageContext.request.contextPath}/res/icon/jplanicon.png" alt="" class="home_btn" onclick="location.href='${pageContext.request.contextPath}/home'">
@@ -102,6 +102,7 @@
       </c:if>
       <li><a href="${pageContext.request.contextPath}/planlist">커뮤니티</a></li>
       <li><a href="${pageContext.request.contextPath}/place">여행지</a></li>
+       <li><a href="${pageContext.request.contextPath}/questionlist">QnA</a></li>
       <c:if test="${email != null}">
       <li><a href="${pageContext.request.contextPath}/admin/memberinfo">나의정보보기</a></li>
       </c:if>
