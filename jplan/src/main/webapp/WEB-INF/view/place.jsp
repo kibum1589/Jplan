@@ -385,14 +385,80 @@
     </div>
     
     <!-- 갤러리 영역 -->
-    <div class="gallary">
+    <%-- <div class="gallary">
         <div class="image"><img src="${pageContext.request.contextPath}/res/img/1.jpg"></div>
         <div class="image"><img src="${pageContext.request.contextPath}/res/img/2.jpg"></div>
         <div class="image"><img src="${pageContext.request.contextPath}/res/img/3.jpg"></div>
         <div class="image"><img src="${pageContext.request.contextPath}/res/img/4.jpg"></div>
         <div class="image"><img src="${pageContext.request.contextPath}/res/img/5.jpg"></div>
         <div class="image"><img src="${pageContext.request.contextPath}/res/img/6.jpg"></div>
-    </div> 
+    </div>  --%>
+    
+    <div class="container-80 out-align-center">
+  <h2>Best 6</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
+          <div class="caption">
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" alt="Nature" style="width:100%">
+          <div class="caption">
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
+          <div class="caption">
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
+          <div class="caption">
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
+          <div class="caption">
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" alt="Lights" style="width:100%">
+          <div class="caption">
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div> 
     
     <!-- 이용방법 영역 -->
     <div class="container-100 out-align-center">

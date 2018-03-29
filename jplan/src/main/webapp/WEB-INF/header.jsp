@@ -90,7 +90,7 @@
     </header> --%>
 
 
-<nav class="navbar navbar-default">
+<nav class="navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
      <img src="${pageContext.request.contextPath}/res/icon/jplanicon.png" alt="" class="home_btn" onclick="location.href='${pageContext.request.contextPath}/home'">

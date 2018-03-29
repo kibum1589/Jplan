@@ -67,7 +67,7 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     
   <!-- 이미지 영역 : wrapper -->   
-  <div class="container">
+  <div class="container-100">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -79,15 +79,15 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="${pageContext.request.contextPath}/res/photo/1.jpg" alt="Los Angeles" style="width:100%;">
+        <img src="${pageContext.request.contextPath}/res/photo/1.jpg" alt="Los Angeles" style="width:100%; height:70%">
       </div>
 
       <div class="item">
-        <img src="${pageContext.request.contextPath}/res/photo/2.jpg" alt="Chicago" style="width:100%;">
+        <img src="${pageContext.request.contextPath}/res/photo/2.jpg" alt="Chicago" style="width:100%; height:70%">
       </div>
     
       <div class="item">
-        <img src="${pageContext.request.contextPath}/res/photo/3.jpg" alt="New york" style="width:100%;">
+        <img src="${pageContext.request.contextPath}/res/photo/3.jpg" alt="New york" style="width:100%; height:70%">
       </div>
     </div>
 
@@ -106,15 +106,15 @@
 
     <!-- 갤러리 영역 -->
 
-<div class="container">
+ <div class="container-80 out-align-center">
   <h2>Best 6</h2>
   <div class="row">
     <div class="col-md-4">
       <div class="thumbnail">
         <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" style="width:100%">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
           <div class="caption">
-            <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
           </div>
         </a>
       </div>
@@ -122,9 +122,9 @@
     <div class="col-md-4">
       <div class="thumbnail">
         <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" alt="Nature" style="width:100%">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" alt="Nature" style="width:100%">
           <div class="caption">
-            <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
           </div>
         </a>
       </div>
@@ -132,9 +132,9 @@
     <div class="col-md-4">
       <div class="thumbnail">
         <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" style="width:100%">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
           <div class="caption">
-            <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
           </div>
         </a>
       </div>
@@ -142,9 +142,9 @@
     <div class="col-md-4">
       <div class="thumbnail">
         <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" style="width:100%">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
           <div class="caption">
-            <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
           </div>
         </a>
       </div>
@@ -152,9 +152,9 @@
     <div class="col-md-4">
       <div class="thumbnail">
         <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" style="width:100%">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" style="width:100%">
           <div class="caption">
-            <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
           </div>
         </a>
       </div>
@@ -162,15 +162,16 @@
     <div class="col-md-4">
       <div class="thumbnail">
         <a href="${pageContext.request.contextPath}/res/img/1.jpg" target="_blank">
-          <img src="${pageContext.request.contextPath}/res/img/1.jpg" alt="Lights" style="width:100%">
+          <img src="${pageContext.request.contextPath}/res/img/1.jpg" class="img-thumbnail" alt="Lights" style="width:100%">
           <div class="caption">
-            <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
           </div>
         </a>
       </div>
     </div>
   </div>
-</div>
+</div> 
+
 
 
   <!-- 이용방법 영역 -->

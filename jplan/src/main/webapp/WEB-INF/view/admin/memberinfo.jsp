@@ -12,28 +12,60 @@
     <div class="row font-big in-align-center">
         나의 정보 보기
     </div>
-    <div class="row">
-           <table class="table">
-               <tbody>
-				<tr>
-					<th width="25%">이메일</th>
-					<td class="left">${memberInfoDao.email}</td>
-				</tr>
-				<tr>
-					<th>이름</th>
-					<td class="left">${memberInfoDao.name}</td>
-				</tr>
-				<tr>
-					<th>권한</th>
-					<td class="left">${memberInfoDao.power}</td>
-				</tr>
-				<tr>
-					<th>가입일</th>
-					<td class="left">${memberInfoDao.reg}</td>
-				</tr>
-			</tbody>
-		</table>
-    </div>
+    
+    <%--<div class="container">
+  		<h2>My information</h2>                 
+  	<table class="table table-striped">
+    	<thead>
+      	<tr>
+        	<th>e-mail</th>
+        	<th>${memberInfoDao.email}</th>
+      	</tr>
+    	</thead>
+    	<tbody>
+      		<tr>
+        		<td>이름</td>
+        		<td>${memberInfoDao.name}</td>
+      		</tr>
+      		<tr>
+        		<td>권한</td>
+        		<td>${memberInfoDao.power}</td>
+      		</tr>
+      		<tr>
+        		<td>가입일</td>
+        		<td>${memberInfoDao.reg}</td>
+      		</tr>
+    	</tbody>
+  	</table>
+	</div> --%>
+	<div class="container">
+  <h2>Information</h2>          
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>이메일</th>
+        <th>${memberInfoDao.email}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>이름</td>
+        <td>${memberInfoDao.name}</td>
+      </tr>
+      <tr>
+        <td>권한</td>
+        <td>${memberInfoDao.power}</td>
+      </tr>
+      <tr>
+        <td>가입일</td>
+        <td>${memberInfoDao.reg}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+	
+	 
+	
    <div class="row font-big in-align-center">
 <button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/member_edit'">정보수정</button>
 	</div>
@@ -43,5 +75,5 @@
 
 <div class="empty-row"></div>
 <div class="empty-row"></div>
-
+</div>
 <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
