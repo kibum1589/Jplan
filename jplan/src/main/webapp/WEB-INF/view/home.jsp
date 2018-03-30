@@ -187,9 +187,9 @@
         <div class="row">이용하기</div>
     </div>
     <div class="remote">
-        <a href="#">Top</a>
+        <a href="#"><img src="${pageContext.request.contextPath}/res/icon/jplane.png"
+			alt="" class="home_btn"></a>
     </div>
-
     
     
     <jsp:include page="../footer.jsp"></jsp:include>

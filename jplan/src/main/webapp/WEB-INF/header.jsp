@@ -1,20 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
-    <title>JPlan 홈</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/common.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/swiper.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/sign.css">
+<title>JPlan 홈</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/res/css/common.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/res/css/swiper.css">
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/res/css/sign.css">
+	<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/res/css/header.css">
 </head>
 <style>
-        /* swiper-container의 크기를 조절하여 위치 설정 */
-        .swiper-container{
-            width: 100%;
+/* swiper-container의 크기를 조절하여 위치 설정 */
+/*    .swiper-container{
+            width: 500%;
             height: 350px;
             margin: 10px auto;
         }
@@ -23,40 +30,42 @@
         cursor:pointer;
         width:65px;
         height:65px;
-        }
-        
-    </style>
- <!-- 자바 스크립트 작성 공간 -->
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <!-- 회원가입 관련 -->
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
- 	<%-- <script src="${pageContext.request.contextPath}/res/js/sign/sign.js"></script> --%>
-    <%-- <script src="${pageContext.request.contextPath}/res/js/sign/sha256.js"></script> --%>
-   
-    
-    <script>
-  
-    //Top 리모컨 함수 
-    $(document).scroll(function(){
+        }  */
 
-       var con = $(".remote");
-       var position = $(window).scrollTop();
 
-       if(position > 250){ con.fadeIn(500); }
-       else if(position < 250){ con.fadeOut(500); }
+</style>
 
-    });
+<!-- 자바 스크립트 작성 공간 -->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- 회원가입 관련 -->
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/res/js/sign/sign.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/res/js/sign/sha256.js"></script> --%>
 
-//    $(".remote").click(function(){
-//        $("html, body").animate({scrollTop: 0}, 1000);
-//
-//    });
 
-   
-    </script>
+<script>
+	//Top 리모컨 함수 
+	$(document).scroll(function() {
 
-    <!-- 상단(메뉴) 영역 -->
-    <%-- <header class="menu">
+		var con = $(".remote");
+		var position = $(window).scrollTop();
+
+		if (position > 250) {
+			con.fadeIn(500);
+		} else if (position < 250) {
+			con.fadeOut(500);
+		}
+
+	});
+
+	//    $(".remote").click(function(){
+	//        $("html, body").animate({scrollTop: 0}, 1000);
+	//
+	//    });
+</script>
+
+<!-- 상단(메뉴) 영역 -->
+<%-- <header class="menu">
         <input type="checkbox" id="hamberg">
         <label for="hamberg">&equiv;</label>
         <i class="fa fa-twitter fa-3x left" onclick="location.href='${pageContext.request.contextPath}/home'"></i>
@@ -90,40 +99,57 @@
     </header> --%>
 
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-     <img src="${pageContext.request.contextPath}/res/icon/jplanicon.png" alt="" class="home_btn" onclick="location.href='${pageContext.request.contextPath}/home'">
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="${pageContext.request.contextPath}/create">일정만들기</a></li>
-      <c:if test="${email != null}">
-      <li><a href="${pageContext.request.contextPath}/myplan">내일정보기</a></li>
-      </c:if>
-      <li><a href="${pageContext.request.contextPath}/planlist">커뮤니티</a></li>
-      <li><a href="${pageContext.request.contextPath}/place">여행지</a></li>
-       <li><a href="${pageContext.request.contextPath}/questionlist">QnA</a></li>
-      <c:if test="${email != null}">
-      <li><a href="${pageContext.request.contextPath}/admin/memberinfo">나의정보보기</a></li>
-      </c:if>
-      <c:if test="${sessionScope.no == 1}">
-      <li><a href="${pageContext.request.contextPath}/admin/memberlist">회원목록보기</a></li>
-      </c:if>
-        <c:if test="${sessionScope.no == 1}">
-      <li><a href="${pageContext.request.contextPath}/admin/member_block_list">제제목록보기</a></li>
-      </c:if>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-    
-      <li><a href="${pageContext.request.contextPath}/sign"><span class="glyphicon glyphicon-user"></span>회원가입</a></li>
-      <c:choose>
-    		<c:when test="${sessionScope.email == null}">
-      <li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
-      </c:when>
-    		<c:otherwise>
-            <li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-in"></span>${sessionScope.name}님이 로그인중니다. 로그아웃</a></li>
-            </c:otherwise>
+<div class="section header_size">
+
+	<ul class="menu">
+		<img src="${pageContext.request.contextPath}/res/icon/jplanicon.png"
+			alt="" class="home_btn"
+			onclick="location.href='${pageContext.request.contextPath}/home'">
+
+		<li class="menu__item"><a
+			href="${pageContext.request.contextPath}/create"
+			class="menu__link hover5"><span class="menu__label hover5__label">일정만들기</span></a></li>
+		<c:if test="${email != null}">
+			<li class="menu__item"><a
+				href="${pageContext.request.contextPath}/myplan"
+				class="menu__link hover5"><span
+					class="menu__label hover5__label">내일정보기</span></a></li>
+		</c:if>
+		<li class="menu__item"><a class="menu__link hover5 hover_color"
+			href="${pageContext.request.contextPath}/planlist"
+			class="menu__link hover5"><span class="menu__label hover5__label">커뮤니티</span></a></li>
+		<li class="menu__item"><a
+			href="${pageContext.request.contextPath}/place"
+			class="menu__link hover5"><span class="menu__label hover5__label">여행지</span></a></li>
+		<c:if test="${email != null}">
+			<li class="menu__item"><a class="menu__link hover5 hover_color"
+				href="${pageContext.request.contextPath}/admin/memberinfo"><span
+					class="menu__label hover5__label">나의정보보기</span></a></li>
+		</c:if>
+		<c:if test="${sessionScope.no == 1}">
+			<li class="menu__item"><a class="menu__link hover5 hover_color"
+				href="${pageContext.request.contextPath}/admin/memberlist"><span
+					class="menu__label hover5__label">회원목록보기</span></a></li>
+		</c:if>
+		<c:if test="${sessionScope.no == 1}">
+			<li class="menu__item"><a class="menu__link hover5 hover_color"
+				href="${pageContext.request.contextPath}/admin/member_block_list"><span
+					class="menu__label hover5__label">제제목록보기</span></a></li>
+		</c:if>
+
+		<li class="menu__item"><a class="menu__link hover5 hover_color"
+			href="${pageContext.request.contextPath}/sign"><span
+				class="menu__label hover5__label">회원가입</span></a></li>
+		<c:choose>
+			<c:when test="${sessionScope.email == null}">
+				<li class="menu__item right"><a class="menu__link hover5 hover_color" href="${pageContext.request.contextPath}/login"><span
+						class="menu__label hover5__label">로그인</span></a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="right"><a class="menu__link hover5 hover_color" href="${pageContext.request.contextPath}/logout"><span
+						class="glyphicon glyphicon-log-in"></span>${sessionScope.name}님이
+						로그인중니다. 로그아웃</a></li>
+			</c:otherwise>
 		</c:choose>
-    </ul>
-  </div>
-</nav>
+	</ul>
+</div>
