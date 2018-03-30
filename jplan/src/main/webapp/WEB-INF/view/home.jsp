@@ -79,15 +79,15 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="${pageContext.request.contextPath}/res/photo/1.jpg" alt="Los Angeles" style="width:100%; height:70%">
+        <img src="${pageContext.request.contextPath}/res/img/1.jpg" alt="Los Angeles" style="width:100%; height:70%">
       </div>
 
       <div class="item">
-        <img src="${pageContext.request.contextPath}/res/photo/2.jpg" alt="Chicago" style="width:100%; height:70%">
+        <img src="${pageContext.request.contextPath}/res/img/2.jpg" alt="Chicago" style="width:100%; height:70%">
       </div>
     
       <div class="item">
-        <img src="${pageContext.request.contextPath}/res/photo/3.jpg" alt="New york" style="width:100%; height:70%">
+        <img src="${pageContext.request.contextPath}/res/img/3.jpg" alt="New york" style="width:100%; height:70%">
       </div>
     </div>
 

@@ -102,10 +102,11 @@
 <div class="section header_size">
 
 	<ul class="menu">
-		<img src="${pageContext.request.contextPath}/res/icon/jplanicon.png"
+	<li>
+		<img src="${pageContext.request.contextPath}/res/icon/jplan.png"
 			alt="" class="home_btn"
 			onclick="location.href='${pageContext.request.contextPath}/home'">
-
+	</li>
 		<li class="menu__item"><a
 			href="${pageContext.request.contextPath}/create"
 			class="menu__link hover5"><span class="menu__label hover5__label">일정만들기</span></a></li>
@@ -115,38 +116,38 @@
 				class="menu__link hover5"><span
 					class="menu__label hover5__label">내일정보기</span></a></li>
 		</c:if>
-		<li class="menu__item"><a class="menu__link hover5 hover_color"
+		<li class="menu__item"><a class="menu__link hover5 "
 			href="${pageContext.request.contextPath}/planlist"
 			class="menu__link hover5"><span class="menu__label hover5__label">커뮤니티</span></a></li>
 		<li class="menu__item"><a
 			href="${pageContext.request.contextPath}/place"
 			class="menu__link hover5"><span class="menu__label hover5__label">여행지</span></a></li>
 		<c:if test="${email != null}">
-			<li class="menu__item"><a class="menu__link hover5 hover_color"
+			<li class="menu__item"><a class="menu__link hover5 "
 				href="${pageContext.request.contextPath}/admin/memberinfo"><span
 					class="menu__label hover5__label">나의정보보기</span></a></li>
 		</c:if>
 		<c:if test="${sessionScope.no == 1}">
-			<li class="menu__item"><a class="menu__link hover5 hover_color"
+			<li class="menu__item"><a class="menu__link hover5 "
 				href="${pageContext.request.contextPath}/admin/memberlist"><span
 					class="menu__label hover5__label">회원목록보기</span></a></li>
 		</c:if>
 		<c:if test="${sessionScope.no == 1}">
-			<li class="menu__item"><a class="menu__link hover5 hover_color"
+			<li class="menu__item"><a class="menu__link hover5 "
 				href="${pageContext.request.contextPath}/admin/member_block_list"><span
 					class="menu__label hover5__label">제제목록보기</span></a></li>
 		</c:if>
 
-		<li class="menu__item"><a class="menu__link hover5 hover_color"
+		<li class="menu__item"><a class="menu__link hover5 "
 			href="${pageContext.request.contextPath}/sign"><span
 				class="menu__label hover5__label">회원가입</span></a></li>
 		<c:choose>
 			<c:when test="${sessionScope.email == null}">
-				<li class="menu__item right"><a class="menu__link hover5 hover_color" href="${pageContext.request.contextPath}/login"><span
+				<li class="menu__item right"><a class="menu__link hover5 " href="${pageContext.request.contextPath}/login"><span
 						class="menu__label hover5__label">로그인</span></a></li>
 			</c:when>
 			<c:otherwise>
-				<li class="right"><a class="menu__link hover5 hover_color" href="${pageContext.request.contextPath}/logout"><span
+				<li class="right"><a class="menu__link hover5 " href="${pageContext.request.contextPath}/logout"><span
 						class="glyphicon glyphicon-log-in"></span>${sessionScope.name}님이
 						로그인중니다. 로그아웃</a></li>
 			</c:otherwise>
