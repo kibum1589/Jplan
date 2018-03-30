@@ -6,10 +6,6 @@ $(document).ready(function(){
     			initMap($("#google-search").val())
     		})
     		
-    		$('#love-place').click(function(){
-				console.log("클릭!")
-			})
-    		
     		
     		// day 추가버튼
     		var dayCount = 1;
@@ -92,7 +88,7 @@ $(document).ready(function(){
 				}
 				
 				
-// 				진행
+		// 	진행
 				planCreate
 				.done(function(pno){
 					detailArrCreate(pno);
@@ -101,12 +97,53 @@ $(document).ready(function(){
 				
 			})
 			
+		
+		// 좋아요 장소 클릭시
+		$('#love-place').click(function(){
+			$("#sortable2 *").remove()
 			
-			// 테스트용 (데이터 가져오기 확인)
-			$(document).on("click",".list-group-item",function(){
-				console.log("장소 id: "+$(this).data("place") + " 인덱스: "+$(this).index())
-			})
+			 $.ajax({
+			        url: "create/lovePlace",
+			        type:'GET',
+			        dataType:"json",
+			   	})
+			   	.then( function(data) {
+			   		
+			   		var lovePlaceList = new Array();
+			   		
+			   		service = new google.maps.places.PlacesService(map);
+		   			
+			   		// 가져온 장소_id 로 반복문
+			   		for(var i = 0; i < data.lovePlaces.length; i++) {
+			   			
+			   			// 파라미터 생성
+			   			var request = {
+			   					placeId: data.lovePlaces[i]
+			        	};
+			   			
+			   			var count = 0;
+			   			
+			   			// 구글에 장소 세부정보 요청
+			        	service.getDetails(request, function(place, status){
+			        		
+			        		
+			        		if (status == google.maps.places.PlacesServiceStatus.OK) {
+			        			lovePlaceList.push( place );
+			        			count++;
+			        		 }
+			        		
+			        		if(count==data.lovePlaces.length){
+			        			createMarkers(lovePlaceList);
+			        		}
+			        		
+			        		
+			        	});
+
+			   		}
+			   		
+			   	})
 			
+		})
 			
 			
     	})

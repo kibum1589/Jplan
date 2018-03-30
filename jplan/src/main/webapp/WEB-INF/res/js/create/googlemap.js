@@ -28,7 +28,7 @@ function initMap(inputText) {
          query: queryText
        }, processResults);
   }
- 
+  
 }
 
 // 장소 검색 서비스에 쓰일 콜백 함수 선언
@@ -38,6 +38,7 @@ function processResults(results, status) {
   } else {
   	
     // 마커 표시(넘어오는 results 그대로 넘겨주면 다수의 마커 생성)
+	console.log(results);
   	createMarkers(results);
    	
   }
@@ -75,7 +76,6 @@ function createMarkers(places) {
       animation: google.maps.Animation.DROP
     });
     
-    console.log(place.formatted_address)
       // place 목록에 html형식으로 장소이름 찍어주기
     placesList.innerHTML += 
   	  
