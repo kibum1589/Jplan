@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.btn {
+.ftbtn {
   display: inline-block;
   background: transparent;
   text-transform: uppercase;
@@ -21,7 +21,7 @@
   border: 1px solid rgba(223,190,106,0.3);
 }
 
-.btn:hover {
+.ftbtn:hover {
   color: #fff;
   border: 1px solid rgba(223,190,106,0);
   color: $white;

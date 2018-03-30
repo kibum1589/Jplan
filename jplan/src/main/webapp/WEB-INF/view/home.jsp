@@ -108,14 +108,13 @@
 
 
     <!-- 갤러리 영역 -->
-<section class="main-content">
+<section class="main-content ">
  <div class="container-80 out-align-center">
   <h2>Best 6</h2>
   <div class="row">
   
     <div class="col-md-4 card card--white">
     <h2 class="card__title">New York City</h2>
-     <div class="thumbnail">
       <div class="card__image-cover"></div>      
       <img class="card__image" 
            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/nyc.png" 
@@ -127,12 +126,10 @@
         <p>Coordinates: 40°42′46″N 74°00′21″W</p>
         <p>Time Zone: Eastern (EST) (UTC-5)</p>
       </section> 
-      </div>
     </div>
     
     <div class="col-md-4 card card--white">
     <h2 class="card__title">London</h2>
-      <div class="thumbnail">
         <div class="card__image-cover"></div>
       	<img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/london.png" alt="London">
       
@@ -142,12 +139,10 @@
         <p>Coordinates: 51°30′26″N 0°7′39″W</p>
         <p>Time Zone: GMT (UTC)</p>
       </section>
-      </div>
     </div>
     
     <div class="col-md-4 card card--white">
     <h2 class="card__title">Paris</h2>
-      <div class="thumbnail">
          <div class="card__image-cover"></div>      
       <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/paris.png" alt="Paris">
       
@@ -157,12 +152,10 @@
         <p>Coordinates: 48°51′24″N 2°21′03″E</p>
         <p>Time Zone: CET (UTC+1)</p>
       </section>
-      </div>
     </div>
     
     <div class="col-md-4 card card--white">
     <h2 class="card__title">Singapore</h2>
-      <div class="thumbnail">
        <div class="card__image-cover"></div>
       <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/singapore.png" alt="Singapore">
       
@@ -172,12 +165,10 @@
         <p>Coordinates: 1°17′N 103°50′E</p>
         <p>Time Zone: SST (UTC+8)</p>
       </section> 
-      </div>
     </div>
     
     <div class="col-md-4 card card--white">
     <h2 class="card__title">광화문</h2>
-      <div class="thumbnail">
         <div class="card__image-cover"></div>
      	 <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/singapore.png" alt="Singapore">
       
@@ -187,12 +178,10 @@
         <p>Coordinates: 1°17′N 103°50′E</p>
         <p>Time Zone: SST (UTC+8)</p>
       </section> 
-      </div>
     </div>
     
     <div class="col-md-4 card card--white">
     <h2 class="card__title">청계천</h2>
-      <div class="thumbnail">
         <div class="card__image-cover"></div>
       <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/singapore.png" alt="Singapore">
       
@@ -202,11 +191,11 @@
         <p>Coordinates: 1°17′N 103°50′E</p>
         <p>Time Zone: SST (UTC+8)</p>
       </section> 
-      </div>
     </div>
     
   </div>
-  </section>
+ </div>
+</section>
 
 
   <!-- 이용방법 영역 -->

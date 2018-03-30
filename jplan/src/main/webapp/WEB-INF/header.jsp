@@ -138,7 +138,7 @@
 					class="menu__label hover5__label">제제목록보기</span></a></li>
 		</c:if>
 
-		<li class="menu__item"><a class="menu__link hover5 "
+		<li class="menu__item right"><a class="menu__link hover5 "
 			href="${pageContext.request.contextPath}/sign"><span
 				class="menu__label hover5__label">회원가입</span></a></li>
 		<c:choose>

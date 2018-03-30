@@ -137,6 +137,7 @@ body {
   text-align: center;
   width: 100%;
   font-family: Segoe UI, Helvetica, Arial;
+  font-size: 15;
   box-sizing: border-box;
   padding: 3em 1.6em;
   -webkit-transform: translateY(100%);

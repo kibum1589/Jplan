@@ -1,11 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
-
-<script src="https://code.jquery.com/jquery-latest.js"></script>
-
-<script>
 //스페이스 방지 
 function space_x() {
 	document.querySelector(".row");
@@ -65,7 +57,7 @@ function space_x() {
          
 	       $('.edit').on('click',function(){
 			event.preventDefault();
-			if(nck==0) $('.edit_form').submit();			
+			if(nck==0) $('.contact-form').submit();			
 		});
 };
 
@@ -98,47 +90,5 @@ $(document).ready(function(){
 		}, 300);
 	  }
 	})
+});
 	
-</script>
-<!--
-
-//-->
-<div class="container-80 out-align-center">
-	<div class="row font-big in-align-center">
-		정보 수정
-	</div>
-	<hr>
-	<form class="edit_form" action="member_edit" method="post">
-	
-			<div id="section">
-				<section class="contact-wrap">
-				  <form action="" class="contact-form">
-					
-					<div class="col-sm-6">
-					  <div class="input-block">
-						<label for="">First Name</label>
-						<input type="text" class="form-control">
-					  </div>
-					</div>
-					
-					<div class="col-sm-6">
-					  <div class="input-block">
-						<label for="">Last Name</label>
-						<input type="text" class="form-control">
-					  </div>
-					</div>
-					
-
-					
-					<div class="col-sm-12">
-					  <button class="square-button">Send</button>
-					</div>
-					
-				  </form>
-				</section>
-			</div>
-			
-	</form>
-</div>
-
-<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
