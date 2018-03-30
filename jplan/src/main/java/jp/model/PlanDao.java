@@ -14,6 +14,8 @@ public interface PlanDao {
     int create(Plan plan) throws Exception;
     // 일정 상세보기
     Plan select(int no) throws Exception;
+    // mno로 일정 리스트 가져오기
+    List<Plan> getPlan(int mno);
     // 일정 수정
 //    public void edit(Plan plan) throws Exception;
     // 일정 삭제

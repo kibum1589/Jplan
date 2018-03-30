@@ -45,6 +45,14 @@ public class PlanDaoImpl implements PlanDao {
 		String sql = "select * from plan where no=?";
 		return jdbcTemplate.query(sql, extractor, no);
 	}
+	
+	// mno로 일정 조회 메소드
+	@Override
+	public List<Plan> getPlan(int mno) {
+		String sql = "select * from plan where mno = ?";
+		Object[] args = {mno};
+		return jdbcTemplate.query(sql, args,mapper);
+	}
 
 	//일정 리스트 메소드
 	public List<Plan> list(int sno, int eno) throws Exception{
