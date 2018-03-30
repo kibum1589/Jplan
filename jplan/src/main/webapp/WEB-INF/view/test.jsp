@@ -8,9 +8,6 @@
     
 <jsp:include page="../header.jsp"></jsp:include>
   
-  	<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/css/home.css">
-  
    <%-- <div class="row out-align-center">
    <div class="swiper-container">
         
@@ -108,33 +105,28 @@
 
 
     <!-- 갤러리 영역 -->
-<section class="main-content">
- <div class="container-80 out-align-center">
-  <h2>Best 6</h2>
-  <div class="row">
-  
-    <div class="col-md-4 card card--white">
-    <h2 class="card__title">New York City</h2>
-     <div class="thumbnail">
+ <main>
+  <section class="main-content">
+    
+    <div class="card card--white">
+      <h2 class="card__title">New York City</h2>
       <div class="card__image-cover"></div>      
       <img class="card__image" 
            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/nyc.png" 
            alt="New York City">
-           
+      
       <section class="card__copy">
         <p>Population (2105): 8,550,405</p>
         <p>Year Founded: 1624</p>
         <p>Coordinates: 40°42′46″N 74°00′21″W</p>
         <p>Time Zone: Eastern (EST) (UTC-5)</p>
-      </section> 
-      </div>
+      </section>      
     </div>
-    
-    <div class="col-md-4 card card--white">
-    <h2 class="card__title">London</h2>
-      <div class="thumbnail">
-        <div class="card__image-cover"></div>
-      	<img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/london.png" alt="London">
+
+    <div class="card card--white">
+      <h2 class="card__title">London</h2>
+      <div class="card__image-cover"></div>
+      <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/london.png" alt="London">
       
       <section class="card__copy">
         <p>Population (2105): 8,673,713</p>
@@ -142,13 +134,11 @@
         <p>Coordinates: 51°30′26″N 0°7′39″W</p>
         <p>Time Zone: GMT (UTC)</p>
       </section>
-      </div>
     </div>
-    
-    <div class="col-md-4 card card--white">
-    <h2 class="card__title">Paris</h2>
-      <div class="thumbnail">
-         <div class="card__image-cover"></div>      
+
+    <div class="card card--white">
+      <h2 class="card__title">Paris</h2>
+      <div class="card__image-cover"></div>      
       <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/paris.png" alt="Paris">
       
       <section class="card__copy">
@@ -157,13 +147,11 @@
         <p>Coordinates: 48°51′24″N 2°21′03″E</p>
         <p>Time Zone: CET (UTC+1)</p>
       </section>
-      </div>
     </div>
-    
-    <div class="col-md-4 card card--white">
-    <h2 class="card__title">Singapore</h2>
-      <div class="thumbnail">
-       <div class="card__image-cover"></div>
+
+    <div class="card card--white">
+      <h2 class="card__title">Singapore</h2>
+      <div class="card__image-cover"></div>
       <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/singapore.png" alt="Singapore">
       
       <section class="card__copy">
@@ -171,42 +159,10 @@
         <p>Year Founded: 1819</p>
         <p>Coordinates: 1°17′N 103°50′E</p>
         <p>Time Zone: SST (UTC+8)</p>
-      </section> 
-      </div>
+      </section>      
     </div>
-    
-    <div class="col-md-4 card card--white">
-    <h2 class="card__title">광화문</h2>
-      <div class="thumbnail">
-        <div class="card__image-cover"></div>
-     	 <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/singapore.png" alt="Singapore">
-      
-      <section class="card__copy">
-        <p>Population (2105): 5,535,000</p>
-        <p>Year Founded: 1819</p>
-        <p>Coordinates: 1°17′N 103°50′E</p>
-        <p>Time Zone: SST (UTC+8)</p>
-      </section> 
-      </div>
-    </div>
-    
-    <div class="col-md-4 card card--white">
-    <h2 class="card__title">청계천</h2>
-      <div class="thumbnail">
-        <div class="card__image-cover"></div>
-      <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/singapore.png" alt="Singapore">
-      
-      <section class="card__copy">
-        <p>Population (2105): 5,535,000</p>
-        <p>Year Founded: 1819</p>
-        <p>Coordinates: 1°17′N 103°50′E</p>
-        <p>Time Zone: SST (UTC+8)</p>
-      </section> 
-      </div>
-    </div>
-    
-  </div>
   </section>
+</main>
 
 
   <!-- 이용방법 영역 -->
