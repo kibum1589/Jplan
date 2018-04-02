@@ -9,9 +9,11 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/res/css/member.css">
 
-<div class="row font-big in-align-center ">
-		정보 수정
-</div>
+
+	<p class="headbody" data-split="정보 수정">정보 수정</p>
+
+<div class="empty-row"></div>
+<div class="empty-row"></div>
 
 	
 <div id="section">	
@@ -48,5 +50,8 @@
 
 <div class="empty-row"></div>
 <div class="empty-row"></div>
+<div class="empty-row"></div>
+
+
 
 <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>

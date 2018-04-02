@@ -68,6 +68,7 @@
     </div> --%>
  
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+ 
     
   <!-- 이미지 영역 : wrapper -->   
   <div class="container-100">
@@ -82,15 +83,15 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="${pageContext.request.contextPath}/res/img/1.jpg" alt="Los Angeles" style="width:100%; height:70%">
+        <img src="${pageContext.request.contextPath}/res/img/22.jpg" alt="" style="width:100%; height:70%">
       </div>
 
       <div class="item">
-        <img src="${pageContext.request.contextPath}/res/img/2.jpg" alt="Chicago" style="width:100%; height:70%">
+        <img src="${pageContext.request.contextPath}/res/img/33.jpg" alt="" style="width:100%; height:70%">
       </div>
     
       <div class="item">
-        <img src="${pageContext.request.contextPath}/res/img/3.jpg" alt="New york" style="width:100%; height:70%">
+        <img src="${pageContext.request.contextPath}/res/img/44.jpg" alt="" style="width:100%; height:70%">
       </div>
     </div>
 
@@ -107,18 +108,32 @@
 </div>
 
 
+ <!-- 스크롤에 내려갈때 움직이는 글씨  -->
+    <h1 class="font1">즐거운 여행을<span class="font1">계획하라!</span>Jplan</h1>
+<%--  
+<div class=" ">
+<img src="${pageContext.request.contextPath}/res/img/namsan.jpg" alt=""> --%>
+
+<div class="empty-row"></div>
+<div class="empty-row"></div>
+
     <!-- 갤러리 영역 -->
-<section class="main-content ">
- <div class="container-80 out-align-center">
-  <h2>Best 6</h2>
+<section class="main-content header">
+
+ <div>
+  <h2 class="font3">Best<br><br>Top 6</h2>
+ </div>
+ 
+ <div class="container-70">
+  
   <div class="row">
   
     <div class="col-md-4 card card--white">
-    <h2 class="card__title">New York City</h2>
+    <h2 class="card__title">창녕 우포늪</h2>
       <div class="card__image-cover"></div>      
       <img class="card__image" 
-           src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/nyc.png" 
-           alt="New York City">
+           src="http://cfile26.uf.tistory.com/image/27527134520B205003518D" 
+           alt="">
            
       <section class="card__copy">
         <p>Population (2105): 8,550,405</p>
@@ -129,9 +144,11 @@
     </div>
     
     <div class="col-md-4 card card--white">
-    <h2 class="card__title">London</h2>
+    <h2 class="card__title">완도 청산도 </h2>
         <div class="card__image-cover"></div>
-      	<img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/london.png" alt="London">
+      	<img class="card__image" 
+      	src="http://cfile28.uf.tistory.com/image/22743C3A520B20531C6C5A" 
+      	alt="">
       
       <section class="card__copy">
         <p>Population (2105): 8,673,713</p>
@@ -142,9 +159,11 @@
     </div>
     
     <div class="col-md-4 card card--white">
-    <h2 class="card__title">Paris</h2>
+    <h2 class="card__title">하동 십리벚꽃길</h2>
          <div class="card__image-cover"></div>      
-      <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/paris.png" alt="Paris">
+      <img class="card__image" 
+      src="http://cfile25.uf.tistory.com/image/263CAE3B520B20593892FA" 
+      alt="">
       
       <section class="card__copy">
         <p>Population (2103): 2,229,621</p>
@@ -155,9 +174,11 @@
     </div>
     
     <div class="col-md-4 card card--white">
-    <h2 class="card__title">Singapore</h2>
+    <h2 class="card__title">부산 해운대 </h2>
        <div class="card__image-cover"></div>
-      <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/singapore.png" alt="Singapore">
+      <img class="card__image" 
+      src="http://cfile10.uf.tistory.com/image/2360523B520B205B22E883" 
+      alt="Singapore">
       
       <section class="card__copy">
         <p>Population (2105): 5,535,000</p>
@@ -168,9 +189,11 @@
     </div>
     
     <div class="col-md-4 card card--white">
-    <h2 class="card__title">광화문</h2>
+    <h2 class="card__title">제주우도</h2>
         <div class="card__image-cover"></div>
-     	 <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/singapore.png" alt="Singapore">
+     	 <img class="card__image" 
+     	 src="http://cfile1.uf.tistory.com/image/227A3637520B206022185C" 
+     	 alt="">
       
       <section class="card__copy">
         <p>Population (2105): 5,535,000</p>
@@ -181,9 +204,11 @@
     </div>
     
     <div class="col-md-4 card card--white">
-    <h2 class="card__title">청계천</h2>
+    <h2 class="card__title">창원 진해 군항제 </h2>
         <div class="card__image-cover"></div>
-      <img class="card__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/178669/singapore.png" alt="Singapore">
+      <img class="card__image" 
+      src="http://cfile10.uf.tistory.com/image/25530340520B245C1C1127" 
+      alt="">
       
       <section class="card__copy">
         <p>Population (2105): 5,535,000</p>
@@ -192,14 +217,19 @@
         <p>Time Zone: SST (UTC+8)</p>
       </section> 
     </div>
+
     
   </div>
  </div>
+
 </section>
+
+<div class="empty-row"></div>
+<div class="empty-row"></div>
 
 
   <!-- 이용방법 영역 -->
-    <div class="container-100 out-align-center">
+    <div class="container-100" style="background: white;">
         <div class="row in-align-center font-big">이용방법</div>
         <!-- 방법 내용 적을곳 -->
         <div class="row">
@@ -215,5 +245,7 @@
 			alt="" class="home_btn"></a>
     </div>
     
+    <div class="empty-row"></div>
+<div class="empty-row"></div>
     
     <jsp:include page="../footer.jsp"></jsp:include>

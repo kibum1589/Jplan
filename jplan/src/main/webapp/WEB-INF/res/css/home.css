@@ -1,13 +1,15 @@
 @charset "UTF-8";
 
-@import 'https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,600,700,800';
-body {
+/* @import 'https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,600,700,800'; */
+/* body {
   width: 100%;
   height: 100vh;
   position: relative;
   background-color: #F3F3F3;
   font-family: 'Raleway', serif;
-}
+} */
+
+/* 갤러리 영역    */
 
 .main-content {
   position: relative;
@@ -29,6 +31,7 @@ body {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  background: none;
 }
 
 .card {
@@ -105,10 +108,7 @@ body {
 }
 
 
-/**
- * When we clip the image, this will appear in the cropped-out area of the
- * card instead. 
- */
+
 
 .card__image-cover {
   opacity: 0;
@@ -204,4 +204,150 @@ body {
 .card:hover .card__copy {
   -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+
+
+
+
+/* @font-face {
+  font-family: 'Sucrose Bold Two';
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/sucrose.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IM Fell French Canon Pro';
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/im-fell-french-canon-pro.woff2') format('woff2');
+} */
+/* * {
+  box-sizing: border-box;
+}
+.body {
+  margin: 0;
+} */
+
+
+.header {
+ background: url(http://www.blogshotels.com/hk/wp-content/uploads/2017/02/388585537.jpg) no-repeat;
+  padding-top: 0%;
+  background-size: cover;
+ font-family: 'Sucrose Bold Two';
+ opacity: inherit;
+ */}
+.header .img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45.8%;
+}
+
+/* .main {
+  background: #fff;
+  position: relative;
+  border: 1px solid #fff;
+  font-family: 'IM Fell French Canon Pro';
+  font-size: 1.4rem;
+  padding: 2rem 25%;
+  line-height: 1.6;
+}
+@media all and (max-width: 400px) {
+  .main {
+    padding: 2rem;
+  }
+} */
+
+/* 홈 화면에 띄어지는 글자  */
+h1 {
+  position: fixed;
+  top: 10rem;
+  right: 2rem;
+  font-size: 100px;
+  line-height: 0.8;
+  margin-top: 0;
+  text-align: center;
+}
+h1 span {
+  display: block;
+  font-size: 8.75vw;
+  
+}
+.font1{
+background: none;
+color: #99ddd5; 
+font-family: 'Amatic SC'; 
+text-shadow: #2E2B32 1px 1px,#2E2B32 0px 0px,#2E2B32 1px 1px,#2E2B32 2px 2px,
+#2E2B32 3px 3px,#2E2B32 4px 4px,#2E2B32 5px 5px,#2E2B32 6px 6px,#2E2B32 7px 7px,
+#2E2B32 8px 8px,#2E2B32 9px 9px,#2E2B32 10px 10px,#2E2B32 11px 11px,#2E2B32 12px 12px,
+#2E2B32 13px 13px,#2E2B32 14px 14px,#2E2B32 15px 15px,#2E2B32 16px 16px,#2E2B32 17px 17px,
+#2E2B32 18px 18px,#2E2B32 19px 19px,#2E2B32 20px 20px,#2E2B32 21px 21px,#2E2B32 22px 22px,
+#2E2B32 23px 23px,#2E2B32 24px 24px,#2E2B32 25px 25px,#2E2B32 26px 26px,#2E2B32 27px 27px,
+#2E2B32 28px 28px,#2E2B32 29px 29px;
+}
+
+
+
+/* best top 6 폰트  */
+.font3{
+color: #46427F; 
+font-family: 'Parisienne'; 
+text-shadow: -.08em .08em #C9D5DB;
+
+  position: relative;
+  top: 10rem;
+  right: 2rem;
+  font-size: 150px;
+  line-height: 0.8;
+  margin-top: 0;
+  text-align: center;
+}
+
+/* 여행지 폰트   */
+.font2{
+color: #fd8c62; 
+font-family: 'Permanent Marker'; 
+text-shadow: #000000 1px 1px,#000000 0px 0px,#000000 1px 1px,#000000 2px 2px,
+#000000 3px 3px,#000000 4px 4px,#000000 5px 5px,#000000 6px 6px,#000000 7px 7px,
+#000000 8px 8px,#000000 9px 9px,#000000 10px 10px,#000000 11px 11px,#000000 12px 12px,
+#000000 13px 13px,#000000 14px 14px,#000000 15px 15px,#000000 16px 16px,#000000 17px 17px,
+#000000 18px 18px,#000000 19px 19px,#000000 20px 20px,#000000 21px 21px,#000000 22px 22px,
+#000000 23px 23px,#000000 24px 24px,#000000 25px 25px,#000000 26px 26px,#000000 27px 27px,
+#000000 28px 28px,#000000 29px 29px,#000000 30px 30px,#000000 31px 31px,#000000 32px 32px,
+#000000 33px 33px,#000000 34px 34px,#000000 35px 35px,#000000 36px 36px,#000000 37px 37px,
+#000000 38px 38px,#000000 39px 39px,#000000 40px 40px,#000000 41px 41px,#000000 42px 42px,
+#000000 43px 43px,#000000 44px 44px,#000000 45px 45px,#000000 46px 46px,#000000 47px 47px,
+000000 48px 48px,#000000 49px 49px,#000000 50px 50px,#000000 51px 51px,#000000 52px 52px,
+#000000 53px 53px,#000000 54px 54px,#000000 55px 55px,#000000 56px 56px,#000000 57px 57px,
+#000000 58px 58px,#000000 59px 59px,#000000 60px 60px,#000000 61px 61px,#000000 62px 62px,
+#000000 63px 63px,#000000 64px 64px,#000000 65px 65px,#000000 66px 66px,#000000 67px 67px,
+#000000 68px 68px,#000000 69px 69px,#000000 70px 70px,#000000 71px 71px,#000000 72px 72px,
+#000000 73px 73px,#000000 74px 74px,#000000 75px 75px,#000000 76px 76px,#000000 77px 77px,
+#000000 78px 78px,#000000 79px 79px,#000000 80px 80px,#000000 81px 81px,#000000 82px 82px,
+000000 83px 83px,#000000 84px 84px,#000000 85px 85px,#000000 86px 86px,#000000 87px 87px,
+#000000 88px 88px,#000000 89px 89px,#000000 90px 90px,#000000 91px 91px,#000000 92px 92px,
+#000000 93px 93px,#000000 94px 94px,#000000 95px 95px,#000000 96px 96px,#000000 97px 97px,
+#000000 98px 98px,#000000 99px 99px,#000000 100px 100px,#000000 101px 101px,
+#000000 102px 102px,#000000 103px 103px,#000000 104px 104px,#000000 105px 105px,
+#000000 106px 106px,#000000 107px 107px,#000000 108px 108px,#000000 109px 109px,
+#000000 110px 110px,#000000 111px 111px,#000000 112px 112px,#000000 113px 113px,
+#000000 114px 114px,#000000 115px 115px,#000000 116px 116px,#000000 117px 117px,
+#000000 118px 118px,#000000 119px 119px,#000000 120px 120px,#000000 121px 121px,
+000000 122px 122px,#000000 123px 123px,#000000 124px 124px,#000000 125px 125px,
+#000000 126px 126px,#000000 127px 127px,#000000 128px 128px,#000000 129px 129px,
+#000000 130px 130px,#000000 131px 131px,#000000 132px 132px,#000000 133px 133px,
+#000000 134px 134px,#000000 135px 135px,#000000 136px 136px,#000000 137px 137px,
+#000000 138px 138px,#000000 139px 139px,#000000 140px 140px,#000000 141px 141px,
+#000000 142px 142px,#000000 143px 143px,#000000 144px 144px,#000000 145px 145px,
+000000 146px 146px,#000000 147px 147px,#000000 148px 148px,#000000 149px 149px,
+#000000 150px 150px,#000000 151px 151px,#000000 152px 152px,#000000 153px 153px,
+#000000 154px 154px,#000000 155px 155px,#000000 156px 156px,#000000 157px 157px,
+#000000 158px 158px,#000000 159px 159px,#000000 160px 160px,#000000 161px 161px,
+#000000 162px 162px,#000000 163px 163px,#000000 164px 164px,#000000 165px 165px,
+#000000 166px 166px,#000000 167px 167px,#000000 168px 168px,#000000 169px 169px,
+#000000 170px 170px,#000000 171px 171px,#000000 172px 172px,#000000 173px 173px,
+#000000 174px 174px,#000000 175px 175px,#000000 176px 176px,#000000 177px 177px,
+000000 178px 178px,#000000 179px 179px,#000000 180px 180px,#000000 181px 181px,
+#000000 182px 182px,#000000 183px 183px,#000000 184px 184px,#000000 185px 185px,
+#000000 186px 186px,#000000 187px 187px,#000000 188px 188px,#000000 189px 189px,
+#000000 190px 190px,#000000 191px 191px,#000000 192px 192px,#000000 193px 193px,
+#000000 194px 194px,#000000 195px 195px,#000000 196px 196px,#000000 197px 197px,
+#000000 198px 198px,#000000 199px 199px;
 }
