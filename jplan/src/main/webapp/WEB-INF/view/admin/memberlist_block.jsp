@@ -7,6 +7,36 @@
 <!-- 스타일을 위한 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/member.css">
 
+<script>
+var durck; // 기간 확인 변수
+//기간 길이확인
+window.onload = function(){
+//$(document).ready(function(){
+    //기간 입력창에 이벤트 설정
+     document.querySelector("input[name=dur]").addEventListener("input", function(){
+    	 //기간 확인 콘솔
+    	 var name = $(".dur_ck").val();
+			console.log(name);
+			var regex = /^[0-9]{1,7}$/;
+        if(!this.value || !regex.test(name)){
+        	console.log('불가능');
+        	durck = 1;
+        }
+        else{
+        	console.log('가능');
+			durck = 0;
+        }
+        
+     });
+    
+     $('.blockSubmit').on('click',function(){
+			event.preventDefault();
+			if(durck==0) $('.contact-form').submit();			
+		});	
+};
+</script>
+
+
 <p class="headbody" data-split="회원 제제">회원 제제</p>
 
 <div class="empty-row"></div>
@@ -37,14 +67,14 @@
 		<div class="input-block">	
 		<label>기간</label>
 		<br>
-		<input type="text" name="dur" required class="form-control check">
+		<input type="text" name="dur" required class="form-control check dur_ck" placeholder="숫자만 기입해 주세요.">
 		<input type="hidden" name="no" value="${param.no}">
 		<input type="hidden" name=email value="${param.email}">
 		</div>
 	</div>			
 	
 	<div class="col-sm-12">
-		<button class="square-button" type="submit">제제 확인</button>	
+		<button class="square-button blockSubmit" type="submit">제제 확인</button>	
 	</div>
 	
 </form>
