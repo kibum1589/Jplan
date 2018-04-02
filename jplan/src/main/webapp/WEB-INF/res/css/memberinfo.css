@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+@keyframes sheen {
+  0% {
+    transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+
+/* 정보보기 화면의 버튼  */
+.swrapper {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.infosbutton {
+  padding: 0.75em 2em;
+  text-align: center;
+  text-decoration: none;
+  color: #2194e0;
+  border: 2px solid #2194e0;
+  font-size: 24px;
+  display: inline-block;
+  border-radius: 0.3em;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+.infosbutton:before {
+  content: "";
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
+  width: 3em;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -4.5em;
+  transform: skewX(-45deg) translateX(0);
+  transition: none;
+}
+.infosbutton:hover {
+  background-color: #2194e0;
+  color: #fff;
+  border-bottom: 4px solid #1977b5;
+}
+.button:hover:before {
+  transform: skewX(-45deg) translateX(13.5em);
+  transition: all 0.5s ease-in-out;
+}
+
+/* 정보보기 화면의 헤드라인 글씨 */
+p {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(-90deg, #3498db 50%, #31e0c0 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.p {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(-90deg, #31e0c0 50%, #3498db 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  font-weight: 600;
+}
