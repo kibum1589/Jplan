@@ -1,48 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- 스타일을 위한 -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/member.css">
 
-<div class="container-80 out-align-center">
-	<div class="row font-big in-align-center">
-		회원 제제 
+<p class="headbody" data-split="회원 제제">회원 제제</p>
+
+<div class="empty-row"></div>
+<div class="empty-row"></div>
+
+
+<div id="section">
+<section class="contact-wrap">	
+<form class="contact-form" action="memberlist_block" method="post">
+	
+	<div class="col-sm-12">
+		<div class="input-block">
+		<label>제제종류</label>
+		<br>
+			<input type="text" name="type" required class="form-control check">
+		</div>
+	</div>				
+			
+	<div class="col-sm-12">
+		<div class="input-block">
+		<label>원인</label>
+		<br>
+		<input type="text" name="reason" required class="form-control check">
+		</div>
 	</div>
-	<hr>
-	<form action="memberlist_block" method="post">
-	<div class="row">
-		<table class="table">
-				<tr>
-					<th>제제종류</th>
-					<td>
-						<input type="text" name="type" required
-							class="form-input form-input-full">
-							
-					</td>
-				</tr>
-				
-				<tr>
-					<th>원인</th>
-					<td><input type="text" name="reason" required
-								class="form-input form-input-full"></td>
-				</tr>
-				<tr>
-				<tr>
-					<th>기간</th>
-					<td><input type="text" name="dur" required
-								class="form-input form-input-full"><input type="hidden" name="no" value="${param.no}"><input type="hidden" name=email value="${param.email}"></td>
-								
-				</tr>
-				<tr>
-					<th colspan="2">
-						<input type="submit" value="제제확인">	
-					</th>
-				</tr>
-		</table>
+		
+	<div class="col-sm-12">		
+		<div class="input-block">	
+		<label>기간</label>
+		<br>
+		<input type="text" name="dur" required class="form-control check">
+		<input type="hidden" name="no" value="${param.no}">
+		<input type="hidden" name=email value="${param.email}">
+		</div>
+	</div>			
+	
+	<div class="col-sm-12">
+		<button class="square-button" type="submit">제제 확인</button>	
 	</div>
-	</form>
+	
+</form>
+</section>
 </div>
 
+
+<div class="empty-row"></div>
+<div class="empty-row"></div>
+<div class="empty-row"></div>
 <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
