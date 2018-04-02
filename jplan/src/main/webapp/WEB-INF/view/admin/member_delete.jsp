@@ -14,13 +14,9 @@
 
 <div id="section">	
 	
-	<div>
-		<p class="headbody" data-split="회원 탈퇴">회원 탈퇴</p>
+	<div class="row font-big in-align-center">
+		회원 탈퇴
 	</div>
-	
-
-<div class="empty-row"></div>
-<div class="empty-row"></div>
 	
 	<div class="col-sm-12 row font-small in-align-center">
 		탈퇴를 진행하기 위하여 비밀번호를 입력해주세요
@@ -48,6 +44,8 @@
 	</section>
 </div>
 
+
+<div class="empty-row"></div>
 <div class="empty-row"></div>
 
 <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>

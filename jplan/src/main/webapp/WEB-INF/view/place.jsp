@@ -1,70 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- 스타일을 위한  -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/home.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
-<%-- js마무리 되면 옮길 예정 주소 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/place.css">
-<script src="${pageContext.request.contextPath}/res/js/home/place.js"></script> --%>
-
+    
 <jsp:include page="../header.jsp"></jsp:include>
 
-
-<div class="empty-row"></div>
-<div class="empty-row"></div>
-
 <style>
-/* 검색창 css */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
-.search {
-  width: 100%;
-  position: relative
-}
-
-.searchTerm {
-  float: left;
-  width: 100%;
-  border: 3px solid #00B4CC;
-  padding: 5px;
-  height: 50px;
-  border-radius: 5px;
-  outline: none;
-  color: #9DBFAF;
-}
-
-.searchTerm:focus{
-  color: #00B4CC;
-}
-
-.searchButton {
-  position: absolute;  
-  right: -50px;
-  width: 69px;
-  height: 50px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
-  text-align: center;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-/*Resize the wrap to see the search bar change!*/
-.searchwrap{
-  width: 110%;
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/*---------------------------------------------------  */
-
-
   		.review{
             display: flex;
             flex-wrap: wrap;
@@ -490,15 +430,8 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf7PTKOt9r_f0tPtAWICf4xjvB0_qtw4E&libraries=places&callback=initAutocomplete&region=kr"async defer></script> 
 
-<!-- 검색창 css 적용 -->
-<div class="searchwrap">
-   <div class="search">
-    <input class="searchTerm" type="text" placeholder="검색어 입력" id = "google-search">
-      <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-     </button>
-   </div>
-</div>
+
+    <input class="search" type="text" placeholder="검색어 입력" id = "google-search">
     
     <div id = "search-area">
 	    <div class="list-group" id="search-list">
@@ -506,13 +439,8 @@
 		<div id="map"></div>
 	</div>
     
-    <!-- 인기 여행기 폰트  적용-->
-  <h1 style="font-size: 150px; position: relative; font-family: 'Nanum Brush Script', cursive; ">
-        인기 여행지 Top6</h1>
-
     <div class="row in-align-center font-title">
-    
-        
+        인기 여행지 Top6
     </div>
     
     <!-- 갤러리 영역 -->
@@ -526,11 +454,7 @@
     </div>  --%>
     
     <div class="container-80 out-align-center">
-    
-  <div> 
-  <h2 class="font2">Best 6</h2>
-  </div> 
-  
+  <h2>Best 6</h2>
   <div class="row" id="hotPlaceArea">
     
   </div>
@@ -538,11 +462,7 @@
     
     <!-- 이용방법 영역 -->
     <div class="container-100 out-align-center">
-    
-    <!-- 최근리뷰 폰트 적용 -->
-        <div class="row in-align-center font-big">
-        	<h1 style="font-size: 150px; position: relative; font-family: 'Nanum Pen Script', cursive;">최근리뷰</h1>
-        </div>
+        <div class="row in-align-center font-big">최근리뷰</div>
     </div>
     
     <div class="review">
@@ -550,8 +470,7 @@
     </div>
     
     <div class="remote">
-        <a href="#"><img src="${pageContext.request.contextPath}/res/icon/jplane.png"
-			alt="" class="home_btn"></a>
+        <a href="#">Top</a>
     </div>
     
     <jsp:include page="../footer.jsp"></jsp:include>

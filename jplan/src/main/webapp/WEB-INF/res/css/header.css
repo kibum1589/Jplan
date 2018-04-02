@@ -1,126 +1,128 @@
 @charset "UTF-8";
+/* effect 5 */
+.hover5 {
+	display: inline-block;
+	position: relative;
+}
 
-.body {
-  display: flex;
-  align-items: center;
-  height: 100vh;
-  background: #ffffff;
+.hover5:before {
+	content: '' attr(data-hover-label) '';
+	position: absolute;
+	top: 0;
+	transform: rotateX(90deg);
+	transition: transform .1s linear;
+}
+
+.hover5:hover:before, .hover5:focus:before {
+	transition-delay: .2s;
+	transform: rotateX(0deg);
+}
+
+.hover5:hover .hover5__label, .hover5:focus .hover5__label {
+	transform: rotateX(90deg);
+	transition-delay: 0s
+}
+
+.hover5__label {
+	display: inline-block;
+	transform: rotateX(0);
+	transition: transform .1s linear .2s;
+	margin: 12px;
+}
+.hover5__label:after{
+	color: #765b20;
+}
+
+.hover5:focus {
+	outline: none;
+}
+
+
+.hover5:before {
+	color: #18917b;
+}
+
+
+body {
+	font-family: "PT Sans", -apple-system, BlinkMacSystemFont, "Roboto",
+		"Open Sans", "Helvetica Neue", "Segoe UI", "Arial", sans-serif;
+	font-size: 1.6rem;
+	color: #222;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-overflow-scrolling: touch;
 }
 
 a {
-  outline: 0;
-  text-decoration: none;
+	text-decoration: none;
+	color: #18917b;
 }
 
-.navigation {
-  width: 100%;
-  border-bottom: 3px solid #ffffff;
-  font-family: 'Pathway Gothic One', sans-serif;
-  font-size: 22px;
-  background: #ffffff;
+.section {
+	box-sizing: border-box;
+	position: relative;
+	padding: 2rem;
+	text-align: center;
+	background-color: #ffffff;
 }
 
+.section:nth-child(2n+2) {
+	background-color: #d5c093;
+}
+
+.title {
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	margin: 0;
+	background-color: #fff;
+	padding: .5rem 1.5rem;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/*
+* menu
+*/
 .menu {
-  display: flex;
-  justify-content: center;
-  max-width: 1150px;
-  margin: 0 auto;
-  padding-left: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 .menu__item {
-  display: inline-block;
-  white-space: nowrap;
-}
-@media screen and (max-width: 480px) {
-  .menu__item:nth-child(n + 3) {
-    display: none;
-  }
-  .menu__item:nth-child(2) .menu__link {
-    border-right: 0;
-  }
-}
-@media screen and (max-width: 768px) {
-  .menu__item:nth-child(n + 4) {
-    display: none;
-  }
-  .menu__item:nth-child(3) .menu__link {
-    border-right: 0;
-  }
-}
-@media screen and (max-width: 992px) {
-  .menu__item:nth-child(n + 5) {
-    display: none;
-  }
-  .menu__item:nth-child(4) .menu__link {
-    border-right: 0;
-  }
-}
-.menu__item:last-child .menu__link {
-  border-right: 0;
+	display: inline-block;
+	margin-left: 3%;
+	margin-right: 2%;
 }
 
 .menu__link {
-  display: block;
-  padding: 6px 30px 3px;
-  border-right: 2px dotted #ccd7d7;
-}
-.menu__link:hover .menu__first-word, .menu__link:focus .menu__first-word {
-  transform: translate3d(0, -105%, 0);
-}
-.menu__link:hover .menu__second-word, .menu__link:focus .menu__second-word {
-  transform: translate3d(0, 105%, 0);
-}
-@media screen and (min-width: 768px) {
-  .menu__link {
-    padding: 3px 35px 2px;
-  }
-}
-.menu__title {
-  display: inline-block;
-  overflow: hidden;
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: #27c4a7;
+	text-decoration: none;
+	text-transform: uppercase;
 }
 
-.menu__first-word,
-.menu__second-word {
-  display: inline-block;
-  position: relative;
-  transition: transform .3s;
-}
-.menu__first-word::before,
-.menu__second-word::before {
-  position: absolute;
-  content: attr(data-hover);
+@media screen and (min-width: 2000px) {
+	.main-container {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.section {
+		width: 33.33333%;
+	}
 }
 
-.menu__first-word {
-  color: #21cb7a;
-}
-.menu__first-word::before {
-  top: 105%;
-  color: #626262;
-}
-
-.menu__second-word {
-  color: #626262;
-}
-.menu__second-word::before {
-  bottom: 105%;
-  color: #21cb7a;
-}
-
-
-.box {
-    display: block;
-    width: 109px;
-    height: 48px;
-    -webkit-transition:width 2s, height 2s, background-color 2s, -webkit-transform 2s;
-    transition:width 2s, height 2s, background-color 2s, transform 2s;
-}
-.box:hover {
-	margin: 10px;
-    width:109px;
-    height:48px;
-    -webkit-transform:rotate(90deg);
-    transform:rotate(90deg);
-}
+@media screen and (max-width: 300px) {
+	.menu {
+		flex-direction: column;
+		/*   } */
+	}
+	
+	.header_size {
+		height: 100px;
+	}
+	

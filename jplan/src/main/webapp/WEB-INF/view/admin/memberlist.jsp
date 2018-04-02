@@ -7,60 +7,39 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- 스타일을 위한 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/memberlist.css">
-<script src="${pageContext.request.contextPath}/res/js/admin/memberlist.js"></script>
-
 
 <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
-
 <script>
 	
 </script>
-
-
-<div class="empty-row"></div>
-
-<div class="container " align="center">
-
-<div class="container table-title " align="center">
-<h3>회원 목록</h3>
-</div>
-
-<div class="empty-row"></div>
-
-<table class="table6_1 ">
+<html>
+<div class="container" align="center">
+<table class="table table-striped table-condensed">
 	<thead>
 		<tr>
-			<th class="text-left" colspan="7">총 ${member}명의 회원이 있습니다.</th>
+			<th colspan="7">총 ${member}명의 회원이 있습니다.</th>
+		</tr>
+		<tr>
+			<th>이메일</th>
+			<th>이름</th>
+			<th>등급</th>
+			<th>가입일</th>
+			<th>제제종류</th>
 		</tr>
 	</thead> 
-	<tbody class="table-hover ">
-		<tr>
-			<th class="text-left">이메일</th>
-			<th class="text-left">이름</th>
-			<th class="text-left">등급</th>
-			<th class="text-left">가입일</th>
-			<th class="text-left">제제종류</th>
-		</tr>
+	<tbody>
 		<!-- 실제 정보 출력 -->
 		<c:forEach items="${memberlist}" var="member">
 		<tr>
-			<td class="text-left">${member.email}</td>
-			<td class="text-left">${member.name}</td>
-			<td class="text-left">${member.power}</td>
-			<td class="text-left">${member.reg}</td>
-			<td class="text-left">
-			
-			<button class="bbutton" 
-			onclick="location.href='${pageContext.request.contextPath}/admin/memberlist_block?no=${member.no}&email=${member.email}'">회원제제</button>
-
-			</td>
+			<th>${member.email}</th>
+			<th>${member.name}</th>
+			<th>${member.power}</th>
+			<th>${member.reg}</th>
+			<th><button class="left" onclick="location.href='${pageContext.request.contextPath}/admin/memberlist_block?no=${member.no}&email=${member.email}'">회원제제</button></th>
 		</tr>
 		</c:forEach>
 	</tbody>
 </table>
-
 </div>
 
 <div class="row in-align-center w3-bar">
@@ -84,31 +63,22 @@
 		</c:if>
     </div>
     
-
-    
-     <div class=" in-align-center">
+     <div class="row in-align-center">
         <form action="" method="get">
-        
             <!-- 선택창 -->
-   <select name="sort" class="" style="display: inline-block;">
+   <select name="sort" class="form-input-small">
        <option value="email">아이디</option>
        <option value="power" <c:if test="${pc.sort == 'power'}">selected</c:if>>권한</option>
    </select>
-   
 
    <!-- 입력창 -->
-   <input class="" name="keyword" type="search" placeholder="검색어" 
-       required value="${pc.keyword}" style="display: inline-block;" >
+   <input class="form-input-small" name="keyword" type="search" placeholder="검색어" 
+       required value="${pc.keyword}">
 
    <!-- 전송버튼 -->
-            	<button class="sbutton" type="submit">검색</button>
-</div>
-
-</div>
+            <input class="form-btn-small" type="submit" value="검색">
         </form>
+    </div>
 </html>
-
-    <div class="empty-row"></div>
-    
 
 <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
