@@ -215,17 +215,12 @@ function createMarkers(places, placeList, placeData) {
 </script>
 
 
-  
+
 
 <c:forEach items="${planList}" var="plan">
 <!-- 포스터 -->
 <br>
 <div class="media" >
-  <div class="media-left">
-    
-      <img class="media-object" src="..." alt="..." style="width: 100;height: 100">
-    
-  </div>
   <div class="media-body planPoster" style="padding: 5" data-place="${plan.no }">
     
     <h3 class="media-heading" style="margin-bottom: 20">${plan.title} </h3>
@@ -242,7 +237,7 @@ function createMarkers(places, placeList, placeData) {
 </div>
 </c:forEach>	
 
- 
+
 
 
 
