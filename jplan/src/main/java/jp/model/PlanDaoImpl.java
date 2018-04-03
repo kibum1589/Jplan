@@ -44,10 +44,15 @@ public class PlanDaoImpl implements PlanDao {
 	
 	// mno로 일정 조회 메소드
 	@Override
-	public List<Plan> getPlan(int mno) {
-		String sql = "select * from plan where mno = ?";
-		Object[] args = {mno};
-		return jdbcTemplate.query(sql, args,mapper);
+	public List<Plan> getPlan(int mno,int sno, int eno) {
+		String sql = "select * from ("
+				+ "select rownum rn, A.* from ("
+				+ "select * from plan "
+				+ "order by no asc"
+			+ ")A"
+		+ ") "
+		+ "where rn between ? and ? and mno = ?";
+		return jdbcTemplate.query(sql, mapper, sno, eno,mno);
 	}
 
 	//일정 리스트 메소드
@@ -65,15 +70,15 @@ public class PlanDaoImpl implements PlanDao {
 	// 조회수 1 증가 메소드
 	@Override
 	public void lookPlus(int no, int mno) throws Exception{
-		String sql = "update plan set look=look+1 where no=? and mno = ?";
+		String sql = "update plan set look=look+1 where no=? and mno != ?";
 		jdbcTemplate.update(sql, no, mno);
 	}
 
 	// 좋아요 1 증가 메소드
 	@Override
-	public void lovePlus(int no, int mno) throws Exception{
-		String sql = "update plan set love=love+1 where no=? and mno = ?";
-		jdbcTemplate.update(sql, no, mno);
+	public void lovePlus(int no, String email) throws Exception{
+		String sql = "update plan set love=love+1 where no=? and mno != ?";
+		jdbcTemplate.update(sql, no, email);
 	}
 
 	// 일정 작성 메소드
@@ -108,6 +113,14 @@ public class PlanDaoImpl implements PlanDao {
 		String sql = "select count(*) from plan";
 		return jdbcTemplate.queryForObject(sql, Integer.class);
 	}
+	
+	@Override
+	public int getMyCount(int mno) {
+		String sql = "select count(*) from plan where mno = ?";
+		Object[] args = {mno};
+		return jdbcTemplate.queryForObject(sql, Integer.class,args);
+	}
+	
 	@Override
 	public int getCount(String sort, String keyword) {
 		String sql = "select count(*) from plan "
@@ -115,6 +128,8 @@ public class PlanDaoImpl implements PlanDao {
 								+ "order by no desc";
 		return jdbcTemplate.queryForObject(sql, Integer.class, keyword);
 	}
+
+	
 
 
 	

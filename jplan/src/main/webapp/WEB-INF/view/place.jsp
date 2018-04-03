@@ -81,6 +81,8 @@
             
 /*            넘어가는 항목은 보여주지 않겠다*/
             overflow: hidden;
+            
+            text-align: center;
         }
     
 
@@ -101,17 +103,19 @@
         
         #search-list{
         	flex:2;
+        	overflow: auto;
         }
         
         #search-area{
         	display: flex;
         	margin-top: 10%;
-        	flex-direction: row
+        	flex-direction: row;
+        	max-height: 600px;
         } 
         
         #map{
         	flex: 1;
-        	height: 100%
+        	height: 600px;
         }
         
         .place-datail{
@@ -133,7 +137,9 @@
         
         .place-btn{
         	display:flex;
-        	flex:1;
+        	flex:2;
+        	align-content: center;
+        	align-items: center;
         }
         
         .place-btn-src{
@@ -166,7 +172,12 @@
         }
         
         .place-reply-list{
-        	flex:8
+        	flex:8;
+        	overflow: auto;
+        }
+        
+        .place-data{
+        	font-size: 20px;
         }
 </style>
 
@@ -280,10 +291,10 @@
 							  	  '<div class="place-review">'+ 
 							  	  
 							  	  '<div class="place-btn">'+
-							  	  '<img class="place-btn-src" src="'+replyimg+'">'+
-							  	  '<p class="reply-count">'+0+'</p>'+
-							  	  '<img class="place-btn-src love-img" src="'+loveonimg+'">'+
-							  	  '<p class="love-count" data-place = "'+place.place_id+'">'+0+'</p>'+
+							  	  '<img class="place-btn-src" src="'+replyimg+'" style="width:30; height:30">'+
+							  	  '<p class="reply-count place-data">'+0+'</p>'+
+							  	  '<img class="place-btn-src love-img" src="'+loveonimg+'" style="width:30; height:30">'+
+							  	  '<p class="love-count place-data" data-place = "'+place.place_id+'">'+0+'</p>'+
 							  	  '</div>'+
 							  	  
 							  	  '<div class="place-reply">'+
@@ -507,7 +518,7 @@
 	</div>
     
     <!-- 인기 여행기 폰트  적용-->
-  <h1 style="font-size: 150px; position: relative; font-family: 'Nanum Brush Script', cursive; ">
+  <h1 style="font-size: 80px; position: relative; font-family: 'Nanum Brush Script', cursive; ">
         인기 여행지 Top6</h1>
 
     <div class="row in-align-center font-title">
@@ -515,15 +526,6 @@
         
     </div>
     
-    <!-- 갤러리 영역 -->
-    <%-- <div class="gallary">
-        <div class="image"><img src="${pageContext.request.contextPath}/res/img/1.jpg"></div>
-        <div class="image"><img src="${pageContext.request.contextPath}/res/img/2.jpg"></div>
-        <div class="image"><img src="${pageContext.request.contextPath}/res/img/3.jpg"></div>
-        <div class="image"><img src="${pageContext.request.contextPath}/res/img/4.jpg"></div>
-        <div class="image"><img src="${pageContext.request.contextPath}/res/img/5.jpg"></div>
-        <div class="image"><img src="${pageContext.request.contextPath}/res/img/6.jpg"></div>
-    </div>  --%>
     
     <div class="container-80 out-align-center">
     
@@ -536,12 +538,11 @@
   </div>
 </div> 
     
-    <!-- 이용방법 영역 -->
     <div class="container-100 out-align-center">
     
     <!-- 최근리뷰 폰트 적용 -->
         <div class="row in-align-center font-big">
-        	<h1 style="font-size: 150px; position: relative; font-family: 'Nanum Pen Script', cursive;">최근리뷰</h1>
+        	<h1 style="font-size: 80px; position: relative; margin-bottom:100 ;font-family: 'Nanum Pen Script', cursive;">최근리뷰</h1>
         </div>
     </div>
     

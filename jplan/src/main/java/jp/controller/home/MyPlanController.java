@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.bean.PageCalculator;
 import jp.bean.Plan;
 import jp.bean.Plandetail;
 import jp.model.PlanDao;
@@ -34,12 +36,24 @@ public class MyPlanController {
 
 	// 내 일정보기 포스터 내보내기
 	@RequestMapping("myplan")
-	public String  myplan(HttpSession session, Model model) {
+	public String  myplan(HttpSession session, Model model, HttpServletRequest request) throws Exception {
 		
 		int mno = (Integer)session.getAttribute("no");
 		
-		List<Plan> list =  planDao.getPlan(mno);
+		PageCalculator pc = new PageCalculator(request);
 		
+		int count = planDao.getMyCount(mno);
+		
+		pc.setCount(count);
+		pc.calculate();
+		
+		List<Plan> list =  planDao.getPlan(mno, pc.getSno(), pc.getEno());
+		
+//			list = planDao.list(pc.getSno(), pc.getEno()); 
+		
+		
+		
+		model.addAttribute("pc", pc);
 		model.addAttribute("planList", list);
 		
 		return "myplan";
