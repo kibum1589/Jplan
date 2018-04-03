@@ -1,5 +1,9 @@
 package jp.controller.home;
 
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,30 +18,37 @@ import jp.model.PlandetailDao;
 @Controller
 public class PlanController {
 	
+	Logger log = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private PlanDao planDao;
 	
 	@Autowired
 	private PlandetailDao plandetailDao;
 	
-//	@RequestMapping("/myplan")
-//	public String myplan() {
-//		return "myplan";
-//	}
 
-//	내 일정 조회하기, 일정 조회수 증가 처리
-//    @RequestMapping(value="/myplan", method=RequestMethod.GET)
-//    public String myplan(int no, Model model) throws Exception{
-//    	model.addAttribute("plan", planDao.select(no));
-//        return "myplan";
-//    }
     
     //일정 조회
     @RequestMapping(value="/plan", method=RequestMethod.GET)
-    public String plan(int no, Model model) throws Exception{
-    	model.addAttribute("plan", planDao.select(no));
-//    	model.addAttribute("plandetail", plandetailDao.pdlist());
-        return "plan";
+    public String plan(Plan plan, int no, Model model, HttpSession session) throws Exception{
+    	log.debug("들어온 no: {}", no);
+    	int mno = (Integer)session.getAttribute("no");
+    	
+    	planDao.lookPlus(no, mno);
+    	
+    	plan = planDao.select(no);
+    	model.addAttribute("plan", plan);
+
+    	
+    	return "plan";
     }
    
 }
+
+
+
+
+
+
+
+

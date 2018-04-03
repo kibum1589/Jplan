@@ -64,16 +64,16 @@ public class PlanDaoImpl implements PlanDao {
 	
 	// 조회수 1 증가 메소드
 	@Override
-	public void lookPlus(int no, String email) throws Exception{
-		String sql = "update plan set look=look+1 where no=? and mno != ?";
-		jdbcTemplate.update(sql, no, email);
+	public void lookPlus(int no, int mno) throws Exception{
+		String sql = "update plan set look=look+1 where no=? and mno = ?";
+		jdbcTemplate.update(sql, no, mno);
 	}
 
 	// 좋아요 1 증가 메소드
 	@Override
-	public void lovePlus(int no, String email) throws Exception{
-		String sql = "update plan set love=love+1 where no=? and mno != ?";
-		jdbcTemplate.update(sql, no, email);
+	public void lovePlus(int no, int mno) throws Exception{
+		String sql = "update plan set love=love+1 where no=? and mno = ?";
+		jdbcTemplate.update(sql, no, mno);
 	}
 
 	// 일정 작성 메소드

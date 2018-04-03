@@ -2,34 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/common.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 스타일을 위한 -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/css/memberlist.css">
+<script src="${pageContext.request.contextPath}/res/js/admin/memberlist.js"></script>
 
     
 <jsp:include page="../header.jsp"></jsp:include>
 <style>
-	#input-search{
-		display: inline-block;
-		width: 30%;
-	}
-	#select-search{
-		display: inline-block;
-		width: 10%;
-	}
-	/* 링크 스타일 */
-	a{
-    	text-decoration: none;
-    	color: black;
-	}
-	a:hover{  	
-    	color: lightgray;
-	}
-	#body{
-		background-color: lightgray;
-	}
+	
 </style>
 <div class="container out-align-center">
 	
@@ -70,10 +55,11 @@
 			<a class="w3-button" href="planlist?${pc.getQueryString(PageCalculator.NEXT-2)}">&raquo;</a>
 		</c:if>
     </div>
-    <div class="row in-align-center form-group">
-        <form class="form-search" action="" method="get">
+    
+    <div class="in-align-center">
+        <form action="" method="get">
             <!-- 선택창 -->
-   <select name="sort" class="form-control" id="select-search">
+   <select name="sort" style="display: inline-block;">
        <option value="title">제목</option>
        <option value="love">좋아요수</option>
        <option value="dur" <c:if test="${pc.sort == 'dur'}">selected</c:if>>기간</option>
@@ -81,11 +67,11 @@
    
   
    <!-- 입력창 -->
-   <input class="form-control" id="input-search" name="keyword" type="search" placeholder="검색어" 
-       required value="${pc.keyword}">
+   <input class="" name="keyword" type="search" placeholder="검색어" 
+       required value="${pc.keyword}" style="display: inline-block;">
 
    <!-- 전송버튼 -->
-            <input class="btn btn-info" type="submit" value="검색">
+            <button class="sbutton" type="submit">검색</button>
         </form>
     </div>
 
