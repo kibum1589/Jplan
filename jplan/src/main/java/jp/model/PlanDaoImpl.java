@@ -24,10 +24,6 @@ public class PlanDaoImpl implements PlanDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-
 	// RowMapper와 ResultSetExtractor
 	private RowMapper<Plan> mapper = (rs, index) -> {
 		return new Plan(rs);

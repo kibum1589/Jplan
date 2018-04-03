@@ -9,11 +9,15 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.bean.Plan;
 import jp.bean.Plandetail;
@@ -54,15 +58,33 @@ public class CreateController {
 			writer.close();
 		}
 		
-		@RequestMapping("createDetail")
-		public void createPlanDetail(Plandetail plandetail, HttpServletResponse res) throws IOException {
+		@RequestMapping(value = "createDetail" ,method = { RequestMethod.POST })
+		public void createPlanDetail(@RequestBody String strArr, HttpServletResponse res) throws IOException, ParseException {
 			
-			logger.debug("들어온 장소 id : {}", plandetail.getId());
+			logger.debug("들어온 장소 arr : {}", strArr);
+			JSONParser parser = new JSONParser();
+			JSONArray jsonArr =  (JSONArray)parser.parse(strArr);
+			logger.debug("변환한 arr : {}", jsonArr);
 			
-			plandetailDao.create(plandetail);
-			logger.debug("등록완료! plandetail : {}", plandetail.getId());
+			
+			for(int i=0;i<jsonArr.size();i++){
+
+				JSONObject jsonObj = (JSONObject)jsonArr.get(i);
+
+				Plandetail planDetail = new Plandetail();
+				
+				planDetail.setPno(Integer.valueOf((String)jsonObj.get("pno")));
+				planDetail.setId((String)jsonObj.get("id"));
+				planDetail.setTurn((int)(long)jsonObj.get("turn"));
+				planDetail.setDay((int)(long)jsonObj.get("day"));
+				
+				plandetailDao.create(planDetail);
+				
+			}
+
+			
 			PrintWriter writer = res.getWriter();
-			writer.print("상세일정 등록 완료");
+			writer.print("ok");
 			writer.close();
 			
 		}

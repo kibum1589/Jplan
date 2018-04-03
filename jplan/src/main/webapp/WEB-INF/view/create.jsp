@@ -47,6 +47,7 @@
     
     <!-- ajax 관련 스크립트 -->
     <script src="${pageContext.request.contextPath}/res/js/create/sendajax.js"></script>
+
     
 	
 <!-- 상단 Bar -->

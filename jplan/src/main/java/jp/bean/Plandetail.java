@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class Plandetail {
 	private int no;
 	private int pno;
-	private String id;
+	private String pid;
 	private int turn;
 	private int day;
 	
@@ -19,11 +19,11 @@ public class Plandetail {
 		super();
 	}
 	
-	public Plandetail(int no, int pno, String id, int turn, int day) {
+	public Plandetail(int no, int pno, String pid, int turn, int day) {
 		super();
 		this.no = no;
 		this.pno = pno;
-		this.id = id;
+		this.pid = pid;
 		this.turn = turn;
 		this.day = day;
 	}
@@ -31,7 +31,7 @@ public class Plandetail {
 	public Plandetail(ResultSet rs) throws SQLException {
 		this.setNo(rs.getInt("no"));
 		this.setPno(rs.getInt("pno"));
-		this.setId(rs.getString("id"));
+		this.setId(rs.getString("pid"));
 		this.setTurn(rs.getInt("turn"));
 		this.setDay(rs.getInt("day"));
 	}
@@ -48,11 +48,11 @@ public class Plandetail {
 	public void setPno(int pno) {
 		this.pno = pno;
 	}
-	public String getId() {
-		return id;
+	public String getPid() {
+		return pid;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String pid) {
+		this.pid = pid;
 	}
 	public int getTurn() {
 		return turn;
