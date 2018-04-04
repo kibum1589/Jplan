@@ -38,6 +38,8 @@
 					if(result>0){
 						console.log('중복');
 						emailcheck=1;
+						$("#email_check").text("이미 사용중인 이메일입니다");
+			           	$("#email_check").css("color","red");
 					}
 					else{
 						console.log('가능');
@@ -55,10 +57,13 @@
 	            if(!this.value || !regex.test(name)){
 	            	console.log('불가능');
 	            	nck = 1;
+	            	$("#nmc").text("2~8자리의 이름을 입력해주세요 (특수문자 제외)");
+	            	$("#nmc").css("color","red");
 	            }
 	            else{
 	            	console.log('가능');
 					nck = 0;
+					$("#nmc").text("");
 	            }
 
 	        }); 
@@ -123,12 +128,13 @@
 		    var email_regex = /[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}/i;
            if(!this.value || !email_regex.test(email)){
            	console.log('이메일조건불일치');
-           	$("#email_check").text("사용할 수 없는 아이디 입니다");
+           	$("#email_check").text("올바른 이메일 형식이 아닙니다");
+           	$("#email_check").css("color","red");
            	ek = 1;
            }
            else{
            	console.log('이메일조건일치');
-           	$("#email_check").text("사용할 수 있는 아이디 입니다");
+           	$("#email_check").text("");
 				ek = 0;
            }
 
@@ -167,10 +173,13 @@
 			
 			if(!this.value || !pw_regex.test(pw)){
            	console.log('불가능');
+           	$("#pwc").text("비밀번호는 6~15자리를 입력해주세요");
+           	$("#pwc").css("color","red");
            	nck = 1;
            }
            else{
            	console.log('가능');
+           	$("#pwc").text("");
 				nck = 0;
            }
        });
@@ -185,11 +194,13 @@
            if(!this.value || pw!=this.value){
            	pwk = 1;
            	$("#pwc").text("비밀번호가 다릅니다.");
+           	$("#pwc").css("color","red");
 				console.log('불일치');
            }
            else if(pw == this.value){
            	pwk = 0;
            	$("#pwc").text("비밀번호가 일치합니다.");
+           	$("#pwc").css("color","skyblue");
 				console.log('일치');
            }
   

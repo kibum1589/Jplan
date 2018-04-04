@@ -93,16 +93,15 @@ button:hover {
     <hr>
 
     <label for="email"><b>아이디</b></label>
-    <input class="form-input email_reg" type="text" name="email" placeholder="ex)OOO@OOO.OOO" required id="check" onkeypress="space_x();">     
+    <input class="form-input email_reg" type="text" name="email" placeholder="ex)OOO@OOO.OOO" required id="check" onkeypress="space_x();" autocomplete="off">     
     <span id="email_check"></span>
+    <br>
     
-    <div>
-        <span></span>
-    </div>
-    
-     <label for="name"><b>이름</b></label>
-    <input class="form-input" type="text" name="name" placeholder="2글자 에서 8글자 까지" required id="name" onkeypress="space_x();">
-
+    <label for="name"><b>이름</b></label>
+    <input class="form-input" type="text" name="name" placeholder="2글자 에서 8글자 까지" required id="name" onkeypress="space_x();" autocomplete="off">
+	<span id="nmc"></span>
+	<br>
+		
     <label for="pw"><b>비밀번호</b></label>
     <input class="form-input" type="password" name="pw" placeholder="6자 에서 15자까지" required id="pw" onkeypress="space_x();">
 
