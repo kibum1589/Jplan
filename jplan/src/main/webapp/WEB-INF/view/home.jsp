@@ -111,7 +111,7 @@
         </div>
         <div class="row">
         <ul class="pager">
-  		<li><a><span class="glyphicon glyphicon-tree-conifer"></span>검색하기</a></li>
+  		<li><a><span class="glyphicon glyphicon-tree-conifer"></span>가입하기</a></li>
   		<span class="glyphicon glyphicon-arrow-right"></span>
   		<li><a><span class="glyphicon glyphicon-save"></span>일정에 넣기</a></li>
   		<span class="glyphicon glyphicon-arrow-right"></span>
@@ -122,38 +122,88 @@
   		<li><a><span class="glyphicon glyphicon-plane"></span>여행하기</a></li>
 		</ul>
         </div>
-        <div class="row">
-        <button type="button" class="btn btn-info">STEP1</button>
-        	<label><b>검색하기</b></label><br><br>
-        	여행지의 가고싶은 장소들을 검색해 보세요!
+        	
+        	  <div class="row" style="display: flex; flex-direction: row;">
+        	<div style="display: flex; flex-direction: column; flex-basis:70%; vertical-align: middle;">
+        	<div>
+        	<button type="button" class="btn btn-info" style="width: 5em;">STEP1</button>
+        	<label><b>가입하기</b></label><br><br>
+        	</div>
+        		<div style="margin-top:3em;">이용전 가입으로 모든걸 이용해 보아요!</div>
+        	</div>
+        	<div style="flex-basis:30%;">
+       <img src="${pageContext.request.contextPath}/res/img/step1.png" style="margin-left: auto;" class="img-rounded"  width="550" height="370"> 
+        	</div>
+        	</div>
+        	
         	<hr>
-        </div>
-        <div class="row">
-        <button type="button" class="btn btn-info">STEP2</button>
+        	
+        	  <div class="row" style="display: flex; flex-direction: row;">
+        	<div style="display: flex; flex-direction: column; flex-basis:70%; vertical-align: middle;">
+        	<div>
+        	<button type="button" class="btn btn-info" style="width: 5em;">STEP2</button>
         	<label><b>일정에 넣기</b></label><br><br>
-        	가고싶은 장소 관심있는 장소 이신가요?<br>
-        	일정에 포함시킬 수 있습니다!!
+        	</div>
+        		<div style="margin-top:3em;">
+        		가고 싶은 장소 관심있는 장소 이신가요?
+        		<br>검색하여 일정에 포함시킬 수 있습니다.
+        		<br><br>
+        		<h4>1.장소 입력하기</h4>
+        		<h4>2.검색하여 리스트 보기</h4>
+        		<h4>3.리스트 장소 Day에 옮기기</h4>
+        		<h4>4.장소 순서 또는 Day 추가 하기</h4>
+        		</div>
+        	</div>
+        	<div style="flex-basis:30%;">
+       <img src="${pageContext.request.contextPath}/res/img/step2.png" style="margin-left: auto;" class="img-rounded"  width="550" height="370"> 
+        	</div>
+        	</div>
+        	
         	<hr>
-        </div>
-        <div class="row">
-        <button type="button" class="btn btn-info">STEP3</button>
+        	
+        	  <div class="row" style="display: flex; flex-direction: row;">
+        	<div style="display: flex; flex-direction: column; flex-basis:70%; vertical-align: middle;">
+        	<div>
+        	<button type="button" class="btn btn-info" style="width: 5em;">STEP3</button>
         	<label><b>지도보기</b></label><br><br>
-        	클립한 장소들을 지도에서 확인해보세요~<br>
-        	인근의 명소, 음식점 등을 검색할 수 있습니다!!
+        	</div>
+        		<div style="margin-top:3em;">일정 만들기 에서 여행하고 싶은 곳을 <br>지도로 찾아 확인해 보세요.</div>
+        	</div>
+        	<div style="flex-basis:30%;">
+       <img src="${pageContext.request.contextPath}/res/img/step3.png" style="margin-left: auto;" class="img-rounded"  width="550" height="370"> 
+        	</div>
+        	</div>
+        	
         	<hr>
-        </div>
-        <div class="row">
-        <button type="button" class="btn btn-info">STEP4</button>
-        	<label><b>일정만들기</b></label><br><br>
-        	장소를 검색해 일정을 계획하세요!!!
+        	
+        	  <div class="row" style="display: flex; flex-direction: row;">
+        	<div style="display: flex; flex-direction: column; flex-basis:70%; vertical-align: middle;">
+        	<div>
+        	<button type="button" class="btn btn-info" style="width: 5em;">STEP4</button>
+        	<label><b>커뮤니티</b></label><br><br>
+        	</div>
+        		<div style="margin-top:3em;">만들어 놓은 일정을 다른사람들과 <br>공유 그리고 내가 만든 일정을 확인해 보세요!</div>
+        	</div>
+        	<div style="flex-basis:30%;">
+       <img src="${pageContext.request.contextPath}/res/img/step4.png" style="margin-left: auto;" class="img-rounded"  width="550" height="370"> 
+        	</div>
+        	</div>
+        	
         	<hr>
-        </div>
-        <div class="row">
-        <button type="button" class="btn btn-info">STEP5</button>
+        	
+        	  <div class="row" style="display: flex; flex-direction: row;">
+        	<div style="display: flex; flex-direction: column; flex-basis:70%; vertical-align: middle;">
+        	<div>
+        	<button type="button" class="btn btn-info" style="width: 5em;">STEP5</button>
         	<label><b>여행하기</b></label><br><br>
-        	길찾기와 메모를 활용하여 여행걱정을 줄일 수 있습니다!!!!!
-        </div>
-    </div>
+        	</div>
+        		<div style="margin-top:3em;">이제 여권을 들고 ! 여행하러 GoGo~!</div>
+        	</div>
+        	<div style="flex-basis:30%;">
+       <img src="${pageContext.request.contextPath}/res/img/step5.png" style="margin-left: auto;" class="img-rounded"  width="550" height="370"> 
+        	</div>
+        	</div>
+        	
     <div class="remote">
         <a href="#"><img src="${pageContext.request.contextPath}/res/icon/jplane.png"
 			alt="" class="home_btn"></a>
