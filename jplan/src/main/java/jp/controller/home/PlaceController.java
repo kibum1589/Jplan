@@ -80,10 +80,12 @@ public class PlaceController {
 			
 			boolean loveFlag = false;
 			
-			for(Love love: list_love) {
-				if(love.getMno()==(Integer)session.getAttribute("no")) {
-					loveFlag = true;
-					break;
+			if(session.getAttribute("no")!=null) {
+				for(Love love: list_love) {
+					if(love.getMno()==(Integer)session.getAttribute("no")) {
+						loveFlag = true;
+						break;
+					}
 				}
 			}
 			
@@ -114,58 +116,81 @@ public class PlaceController {
 		// 리뷰작성
 		@RequestMapping("place/writeReview")
 		public void writeReview(Review review, HttpSession session, HttpServletResponse response) throws IOException {
-			logger.debug("댓글내용: {}" ,review.getContent());
-			logger.debug("작성자 no: {}" ,(Integer) session.getAttribute("no"));
-			logger.debug("장소 id: {}" ,review.getPid());
-			review.setMno((Integer) session.getAttribute("no"));
 			
-			reviewDao.write(review);
 			
-			List<Review> list_review =  reviewDao.read(review.getPid());
-			
-			JSONArray jsonArr = new JSONArray();
-			JSONObject json = new JSONObject();
-			
-			for(Review r : list_review) {
-				JSONObject jsonObj = new JSONObject();
-				jsonObj.put("content", r.getContent());
-				jsonObj.put("reg", r.getReg());
-				jsonObj.put("mno", r.getMno());
-				jsonArr.add(jsonObj);
-			}
-			
-			json.put("review_list", jsonArr);
 			
 			
 			PrintWriter writer =  response.getWriter();
-			writer.print(json);
-			writer.close();
+			
+			if(session.getAttribute("no")!=null) {
+				
+				logger.debug("댓글내용: {}" ,review.getContent());
+				logger.debug("장소 id: {}" ,review.getPid());
+				
+				review.setMno((Integer) session.getAttribute("no"));
+				reviewDao.write(review);
+				
+				List<Review> list_review =  reviewDao.read(review.getPid());
+				
+				JSONArray jsonArr = new JSONArray();
+				JSONObject json = new JSONObject();
+				
+				for(Review r : list_review) {
+					JSONObject jsonObj = new JSONObject();
+					jsonObj.put("content", r.getContent());
+					jsonObj.put("reg", r.getReg());
+					jsonObj.put("mno", r.getMno());
+					jsonArr.add(jsonObj);
+				}
+				
+				json.put("review_list", jsonArr);
+				
+				
+				writer.print(json);
+				writer.close();
+			}
+			
+			else {
+				logger.debug("잘못된 접근 (비회원)");
+			}
+			
+			
+			
 			
 		}
 		
 		// 좋아요 토글
 		@RequestMapping("place/loveAction")
 		public void loveAction(Love love , boolean loveFlag, HttpSession session, HttpServletResponse response) throws IOException {
-			logger.debug("좋아요 전환 상태:  {}", loveFlag);
-			logger.debug("들어온 love 장소:  {}",love.getPid());
 			
-			love.setMno((Integer)session.getAttribute("no"));
 			
-			if(loveFlag) {
-				loveDao.increase(love);
-			}
-			else {
-				loveDao.decrease(love);
-			}
-			
-			int loveNum = loveDao.getLove(love.getPid()).size();
 			
 			PrintWriter writer =  response.getWriter();
-			writer.print(loveNum);
-			writer.close();
+			
+			if(session.getAttribute("no")!=null) {
+				
+				logger.debug("좋아요 전환 상태:  {}", loveFlag);
+				logger.debug("들어온 love 장소:  {}",love.getPid());
+				
+				love.setMno((Integer)session.getAttribute("no"));
+				
+				if(loveFlag) {
+					loveDao.increase(love);
+				}
+				else {
+					loveDao.decrease(love);
+				}
+				
+				int loveNum = loveDao.getLove(love.getPid()).size();
+				writer.print(loveNum);
+				writer.close();
+			}
+			
+			else {
+				logger.debug("잘못된 접근 (비회원)");
+			}
 		
+			
 		}
-		
-		
 }
 
