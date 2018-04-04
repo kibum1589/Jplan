@@ -231,7 +231,7 @@
   padding-top: 0%;
   background-size: cover;
  font-family: 'Sucrose Bold Two';
- opacity: inherit;
+ opacity: 0.5;
  */}
 .header .img {
   position: absolute;
@@ -255,16 +255,17 @@
   }
 } */
 
-/* 홈 화면에 띄어지는 글자  */
+//홈 화면에 띄어지는 글자 
 h1 {
   position: fixed;
   top: 10rem;
-  right: 2rem;
-  font-size: 100px;
+  right: 2rem; 
+  font-size: 80px;
   line-height: 0.8;
   margin-top: 0;
   text-align: center;
 }
+
 h1 span {
   display: block;
   font-size: 8.75vw;
@@ -274,13 +275,13 @@ h1 span {
 background: none;
 color: #99ddd5; 
 font-family: 'Amatic SC'; 
-text-shadow: #2E2B32 1px 1px,#2E2B32 0px 0px,#2E2B32 1px 1px,#2E2B32 2px 2px,
+  text-shadow: #2E2B32 1px 1px,#2E2B32 0px 0px,#2E2B32 1px 1px,#2E2B32 2px 2px,
 #2E2B32 3px 3px,#2E2B32 4px 4px,#2E2B32 5px 5px,#2E2B32 6px 6px,#2E2B32 7px 7px,
 #2E2B32 8px 8px,#2E2B32 9px 9px,#2E2B32 10px 10px,#2E2B32 11px 11px,#2E2B32 12px 12px,
 #2E2B32 13px 13px,#2E2B32 14px 14px,#2E2B32 15px 15px,#2E2B32 16px 16px,#2E2B32 17px 17px,
 #2E2B32 18px 18px,#2E2B32 19px 19px,#2E2B32 20px 20px,#2E2B32 21px 21px,#2E2B32 22px 22px,
 #2E2B32 23px 23px,#2E2B32 24px 24px,#2E2B32 25px 25px,#2E2B32 26px 26px,#2E2B32 27px 27px,
-#2E2B32 28px 28px,#2E2B32 29px 29px;
+#2E2B32 28px 28px,#2E2B32 29px 29px; 
 }
 
 
@@ -292,7 +293,7 @@ font-family: 'Parisienne';
 text-shadow: -.08em .08em #C9D5DB;
 
   position: relative;
-  top: 10rem;
+  top: 10rem; 
   right: 2rem;
   font-size: 150px;
   line-height: 0.8;
