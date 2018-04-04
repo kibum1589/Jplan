@@ -39,10 +39,9 @@
         <div class="form-inline data-input">
             <div class="form-group input-group-lg">
                 <input class=" form-control" id="title-input" type="text"  placeholder="일정 제목" required>
-                <input class=" form-control" id="dur-input" type="number"  placeholder="몇일동안" required>
                 <input class=" form-control" id="sday-input" type="date"  required>
         	</div>
-        	<div class="form-group input-group-lg col-md-offset-4">
+        	<div class="form-group input-group-lg" style="margin-left: 35">
         		<p><a class="btn btn-primary btn-lg" role="button" id="my-plan-btn">등록하기</a></p>
         	</div>
         </div>

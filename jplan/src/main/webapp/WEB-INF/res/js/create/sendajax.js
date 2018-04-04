@@ -19,11 +19,11 @@ $(document).ready(function(){
 		)
 	})
 	
-	// 나만보기 버튼
+	// 일정등록 버튼
 	$('#my-plan-btn').click(function () {
 		var planData={
 					title: $("#title-input").val(),
-					dur: $("#dur-input").val(),
+					dur: dayCount,
 					sday : $("#sday-input").val()
 		}
 		
