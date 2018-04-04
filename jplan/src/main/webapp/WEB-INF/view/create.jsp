@@ -18,6 +18,20 @@
     <!-- ajax 관련 스크립트 -->
     <script src="${pageContext.request.contextPath}/res/js/create/sendajax.js"></script>
     
+<script>
+
+//일정만들기 div 보이고 끄기 
+
+	$(function() {
+		$("#create_div").on("click", function() {
+			console.log('눌림')
+			$('.et_modal_bg').css('display','none');
+							
+			
+		});
+	});
+</script>
+    
 <style>
       
         .create-main {
@@ -29,9 +43,15 @@
       	.data-input{
       		height: 50px;
       	}
-        
+		
 </style>
     
+<div class="et_modal_bg" style="display:flex;">
+  <img src=${pageContext.request.contextPath}/res/img/createDiv.png width="98%" height="98%" style="margin-top: 10px; margin-left: 15px; opacity: 0.9">
+  <div>
+  	<button id="create_div">x</button>
+  </div>
+</div>
 	
 <!-- 상단 Bar -->
     <div class="container-fluid">
