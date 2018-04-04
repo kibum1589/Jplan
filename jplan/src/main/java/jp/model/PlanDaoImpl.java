@@ -48,11 +48,12 @@ public class PlanDaoImpl implements PlanDao {
 		String sql = "select * from ("
 				+ "select rownum rn, A.* from ("
 				+ "select * from plan "
-				+ "order by no asc"
+				+ "where mno = ? "
+				+ "order by no desc "
 			+ ")A"
 		+ ") "
-		+ "where rn between ? and ? and mno = ?";
-		return jdbcTemplate.query(sql, mapper, sno, eno,mno);
+		+ "where rn between ? and ?";
+		return jdbcTemplate.query(sql, mapper, mno,  sno, eno);
 	}
 
 	//일정 리스트 메소드
@@ -60,7 +61,7 @@ public class PlanDaoImpl implements PlanDao {
 		String sql = "select * from ("
 				+ "select rownum rn, A.* from ("
 				+ "select * from plan "
-				+ "order by no asc"
+				+ "order by no desc "
 			+ ")A"
 		+ ") "
 		+ "where rn between ? and ?";
