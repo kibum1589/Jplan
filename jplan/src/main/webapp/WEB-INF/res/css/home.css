@@ -231,7 +231,7 @@
   padding-top: 0%;
   background-size: cover;
  font-family: 'Sucrose Bold Two';
- opacity: 0.5;
+ opacity: inherit;
  */}
 .header .img {
   position: absolute;
@@ -293,7 +293,7 @@ font-family: 'Parisienne';
 text-shadow: -.08em .08em #C9D5DB;
 
   position: relative;
-  top: 10rem; 
+  /* top: 10rem; */
   right: 2rem;
   font-size: 150px;
   line-height: 0.8;
