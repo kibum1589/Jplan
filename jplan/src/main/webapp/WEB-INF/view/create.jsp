@@ -21,7 +21,6 @@
 <script>
 
 //일정만들기 div 보이고 끄기 
-
 	$(function() {
 		$("#create_div").on("click", function() {
 			console.log('눌림')
@@ -44,13 +43,37 @@
       		height: 50px;
       	}
 		
+/* 녹색 div 끄기 버튼 css  */
+.sbutton {
+  width: 140px;
+  height: 55px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #efefef;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+.sbutton:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
 </style>
     
 <div class="et_modal_bg" style="display:flex;">
-  <img src=${pageContext.request.contextPath}/res/img/createDiv.png width="98%" height="98%" style="margin-top: 10px; margin-left: 15px; opacity: 0.9">
-  <div>
-  	<button id="create_div">x</button>
-  </div>
+  <img src=${pageContext.request.contextPath}/res/img/createDiv.png width="96%" height="93%" style="margin-top: 30px; margin-left: 30px; opacity: 0.9">
+  	<button id="create_div" class="sbutton">x</button>
 </div>
 	
 <!-- 상단 Bar -->
