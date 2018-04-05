@@ -6,14 +6,9 @@
         <!-- 하단 영역 -->
  <div class="div">      
         <footer class="font-small in-align-center">
-      	<a class="ftbtn"
-			href="${pageContext.request.contextPath}/sign"><span>이용방법</span></a>
-	
-				
-		<a class="ftbtn"
-			href="${pageContext.request.contextPath}/sign"><span>회사소개</span></a>
-			<br>
-            &copy; JPlan    
+      		<br>
+            &copy; JPlan
+            <br>    
     </footer>
 </div>
 </html>

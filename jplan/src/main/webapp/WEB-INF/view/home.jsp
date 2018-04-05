@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/res/css/home.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -31,12 +32,12 @@
 		<div class="carousel-inner">
 			<div class="item active">
 				<img src="${pageContext.request.contextPath}/res/img/001.jpg" alt=""
-					style="width: 100%; height: 70%; opacity:100;">
+					style="width: 100%; height: 70%; opacity:1;">
 			</div>
 
 			<div class="item">
 				<img src="${pageContext.request.contextPath}/res/img/003.jpg" alt=""
-					style="width: 100%; height: 70%; opacity:100;">
+					style="width: 100%; height: 70%; opacity:1;">
 			</div>
 
 			<div class="item">
@@ -46,7 +47,7 @@
 			
 			<div class="item">
 				<img src="${pageContext.request.contextPath}/res/img/11.jpg" alt=""
-					style="width: 100%; height: 70%; opacity:100;">
+					style="width: 100%; height: 70%; opacity:1;">
 			</div>
 		</div>
 
@@ -73,33 +74,33 @@
 	<div class="empty-row"></div>
 	<br> <br>
 	<div class="container col-md-4">
-		<h2>Rounded Corners</h2>
-		<img src="${pageContext.request.contextPath}/res/img/22.jpg"
+		<h2>1. 경주</h2>
+		<img src="${pageContext.request.contextPath}/res/img/anapgi.jpg"
 			class="img-rounded" alt="Cinque Terre" width="450" height="370">
 	</div>
 	<div class="container col-md-4">
-		<h2>Rounded Corners</h2>
-		<img src="${pageContext.request.contextPath}/res/img/22.jpg"
+		<h2>2. 부산</h2>
+		<img src="${pageContext.request.contextPath}/res/img/busan.jpg"
 			class="img-rounded" alt="Cinque Terre" width="450" height="370">
 	</div>
 	<div class="container col-md-4">
-		<h2>Rounded Corners</h2>
-		<img src="${pageContext.request.contextPath}/res/img/22.jpg"
+		<h2>3. 대부도</h2>
+		<img src="${pageContext.request.contextPath}/res/img/daebudo.jpg"
 			class="img-rounded" alt="Cinque Terre" width="450" height="370">
 	</div>
 	<div class="container col-md-4">
-		<h2>Rounded Corners</h2>
-		<img src="${pageContext.request.contextPath}/res/img/22.jpg"
+		<h2>4. 강원도</h2>
+		<img src="${pageContext.request.contextPath}/res/img/gangwondo.jpg"
 			class="img-rounded" alt="Cinque Terre" width="450" height="370">
 	</div>
 	<div class="container col-md-4">
-		<h2>Rounded Corners</h2>
-		<img src="${pageContext.request.contextPath}/res/img/22.jpg"
+		<h2>5. 전주</h2>
+		<img src="${pageContext.request.contextPath}/res/img/jeonju.jpg"
 			class="img-rounded" alt="Cinque Terre" width="450" height="370">
 	</div>
 	<div class="container col-md-4">
-		<h2>Rounded Corners</h2>
-		<img src="${pageContext.request.contextPath}/res/img/22.jpg"
+		<h2>6. 울릉도</h2>
+		<img src="${pageContext.request.contextPath}/res/img/wooluengdo.jpg"
 			class="img-rounded" alt="Cinque Terre" width="450" height="370">
 	</div>
 </div>
